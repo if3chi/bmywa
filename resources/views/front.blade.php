@@ -9,11 +9,12 @@
     
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Blooming Minds Young Writers Award" />
-    <meta property="og:description" content="BMYWA is an initiative aimed at raising young African leaders by recognizing and rewarding children with creative abilities in writing and arts.">
-    <meta property="og:image" content="{{ asset('images/about.jpg') }}">
+    <meta property="og:description" content="BMYWA is an initiative aimed at raising young African leaders by recognizing and rewarding creativity.">
+    <meta property="og:image" content="{{ asset('images/24d.jpg') }}">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="300">
     <meta property="og:image:height" content="200">
+
     <meta property="og:url" content="{{ route('welcome') }}">
 
     <title>Blooming Minds Young Writers Award</title>
