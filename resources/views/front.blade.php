@@ -90,7 +90,7 @@
                         <li class="mx-auto">
                             <a href="/" class="w-1/4 py-4 pl-6 pr-4 md:pl-4 md:py-0">
                                 {{-- <span class="text-3xl font-black leading-none text-white select-none logo">tails<span class="text-yellow-500">.</span></span> --}}
-                                <img class="rounded-md shadow-sm w-24 logo " src="{{ asset('images/logo-sm.jpg') }}" alt="bmywa logo" srcset="">
+                                <img class="rounded-md shadow-sm w-24 logo " src="{{ asset('images/logo.jpg') }}" alt="bmywa logo" srcset="">
                             </a>
                         </li>
                         <li class="mx-2 lg:mx-3">
@@ -138,7 +138,7 @@
                     <div class="relative z-30 flex items-center justify-between w-full h-20">
                         <a href="#_" class="flex items-center flex-shrink-0 mr-6 text-white">
                             {{-- <span class="text-3xl font-black leading-none text-white select-none logo">tails<span class="text-yellow-500">.</span></span> --}}
-                            <img class="rounded-sm shadow-sm w-16 logo " src="{{ asset('images/logo-sm.jpg') }}" alt="bmywa logo" srcset="">
+                            <img class="rounded-sm shadow-sm w-16 logo " src="{{ asset('images/logo.jpg') }}" alt="bmywa logo" srcset="">
                         </a>
                         <div class="block lg:hidden">
                             <button @click="showMenu = !showMenu" class="flex items-center justify-center w-10 h-10 text-gray-200 rounded-full hover:text-white hover:bg-white hover:bg-opacity-25 focus:outline-none">
@@ -541,7 +541,7 @@
             <div class="relative flex flex-col items-start justify-between leading-7 text-gray-900 border-0 border-gray-200 md:flex-row md:items-center">
                 <a href="#_" class="left-0 flex items-center justify-center order-first w-full mb-4 font-medium text-gray-900 md:justify-start md:absolute md:w-64 lg:order-none lg:w-auto title-font lg:items-center lg:justify-center md:mb-0">
                     {{-- <span class="text-xl font-black leading-none text-gray-900 select-none logo">tails<span class="text-indigo-600">.</span></span> --}}
-                    <img class="rounded-sm shadow-sm w-14 logo " src="{{ asset('images/logo-sm.jpg') }}" alt="bmywa logo" srcset="">
+                    <img class="rounded-sm shadow-sm w-14 logo " src="{{ asset('images/logo.jpg') }}" alt="bmywa logo" srcset="">
                 </a>
                 <ul class="box-border flex mx-auto my-6  lg:space-x-6">
                     <li class="relative mt-2 leading-7 text-left text-white border-0 border-gray-200 md:border-b-0 md:mt-0">
