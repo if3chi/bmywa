@@ -66,6 +66,8 @@
           animation: fadeIn 1s ease-in forwards;
         }
 
+        [x-cloak] { display: none !important; }
+
     </style>
 </head>
 <body>
@@ -172,7 +174,7 @@
             </div>
         
             <!-- Mobile Menu -->
-            <div x-show.transition="showMenu" class="absolute top-0 z-20 flex flex-col items-center justify-center w-full h-full space-y-5 text-lg origin-center bg-yellow-500" x-cloak="">
+            <div x-show.transition="showMenu" class="absolute top-0 z-20 flex flex-col items-center justify-center w-full h-full space-y-5 text-lg origin-center bg-yellow-500" x-cloak>
                 <a href="#about" class="block text-white hover:text-white">About</a>
                 <a href="#_" class="block text-white hover:text-white">News</a>
                 <a href="#contact" class="block text-white hover:text-white">Contact</a>
