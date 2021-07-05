@@ -158,10 +158,12 @@
                         </a>
                         <div class="block lg:hidden">
                             <button @click="showMenu = !showMenu" class="flex items-center justify-center w-10 h-10 text-gray-200 rounded-full hover:text-white hover:bg-white hover:bg-opacity-25 focus:outline-none">
-                                <svg class="w-5 h-5 text-gray-700" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <title>Menu</title>
-                                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-                                </svg>
+                                <template x-if="!showMenu">
+                                    <x-icon.menu strokeWidth="3" class="w-6 h-6 text-gray-700"/>
+                                </template>
+                                <template x-if="showMenu">
+                                    <x-icon.x strokeWidth="3" class="w-6 h-6 text-white"/>
+                                </template>
                             </button>
                         </div>
                     </div>
