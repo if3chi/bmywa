@@ -66,6 +66,8 @@
           animation: fadeIn 1s ease-in forwards;
         }
 
+        [x-cloak] { display: none !important; }
+
     </style>
 </head>
 <body>
@@ -158,10 +160,12 @@
                         </a>
                         <div class="block lg:hidden">
                             <button @click="showMenu = !showMenu" class="flex items-center justify-center w-10 h-10 text-gray-200 rounded-full hover:text-white hover:bg-white hover:bg-opacity-25 focus:outline-none">
-                                <svg class="w-5 h-5 text-gray-700" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <title>Menu</title>
-                                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-                                </svg>
+                                <template x-if="!showMenu">
+                                    <x-icon.menu strokeWidth="3" class="w-6 h-6 text-gray-700"/>
+                                </template>
+                                <template x-if="showMenu">
+                                    <x-icon.x strokeWidth="3" class="w-6 h-6 text-white"/>
+                                </template>
                             </button>
                         </div>
                     </div>
@@ -170,7 +174,7 @@
             </div>
         
             <!-- Mobile Menu -->
-            <div x-show.transition="showMenu" class="absolute top-0 z-20 flex flex-col items-center justify-center w-full h-full space-y-5 text-lg origin-center bg-yellow-500" x-cloak="">
+            <div x-show.transition="showMenu" class="absolute top-0 z-20 flex flex-col items-center justify-center w-full h-full space-y-5 text-lg origin-center bg-yellow-500" x-cloak>
                 <a href="#about" class="block text-white hover:text-white">About</a>
                 <a href="#_" class="block text-white hover:text-white">News</a>
                 <a href="#contact" class="block text-white hover:text-white">Contact</a>
