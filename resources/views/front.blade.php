@@ -175,9 +175,12 @@
         
             <!-- Mobile Menu -->
             <div x-show.transition="showMenu" class="absolute top-0 z-20 flex flex-col items-center justify-center w-full h-full space-y-5 text-lg origin-center bg-yellow-500" x-cloak>
-                <a href="#about" class="block text-white hover:text-white">About</a>
-                <a href="#_" class="block text-white hover:text-white">News</a>
-                <a href="#contact" class="block text-white hover:text-white">Contact</a>
+                <a @click="showMenu = !showMenu" href="#about" class="block text-white hover:text-white">About</a>
+                <a @click="showMenu = !showMenu" href="#_" class="block text-white hover:text-white">News</a>
+                <a @click="showMenu = !showMenu" href="#judges" class="block text-white hover:text-white">Judges</a>
+                <a @click="showMenu = !showMenu" href="#faq" class="block text-white hover:text-white">FAQs</a>
+                <a @click="showMenu = !showMenu" href="#contact" class="block text-white hover:text-white">Contact</a>
+                <a @click="showMenu = !showMenu" href="#entry-form" class="block border-2  p-1.5 border-white rounded-md text-white hover:text-white">Apply Online</a>
             </div>
             <!-- End Mobile Menu -->
         
