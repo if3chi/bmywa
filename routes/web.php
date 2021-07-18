@@ -16,8 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontController::class, 'index'])->name('welcome');
 Route::view('/about', 'about')->name('about');
 
+Route::group(
+    [
+        'prefix' => 'admin',
+        'middleware' => 'auth'
+    ],
+    function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+        })->name('dashboard');
+    }
+);
 
 require __DIR__.'/auth.php';
