@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +23,13 @@ Route::group(
         'middleware' => 'auth'
     ],
     function () {
-Route::get('/dashboard', function () {
-    return view('dashboard');
+        Route::get('/dashboard', function () {
+            return view('dashboard');
         })->name('dashboard');
+
+        Route::get('/judges', function(){
+            return view('admin.judges');
+        })->name('judges.index');
     }
 );
 
