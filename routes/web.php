@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FrontController;
+use App\Http\Livewire\Admin\Judges;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'front')->name('welcome');
+Route::get('/', [FrontController::class, 'index'])->name('welcome');
+Route::view('/about', 'about')->name('about');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::group(
+    [
+        'prefix' => 'admin',
+        'middleware' => 'auth'
+    ],
+    function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+
+        Route::get('/judges', Judges::class)->name('judges.index');
+    }
+);
 
 require __DIR__.'/auth.php';
