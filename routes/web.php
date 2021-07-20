@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontController;
+use App\Http\Livewire\Admin\Judges;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +28,7 @@ Route::group(
             return view('dashboard');
         })->name('dashboard');
 
-        Route::get('/judges', function(){
-            return view('admin.judges');
-        })->name('judges.index');
+        Route::get('/judges', Judges::class)->name('judges.index');
     }
 );
 

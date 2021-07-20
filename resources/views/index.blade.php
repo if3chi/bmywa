@@ -83,7 +83,7 @@
                                     <x-icon.facebook />
                                 </a>
                                 <a href="https://www.instagram.com/bmywa/"
-                                    class="inline-flex items-center leading-7 text-gray-500 no-underline border-0 border-gray-200 cursor-pointer hover:text-purple-900 focus-within:text-yellow-700">
+                                    class="inline-flex items-center leading-7 text-gray-500 no-underline border-0 border-gray-200 cursor-pointer hover:text-yellow-900 focus-within:text-yellow-700">
                                     <x-icon.instagram />
                                 </a>
                                 <a href="https://twitter.com/bmywa"

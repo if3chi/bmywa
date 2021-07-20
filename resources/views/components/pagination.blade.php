@@ -9,29 +9,29 @@
         <nav aria-label="Table navigation">
             <ul class="inline-flex items-center">
                 <li>
-                    <button class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple"
+                    <button class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-yellow"
                         aria-label="Previous">
                        <x-icon.chevron-left />
                     </button>
                 </li>
                 <li>
-                    <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                    <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-yellow">
                         1
                     </button>
                 </li>
                 <li>
-                    <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                    <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-yellow">
                         2
                     </button>
                 </li>
                 <li>
                     <button
-                        class="px-3 py-1 text-white transition-colors duration-150 bg-purple-600 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple">
+                        class="px-3 py-1 text-white transition-colors duration-150 bg-yellow-600 border border-r-0 border-yellow-600 rounded-md focus:outline-none focus:shadow-outline-yellow">
                         3
                     </button>
                 </li>
                 <li>
-                    <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                    <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-yellow">
                         4
                     </button>
                 </li>
@@ -39,17 +39,17 @@
                     <span class="px-3 py-1">...</span>
                 </li>
                 <li>
-                    <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                    <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-yellow">
                         8
                     </button>
                 </li>
                 <li>
-                    <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                    <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-yellow">
                         9
                     </button>
                 </li>
                 <li>
-                    <button class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
+                    <button class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-yellow"
                         aria-label="Next">
                         <x-icon.chevron-right />
                     </button>

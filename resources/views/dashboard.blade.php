@@ -8,7 +8,7 @@
             {{ __('Dashboard') }}
         </h2>
         <!-- CTA -->
-        <a class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+        <a class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-yellow-100 bg-yellow-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-yellow"
             href="https://github.com/estevanmaito/BMYWA-dashboard">
             <div class="flex items-center">
                 <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -425,7 +425,7 @@
                         <ul class="inline-flex items-center">
                             <li>
                                 <button
-                                    class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple"
+                                    class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-yellow"
                                     aria-label="Previous">
                                     <svg aria-hidden="true" class="w-4 h-4 fill-current"
                                         viewBox="0 0 20 20">
@@ -437,25 +437,25 @@
                             </li>
                             <li>
                                 <button
-                                    class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                                    class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-yellow">
                                     1
                                 </button>
                             </li>
                             <li>
                                 <button
-                                    class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                                    class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-yellow">
                                     2
                                 </button>
                             </li>
                             <li>
                                 <button
-                                    class="px-3 py-1 text-white transition-colors duration-150 bg-purple-600 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple">
+                                    class="px-3 py-1 text-white transition-colors duration-150 bg-yellow-600 border border-r-0 border-yellow-600 rounded-md focus:outline-none focus:shadow-outline-yellow">
                                     3
                                 </button>
                             </li>
                             <li>
                                 <button
-                                    class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                                    class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-yellow">
                                     4
                                 </button>
                             </li>
@@ -464,19 +464,19 @@
                             </li>
                             <li>
                                 <button
-                                    class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                                    class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-yellow">
                                     8
                                 </button>
                             </li>
                             <li>
                                 <button
-                                    class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                                    class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-yellow">
                                     9
                                 </button>
                             </li>
                             <li>
                                 <button
-                                    class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
+                                    class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-yellow"
                                     aria-label="Next">
                                     <svg class="w-4 h-4 fill-current" aria-hidden="true"
                                         viewBox="0 0 20 20">
@@ -513,7 +513,7 @@
                         <span>Shoes</span>
                     </div>
                     <div class="flex items-center">
-                        <span class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"></span>
+                        <span class="inline-block w-3 h-3 mr-1 bg-yellow-600 rounded-full"></span>
                         <span>Bags</span>
                     </div>
                 </div>
@@ -530,7 +530,7 @@
                         <span>Organic</span>
                     </div>
                     <div class="flex items-center">
-                        <span class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"></span>
+                        <span class="inline-block w-3 h-3 mr-1 bg-yellow-600 rounded-full"></span>
                         <span>Paid</span>
                     </div>
                 </div>

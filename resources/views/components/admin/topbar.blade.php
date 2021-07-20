@@ -1,13 +1,13 @@
 <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
-    <div class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300">
+    <div class="container flex items-center justify-between h-full px-6 mx-auto text-yellow-600 dark:text-yellow-300">
         <!-- Mobile hamburger -->
-        <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple"
+        <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-yellow"
             @click="toggleSideMenu" aria-label="Menu">
             <x-icon.hamburger />
         </button>
         <!-- Search input -->
         <div class="flex justify-center flex-1 lg:mr-32">
-            <div class="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
+            <div class="relative w-full max-w-xl mr-6 focus-within:text-yellow-500">
                 <div class="absolute inset-y-0 flex items-center pl-2">
                     <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
@@ -16,14 +16,14 @@
                     </svg>
                 </div>
                 <input
-                    class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
+                    class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-yellow-300 focus:outline-none focus:shadow-outline-yellow form-input"
                     type="text" placeholder="Search for projects" aria-label="Search" />
             </div>
         </div>
         <ul class="flex items-center flex-shrink-0 space-x-6">
             <!-- Theme toggler -->
             <li class="flex">
-                <button class="rounded-md focus:outline-none focus:shadow-outline-purple" @click="toggleTheme"
+                <button class="rounded-md focus:outline-none focus:shadow-outline-yellow" @click="toggleTheme"
                     aria-label="Toggle color mode">
                     <template x-if="!dark">
                         <x-icon.moon />
@@ -35,7 +35,7 @@
             </li>
             <!-- Notifications menu -->
             <li class="relative">
-                <button class="relative align-middle rounded-md focus:outline-none focus:shadow-outline-purple"
+                <button class="relative align-middle rounded-md focus:outline-none focus:shadow-outline-yellow"
                     @click="toggleNotificationsMenu" @keydown.escape="closeNotificationsMenu" aria-label="Notifications"
                     aria-haspopup="true">
                     <x-icon.bell />
@@ -79,7 +79,7 @@
             </li>
             <!-- Profile menu -->
             <li class="relative">
-                <button class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
+                <button class="align-middle rounded-full focus:shadow-outline-yellow focus:outline-none"
                     @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account"
                     aria-haspopup="true">
                     <img class="object-cover w-8 h-8 rounded-full"
