@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontController;
-use App\Http\Livewire\Admin\Judges;
+use App\Http\Livewire\Admin\JudgeComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +28,7 @@ Route::group(
             return view('dashboard');
         })->name('dashboard');
 
-        Route::get('/judges', Judges::class)->name('judges.index');
+        Route::get('/judges', JudgeComponent::class)->name('judges.index');
     }
 );
 

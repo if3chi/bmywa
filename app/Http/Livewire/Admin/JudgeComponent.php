@@ -8,7 +8,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
-class Judges extends Component
+class JudgeComponent extends Component
 {
 
     use WithPagination, WithFileUploads, WithUtilities;
@@ -30,13 +30,15 @@ class Judges extends Component
     ];
 
     public function mount()
-    {       
+    {
         $this->selectedRecord = Judge::make();
     }
 
     public function getForm($type, Judge $judge)
     {
         $this->resetValidation();
+        $this->reset('judgePhoto');
+
         if ($type === 'edit') {
             $this->formTitle = 'Edit Judge';
             $this->editing = $judge;
@@ -44,7 +46,6 @@ class Judges extends Component
         } else {
             $this->formTitle = 'Add a Judge';
             $this->editing = Judge::make();
-            $this->reset('judgePhoto');
         }
 
         $this->showEditModal = true;
@@ -69,6 +70,8 @@ class Judges extends Component
                 'description' => ucwords($this->editing->description)
             ]
         );
+
+        if (str_contains($this->formTitle, 'Add')) $this->resetPage();
 
         $this->notify([
             'title' => str_contains($this->formTitle, 'Edit')
@@ -100,7 +103,7 @@ class Judges extends Component
 
     public function render()
     {
-        return view('livewire.admin.judges', [
+        return view('livewire.admin.judge-component', [
             'judges' => Judge::latest()
                 ->paginate($this->perPage)
         ])
