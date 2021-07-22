@@ -14,11 +14,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css">
 
     @livewireStyles
+
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
 </head>
 
 <body>
     
-    <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
+    <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }" x-cloak="">
         <!-- Sidebar -->
         <x-admin.sidebar />
         
@@ -38,7 +42,7 @@
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="{{ asset('admin/js/init-alpine.js') }}"></script>
-    <script src="./assets/js/focus-trap.js" defer></script>
+    <script src="{{ asset('admin/js/focus-trap.js') }}" defer></script>
     @livewireScripts
 </body>
 
