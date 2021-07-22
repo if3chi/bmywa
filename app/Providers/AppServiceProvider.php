@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Component;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,8 +25,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(UrlGenerator $url)
     {
-            if (env('APP_ENV') !== 'local') {
-                  $url->forceScheme('https');
-            }
-     }
+        if (env('APP_ENV') !== 'local') {
+            $url->forceScheme('https');
+        }
+
+        Component::macro('notify', function ($msg) {
+            $this->dispatchBrowserEvent('notify', $msg);
+        });
+    }
 }
