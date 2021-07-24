@@ -17,7 +17,8 @@ class CreateJudgesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('avatar');
-            $table->string('description');
+            $table->string('profession')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

@@ -25,7 +25,8 @@ class JudgeComponent extends Component
 
     public $rules = [
         'editing.name' => 'required|string',
-        'editing.description' => 'required|string|max:140',
+        'editing.profession' => 'string|max:140',
+        'editing.description' => 'string|max:240',
         'judgePhoto' => 'required|max:512|mimes:png,jpg,jpeg'
     ];
 
@@ -67,6 +68,7 @@ class JudgeComponent extends Component
             [
                 'name' => ucwords($this->editing->name),
                 'avatar' => $newImage,
+                'profession' => ucwords($this->editing->profession),
                 'description' => ucwords($this->editing->description)
             ]
         );
