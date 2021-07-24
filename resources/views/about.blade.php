@@ -101,8 +101,8 @@
                             projects run by the Blooming Minds Change Champion Network (BMCCN) founded in 2016. The initiative
                             is aimed at raising young African leaders by recognizing and rewarding children with creative
                             abilities in writing and arts. The awards are held in Ghana and Nigeria. Winners are awarded cash
-                            prizes and a possible publishing deal. Children whose stories were shortlisted but did not win, will
-                            get the opportunity to attend a creative writing workshop to hone their writing skills.</p>
+                            prizes and a possible publishing deal. <span id="readmore"> Children whose stories were shortlisted 
+                            but did not win, will get the opportunity to attend a creative writing workshop to hone their writing skills.</span> </p>
                     </div>
                     <div class="text-lg max-w-prose mx-auto">
                         <p class="mt-2 text-xl text-gray-500 leading-8 text-justify">Our mission is to equip and strengthen our
@@ -115,6 +115,11 @@
             </div>
         </div>
     </div>
+
+    <!-- FAQs -->
+    <section id="faq" class="py-24 bg-gray-50 fade-in">
+        <x-faq-group />
+    </section>
 
      <!-- Contact Us -->
      <section id="contact" class="w-full bg-white fade-in">

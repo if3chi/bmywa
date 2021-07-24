@@ -13,7 +13,7 @@
                             Accra Ghana.</span> </p>
                     <p class="text-base text-gray-800 md:pr-16">Tel: <br><span
                             class="text-sm text-gray-600">+233-263-433368 <br> +233 – 543 – 807829</span> </p>
-                    <a href="#entry-form"
+                    <a href="{{ route('welcome') }}#entry-form"
                         class="inline-block px-3 py-4 text-xl font-medium tracking-wide text-center text-white transition duration-200 bg-yellow-400 rounded-lg hover:bg-yellow-500 ease">Submit
                         An Entry</a>
                 </div>
