@@ -3,46 +3,13 @@
     <nav class="hidden w-full md:block" x-show="!showMenu" x-cloak="">
         <ul class="relative z-10 flex items-center px-6 text-sm text-white lg:text-base">
             <li class="mx-2 lg:mx-3">
-                <a href="#about" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false"
-                    class="relative inline-block font-medium text-gray-600 hover:text-yellow-500">
-                    <span class="block">About</span>
-                    <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                        <span x-show="hover"
-                            class="absolute inset-0 inline-block w-full h-full transform border-t-2 border-yellow-500"
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
-                            x-transition:leave="transition ease-out duration-300"
-                            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"></span>
-                    </span>
-                </a>
+                <x-front.nav-link :url="route('about')" name="About" />
             </li>
             <li class="mx-2 lg:mx-3">
-                <a href="#_" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false"
-                    class="relative inline-block font-medium text-gray-600 hover:text-yellow-500">
-                    <span class="block">News</span>
-                    <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                        <span x-show="hover"
-                            class="absolute inset-0 inline-block w-full h-full transform border-t-2 border-yellow-500"
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
-                            x-transition:leave="transition ease-out duration-300"
-                            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"></span>
-                    </span>
-                </a>
+                <x-front.nav-link url="#" name="News" />
             </li>
             <li class="mx-2 lg:mx-3">
-                <a href="#judges" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false"
-                    class="relative inline-block font-medium text-gray-600 hover:text-yellow-500">
-                    <span class="block">Judges</span>
-                    <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                        <span x-show="hover"
-                            class="absolute inset-0 inline-block w-full h-full transform border-t-2 border-yellow-500"
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
-                            x-transition:leave="transition ease-out duration-300"
-                            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"></span>
-                    </span>
-                </a>
+                <x-front.nav-link :url="route('welcome').'#judges'" name="Judges" />
             </li>
             <div class="mx-6"></div>
             <li class="mx-auto">
@@ -53,32 +20,10 @@
                 </a>
             </li>
             <li class="mx-2 lg:mx-3">
-                <a href="#faq" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false"
-                    class="relative inline-block font-medium text-gray-600 hover:text-yellow-500">
-                    <span class="block">FAQs</span>
-                    <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                        <span x-show="hover"
-                            class="absolute inset-0 inline-block w-full h-full transform border-t-2 border-yellow-500"
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
-                            x-transition:leave="transition ease-out duration-300"
-                            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"></span>
-                    </span>
-                </a>
+                <x-front.nav-link :url="route('welcome').'#faq'" name="FAQs" />
             </li>
             <li class="mx-2 lg:mx-3">
-                <a href="#contact" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false"
-                    class="relative inline-block font-medium text-gray-600 hover:text-yellow-500">
-                    <span class="block">Contact</span>
-                    <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-                        <span x-show="hover"
-                            class="absolute inset-0 inline-block w-full h-full transform border-t-2 border-yellow-500"
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
-                            x-transition:leave="transition ease-out duration-300"
-                            x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"></span>
-                    </span>
-                </a>
+                <x-front.nav-link url="#contact" name="Contact Us" />
             </li>
             <li class="mx-2 lg:mx-3">
                 <div x-data="{ isOpen: false }" @mouseenter="isOpen = true" @mouseleave="isOpen = false"
@@ -149,7 +94,7 @@
     <a @click="showMenu = !showMenu" href="#_" class="block text-white hover:text-white">News</a>
     <a @click="showMenu = !showMenu" href="#judges" class="block text-white hover:text-white">Judges</a>
     <a @click="showMenu = !showMenu" href="#faq" class="block text-white hover:text-white">FAQs</a>
-    <a @click="showMenu = !showMenu" href="#contact" class="block text-white hover:text-white">Contact</a>
+    <a @click="showMenu = !showMenu" href="#contact" class="block text-white hover:text-white">Contact Us</a>
     <a @click="showMenu = !showMenu" href="#entry-form"
         class="block border-2  p-1.5 border-white rounded-md text-white hover:text-white">Apply Online</a>
 </div>
