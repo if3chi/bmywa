@@ -366,14 +366,7 @@
 
     <!-- FAQs -->
     <section id="faq" class="py-24 bg-gray-50 fade-in">
-        <div class="max-w-4xl px-8 mx-auto lg:px-16">
-            <h2 class="mb-2 text-xl font-bold text-center md:text-3xl">Frequently Asked Questions</h2>
-            <div class="relative mt-12 space-y-5">
-                @foreach ($faqs as $faq)
-                    <x-card.faq :qtn="$faq->question" :ans="$faq->answer" />
-                @endforeach
-            </div>
-        </div>
+        <x-faq-group />
     </section>
 
     <!-- Contact Us -->

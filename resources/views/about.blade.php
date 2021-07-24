@@ -116,6 +116,11 @@
         </div>
     </div>
 
+    <!-- FAQs -->
+    <section id="faq" class="py-24 bg-gray-50 fade-in">
+        <x-faq-group />
+    </section>
+
      <!-- Contact Us -->
      <section id="contact" class="w-full bg-white fade-in">
         <x-contact />
