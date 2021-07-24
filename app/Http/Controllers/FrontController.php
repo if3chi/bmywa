@@ -2,12 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Faq;
 
 class FrontController extends Controller
 {
-    
-    public function index(){
-        return view('index');
+
+    public function index()
+    {
+
+        $faqs = $this->loadFaqs();
+
+        return view('index', compact('faqs'));
+    }
+
+
+    public function loadFaqs()
+    {
+        return Faq::all();
     }
 }
