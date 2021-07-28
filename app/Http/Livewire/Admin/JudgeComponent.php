@@ -13,15 +13,12 @@ class JudgeComponent extends Component
 
     use WithPagination, WithFileUploads, WithUtilities;
 
-    public $showEditModal = false;
-    public $showDelModal = false;
     public Judge $editing;
     public Judge $selectedRecord;
-    public $formTitle = '';
     public $judgePhoto;
     public $editJudgePhoto;
     public $perPage = 5;
-    private $diskName = 'judge';
+    private String $diskName = 'judge';
 
     public $rules = [
         'editing.name' => 'required|string',
@@ -49,25 +46,20 @@ class JudgeComponent extends Component
             $this->editing = Judge::make();
         }
 
-        $this->showEditModal = true;
+        $this->openModal('form');
     }
 
     public function save()
     {
-        $newImage = null;
-
         $this->validate();
 
-        if ($this->judgePhoto) {
-            $this->delPhoto($this->editing->avatar, $this->diskName);
-            $newImage = $this->judgePhoto->store('/', $this->diskName);
-        }
+        $imageName = $this->processImage($this->editing->avatar, $this->judgePhoto, $this->diskName);
 
         $this->editing->updateOrCreate(
             ['id' => $this->editing->id],
             [
                 'name' => ucwords($this->editing->name),
-                'avatar' => $newImage,
+                'avatar' => $imageName,
                 'profession' => ucwords($this->editing->profession),
                 'description' => ucwords($this->editing->description)
             ]
@@ -82,25 +74,17 @@ class JudgeComponent extends Component
             'body' => $this->editing->name
         ]);
 
-        $this->showEditModal = false;
+        $this->hideModal('form');
     }
 
-    public function getDelModal(Judge $judge)
+    public function confirmDelete(Judge $judge)
     {
-        $this->formTitle = "Delete Judge's Data";
-        $this->selectedRecord = $judge;
-        $this->showDelModal = true;
+        $this->getDelModal("Delete Judge's Data", $judge);
     }
 
     public function destroy()
     {
-        $this->delPhoto($this->selectedRecord->avatar, $this->diskName);
-        $this->selectedRecord->delete();
-        $this->notify([
-            'title' => 'Deleted Successfully',
-            'body' => $this->selectedRecord->name
-        ]);
-        $this->showDelModal = false;
+        $this->deleteRecord($this->selectedRecord->avatar);
     }
 
     public function render()
