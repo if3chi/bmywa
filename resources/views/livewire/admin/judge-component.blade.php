@@ -25,7 +25,8 @@
                             class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                             <th class="px-4 py-3">Photo</th>
                             <th class="px-4 py-3">Name</th>
-                            <th class="px-4 py-3">Title</th>
+                            <th class="px-4 py-3">Profession</th>
+                            <th class="px-4 py-3">Description</th>
                             <th class="px-4 py-3">Action</th>
                         </tr>
                     </thead>
@@ -44,6 +45,11 @@
                                 <td class="px-2 py-3 w-56">
                                     <div class="items-center text-sm">
                                         <p class="font-semibold">{{ $judge->name }}</p>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-3">
+                                    <div class="items-center text-sm">
+                                        <p class="font-semibold">{{ $judge->profession }}</p>
                                     </div>
                                 </td>
                                 <td class="px-4 py-3">
@@ -68,7 +74,7 @@
                             </tr>
                         @empty
                             <tr class="text-gray-700 dark:text-gray-400">
-                                <td colspan="4" class="px-4 py-3">
+                                <td colspan="5" class="px-4 py-3">
                                     <div class="text-center text-md">
                                         <h2 class="font-bold">
                                             This place is lonely... </br> Add a Judge
@@ -93,10 +99,16 @@
                     <x-icon.user />
                 </x-form.input>
 
+                <x-form.input wire:model="editing.profession" :error="$errors->first('editing.profession')"
+                    type="text" label="Profession">
+                    <x-icon.anotation />
+                </x-form.input>
+
                 <x-form.input wire:model="editing.description" :error="$errors->first('editing.description')"
                     type="text" label="Description">
                     <x-icon.anotation />
                 </x-form.input>
+
                 <x-form.file wire:model="judgePhoto" target="judgePhoto" :error="$errors->first('judgePhoto')"
                     label="Select Photo" type="file">
                     @if ($this->judgePhoto)

@@ -22,10 +22,9 @@
 
     <title>{{ $title ?? 'Blooming Minds Young Writers Award' }}</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css">
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
-
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
 </head>
 
