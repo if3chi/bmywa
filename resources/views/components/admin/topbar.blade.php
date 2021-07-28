@@ -20,7 +20,7 @@
                     type="text" placeholder="Search for projects" aria-label="Search" />
             </div>
         </div>
-        
+
         <ul class="flex items-center flex-shrink-0 space-x-6">
             <!-- Theme toggler -->
             <li class="flex">
@@ -107,16 +107,20 @@
                         <li class="flex">
                             <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
                                 href="#">
-                               <x-icon.cog />
+                                <x-icon.cog />
                                 <span>Settings</span>
                             </a>
                         </li>
                         <li class="flex">
                             <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                                href="#">
+                                href=" {{ route('logout') }} " onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
                                 <x-icon.exit />
-                                <span>Log out</span>
+                                <span>{{ __('Log Out') }}</span>
                             </a>
+                            <form id="logout-form" method="POST" action="{{ route('logout') }}">
+                                @csrf
+                            </form>
                         </li>
                     </ul>
                 </template>
