@@ -31,7 +31,7 @@
         },
 
         "files": [
-            "app/Utilities/helpers.php"
+            "app/Utilities/Helpers.php"
         ]
     },
     "autoload-dev": {
