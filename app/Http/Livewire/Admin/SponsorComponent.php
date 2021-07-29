@@ -7,6 +7,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use App\Http\Livewire\Traits\WithUtilities;
+use App\Http\Livewire\CustomRules\RequiredIfAdding;
 
 class SponsorComponent extends Component
 {
@@ -20,18 +21,28 @@ class SponsorComponent extends Component
 
     public function mount()
     {
-        $this->editSponsor = Sponsor::make();
         $this->selectedRecord = Sponsor::make();
     }
 
-    public $rules = [
-        'editSponsor.name' => 'required',
-        'sponsorLogo' => 'required|mimes:png,gif,jpg,jpeg|max:512'
-    ];
+    public function rules()
+    {
+        return [
+            'editSponsor.name' => 'required',
+            'sponsorLogo' => [
+                new RequiredIfAdding(str_contains($this->formTitle, 'Add')),
+                'max:512',
+                'mimes:png,gif,jpeg,jpg'
+            ]
+        ];
+    }
 
     public function getForm($formType, Sponsor $sponsor)
     {
-        if ($formType == 'Add') {
+        $this->resetValidation();
+        $this->reset('sponsorLogo');
+
+        if ($formType == 'add') {
+            $this->editSponsor = Sponsor::make();
             $this->formTitle = 'Add a Sponsor';
         }
 
@@ -84,8 +95,7 @@ class SponsorComponent extends Component
 
     public function render()
     {
-        return view(
-            'livewire.admin.sponsor-component',
+        return view('livewire.admin.sponsor-component',
             ['sponsors' => Sponsor::latest()->paginate(8)]
         )
             ->layout('layouts.admin');

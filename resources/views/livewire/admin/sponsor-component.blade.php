@@ -9,7 +9,7 @@
         </h2>
 
         <div class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            <button wire:click.prevent="getForm('Add')" type="button"
+            <button wire:click.prevent="getForm('add')" type="button"
                 class="flex items-center cursor-pointer justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-yellow-400 border border-transparent rounded-lg active:bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:shadow-outline-yellow">
                 <x-icon.user-add />
                 <span>Add Sponsor</span>

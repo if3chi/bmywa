@@ -2,11 +2,12 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Http\Livewire\Traits\WithUtilities;
 use App\Models\Judge;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
+use App\Http\Livewire\Traits\WithUtilities;
+use App\Http\Livewire\CustomRules\RequiredIfAdding;
 
 class JudgeComponent extends Component
 {
@@ -20,12 +21,19 @@ class JudgeComponent extends Component
     public $perPage = 5;
     private String $diskName = 'judge';
 
-    public $rules = [
-        'editing.name' => 'required|string',
-        'editing.profession' => 'string|max:140',
-        'editing.description' => 'string|max:240',
-        'judgePhoto' => 'required|max:512|mimes:png,jpg,jpeg'
-    ];
+    public function rules()
+    {
+        return [
+            'editing.name' => 'required|string',
+            'editing.profession' => 'string|max:140',
+            'editing.description' => 'string|max:240',
+            'judgePhoto' => [
+                new RequiredIfAdding(str_contains($this->formTitle, 'Add')),
+                'max:512',
+                'mimes:png,jpg,jpeg',
+            ]
+        ];
+    }
 
     public function mount()
     {
