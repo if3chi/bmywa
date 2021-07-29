@@ -48,6 +48,13 @@ return [
             'url' => env('APP_URL').'/images/judge',
             'visibility' => 'public',
         ],
+        
+        'sponsor' => [
+            'driver' => 'local',
+            'root' => storage_path('app/images/sponsors'),
+            'url' => env('APP_URL').'/images/sponsor',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',
@@ -76,6 +83,7 @@ return [
     'links' => [
         // public_path('storage') => storage_path('app/public'),
         public_path('images/judge') => storage_path('app/images/judges'),
+        public_path('images/sponsor') => storage_path('app/images/sponsors'),
     ],
 
 ];

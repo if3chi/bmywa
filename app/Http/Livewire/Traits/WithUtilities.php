@@ -33,6 +33,8 @@ trait WithUtilities
         }
     }
 
+
+    // TODO: Resize Image
     public function processImage($oldImage, $imageFile, String $diskName): String
     {
         $imageName = $oldImage;

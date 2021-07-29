@@ -11,11 +11,18 @@
                 </x-sidebar-link>
             </li>
         </ul>
+        <div class="border-2 dark:border-gray-600  ml-2 mr-4 rounded-lg"></div>
         <ul>
             <li class="relative px-6 py-3">
                 <x-sidebar-link href="{{ route('judges.index') }}" url='admin/judges'>
                     <x-icon.users />
                     <span class="ml-4">{{ __('Judges') }}</span>
+                </x-sidebar-link>
+            </li>
+            <li class="relative px-6 py-3">
+                <x-sidebar-link href="{{ route('sponsors.index') }}" url='admin/sponsors'>
+                    <x-icon.trademark />
+                    <span class="ml-4">{{ __('Sponsors') }}</span>
                 </x-sidebar-link>
             </li>
         </ul>
@@ -47,11 +54,18 @@
                 </x-sidebar-link>
             </li>
         </ul>
+        <div class="border-2 dark:border-gray-600 ml-2 mr-4 rounded-lg"></div>
         <ul>
             <li class="relative px-6 py-3">
                 <x-sidebar-link href="{{ route('judges.index') }}" url='admin/judges'>
                     <x-icon.users />
                     <span class="ml-4">{{ __('Judges') }}</span>
+                </x-sidebar-link>
+            </li>
+            <li class="relative px-6 py-3">
+                <x-sidebar-link href="{{ route('sponsors.index') }}" url='admin/sponsors'>
+                    <x-icon.trademark />
+                    <span class="ml-4">{{ __('Sponsors') }}</span>
                 </x-sidebar-link>
             </li>
         </ul>
