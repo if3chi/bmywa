@@ -8,8 +8,8 @@ trait WithUtilities
 {
 
     public $formTitle = '';
-    public bool $showEditModal;
-    public bool $showDelModal;
+    public bool $showEditModal = false;
+    public bool $showDelModal = false;
 
     public function hideModal(String $type)
     {
