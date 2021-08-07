@@ -65,7 +65,7 @@
     <!-- Mobile Nav  -->
     <nav class="top-0 z-30 flex flex-col flex-wrap items-center justify-between w-full h-auto px-6 md:hidden">
         <div class="relative z-30 flex items-center justify-between w-full h-20">
-            <a href="#_" class="flex items-center flex-shrink-0 mr-6 text-white">
+            <a href="/" class="flex items-center flex-shrink-0 mr-6 text-white">
                 {{-- <span class="text-3xl font-black leading-none text-white select-none logo">tails<span class="text-yellow-500">.</span></span> --}}
                 <img class="rounded-sm shadow-sm w-16 logo " src="{{ asset('images/logo.jpg') }}" alt="bmywa logo"
                     srcset="">
@@ -90,10 +90,12 @@
 <div x-show.transition="showMenu"
     class="absolute top-0 z-20 flex flex-col items-center justify-center w-full h-full space-y-5 text-lg origin-center bg-yellow-500"
     x-cloak>
-    <a @click="showMenu = !showMenu" href="#about" class="block text-white hover:text-white">About</a>
-    <a @click="showMenu = !showMenu" href="#_" class="block text-white hover:text-white">News</a>
-    <a @click="showMenu = !showMenu" href="#judges" class="block text-white hover:text-white">Judges</a>
-    <a @click="showMenu = !showMenu" href="#faq" class="block text-white hover:text-white">FAQs</a>
+    <a @click="showMenu = !showMenu" href="{{ route('about') }}" class="block text-white hover:text-white">About</a>
+    <a @click="showMenu = !showMenu" href="#" class="block text-white hover:text-white">News</a>
+    <a @click="showMenu = !showMenu" href="{{ route('welcome') . '#judges' }}"
+        class="block text-white hover:text-white">Judges</a>
+    <a @click="showMenu = !showMenu" href="{{ route('welcome') . '#faq' }}"
+        class="block text-white hover:text-white">FAQs</a>
     <a @click="showMenu = !showMenu" href="#contact" class="block text-white hover:text-white">Contact Us</a>
     <a @click="showMenu = !showMenu" href="#entry-form"
         class="block border-2  p-1.5 border-white rounded-md text-white hover:text-white">Apply Online</a>
