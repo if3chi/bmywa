@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
 use App\Http\Livewire\Admin\JudgeComponent;
-use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Admin\SponsorComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ Route::group(
         })->name('dashboard');
 
         Route::get('/judges', JudgeComponent::class)->name('judges.index');
+        Route::get('/sponsors', SponsorComponent::class)->name('sponsors.index');
     }
 );
 

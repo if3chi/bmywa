@@ -139,6 +139,9 @@ return [
         ],
     ],
 
+    'phone' => 'The :attribute number contains an invalid number.',
+
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes
