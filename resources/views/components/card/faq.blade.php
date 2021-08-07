@@ -1,6 +1,6 @@
 @props(['qtn', 'ans'])
 
-<div x-data="{ show: false }" @mouseleave="show = false"
+<div x-data="{ show: false }" x-on:mouseleave=" setTimeout(() => show = false, 5000) "
     class="relative overflow-hidden border-2 border-white shadow-lg rounded-lg select-none hover:bg-white">
     <h4 @click="show=!show"
         class="flex items-center justify-between text-lg font-medium text-gray-700 cursor-pointer sm:text-xl px-7 py-7 hover:text-gray-800">
