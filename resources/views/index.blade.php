@@ -140,7 +140,8 @@
     <section id="judges" class="w-full py-12 bg-gray-50 lg:py-24">
         <x-judge-group>
             @forelse ($judges as $judge)
-                <x-card.judge :imagelink="$judge->avatar_url" :name="$judge->name" :work="$judge->profession" :desc="$judge->description" />
+                <x-card.judge :imagelink="$judge->avatar_url" :name="$judge->name" :work="$judge->profession"
+                    :desc="$judge->description" />
             @empty
                 <div class="w-full border bg-white border-gray-200 rounded-lg shadow-md p-4  justify-center">
                     <h2 class="text-lg text-yellow-500 font-bold">Nothing Here Yet...</h2>
@@ -150,147 +151,8 @@
     </section>
 
     <!-- Entry Form -->
-    <section id="entry-form" class="w-full px-8 py-16 bg-yellow-100 xl:px-8 fade-in">
-        <div class="max-w-5xl mx-auto">
-            <div class="flex flex-col items-center md:flex-row">
-
-                <div class="w-full space-y-2 md:w-3/5 md:pr-16 text-justify">
-                    <p class="font-bold text-yellow-800 text-xs text-center uppercase">Blooming Minds Young Writers
-                        Award
-                        Competition Entry</p>
-                    <h2 class="text-2xl text-center font-extrabold leading-none text-gray-800 sm:text-3xl md:text-4xl">
-                        BMYWA NIGERIA
-                    </h2>
-                    <p class="text-base text-gray-600 text-justify">The competition runs every year and is open to all
-                        kids
-                        between the ages of 6-15 years and is grouped as follows:</p>
-                    <p class="text-base font-bold pt-2 text-gray-800">CREATIVE WRITING COMPETITION <br><span
-                            class="text-sm font-normal text-gray-600">Ages 9-15 – Fiction or Non-Fiction, not more than
-                            500
-                            words.</span> </p>
-                    <p class="text-base font-bold pt-2 text-gray-800">SHORT STORIES & POETRY <br><span
-                            class="text-sm font-normal text-gray-600">Ages 6-9 – Not more than 300 words.</span> </p>
-                    <p class="text-base font-bold pt-2 text-gray-800">BMYWA 2021: <br><span
-                            class="text-sm font-normal text-gray-600">Entry Submissions opens 15th Dec 2020 and closes
-                            1st
-                            March 2021.</span> </p>
-                    <p class="text-sm font-normal pt-2 text-gray-600">Shortlist and Winners will be announced 15th
-                        April.
-                        Award Ceremony will he held 25th April 2021</p>
-                    <p class="text-sm font-normal pt-2 text-gray-600">To enter competition, complete the form <span
-                            class="md:hidden">below</span> and insert essay.</p>
-                    <p class="text-base font-bold pt-2 text-gray-800">Winning Prizes</p>
-                    <ul>
-                        <li class="flex items-center py-1 space-x-4 ">
-                            <svg class="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                            </svg>
-                            <span class="font-medium text-gray-700">Category A Winner: N100,000.00</span>
-                        </li>
-                        <li class="flex items-center py-1 space-x-4 ">
-                            <svg class="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                            </svg>
-                            <span class="font-medium text-gray-700">Category A Runner Up: N80,000.00</span>
-                        </li>
-                        <li class="flex items-center py-1 space-x-4 ">
-                            <svg class="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                            </svg>
-                            <span class="font-medium text-gray-700">Category B Winner: N50,000.00</span>
-                        </li>
-                        <li class="flex items-center py-1 space-x-4 ">
-                            <svg class="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                            </svg>
-                            <span class="font-medium text-gray-700">Category B Runner Up: N25,000</span>
-                        </li>
-                        <p class="text-base font-normal pt-2 text-gray-900 text-justify">Additional giveaways: Tablets
-                            and
-                            School Supplies</p>
-                </div>
-
-                <div class="w-full  mt-16 md:mt-0 md:w-50">
-                    <div
-                        class="relative z-10 h-auto p-8 py-10 overflow-hidden bg-white border-b-2 border-yellow-100 rounded-lg shadow-lg px-7">
-                        <h3 class="mb-6 text-2xl font-medium text-center">Submit your entry</h3>
-                        <div class="relative mb-6">
-                            <label class="absolute px-2 ml-2 -mt-3 font-medium text-gray-600 bg-white">First
-                                Name</label>
-                            <input type="text"
-                                class="block w-full p-3 mt-2 text-xs placeholder-gray-300 tracking-wider font-light  bg-white border-2 border-yellow-100 rounded-md focus:ring focus:outline-none focus:ring-yellow-300"
-                                placeholder="Ama">
-                        </div>
-                        <div class="relative mb-6">
-                            <label class="absolute px-2 ml-2 -mt-3 font-medium text-gray-600 bg-white">Last Name</label>
-                            <input type="text"
-                                class="block w-full p-3 mt-2 text-xs placeholder-gray-300 tracking-wider font-light  bg-white border-2 border-yellow-100 rounded-md focus:ring focus:outline-none focus:ring-yellow-300"
-                                placeholder="Kwaku">
-                        </div>
-                        <div class="relative mb-6">
-                            <label class="absolute px-2 ml-2 -mt-3 font-medium text-gray-600 bg-white">Email
-                                Address</label>
-                            <input type="email"
-                                class="block w-full p-3 mt-2 text-xs placeholder-gray-300 tracking-wider font-light  bg-white border-2 border-yellow-100 rounded-md focus:ring focus:outline-none focus:ring-yellow-300"
-                                placeholder="AmaKwaku@gmail.com">
-                        </div>
-                        <div class="relative mb-6">
-                            <label class="absolute px-2 ml-2 -mt-3 font-medium text-gray-600 bg-white">Phone</label>
-                            <input type="phone"
-                                class="block w-full p-3 mt-2 text-xs placeholder-gray-300 tracking-wider font-light  bg-white border-2 border-yellow-100 rounded-md focus:ring focus:outline-none focus:ring-yellow-300"
-                                placeholder="0201234567">
-                        </div>
-                        <div class="flex flex-row mb-6 w-full">
-                            <div class="relative">
-                                <label class="absolute px-2 ml-2 -mt-3 font-medium text-gray-600 bg-white">Age</label>
-                                <input type="number"
-                                    class="block w-full p-3 mt-0 text-xs placeholder-gray-300 tracking-wider font-light  bg-white border-2 border-yellow-100 rounded-md focus:ring focus:outline-none focus:ring-yellow-300"
-                                    placeholder="7">
-                            </div>
-                            <div class="relative">
-                                <label class="absolute px-2 ml-4 -mt-3 font-medium text-gray-600 bg-white">Entry Fee
-                                    Ref</label>
-                                <input type="text"
-                                    class="block w-full ml-2 p-3 mt-0 text-xs placeholder-gray-300 tracking-wider font-light  bg-white border-2 border-yellow-100 rounded-md focus:ring focus:outline-none focus:ring-yellow-300"
-                                    placeholder="02#4567">
-                            </div>
-                        </div>
-                        <div class="mb-6">
-                            <label class="absolute px-2 ml-2 -mt-3 font-medium text-gray-600 bg-white">Entry
-                                Type</label>
-                            <select
-                                class="block w-full p-3 mt-2 mb-2 text-xs text-gray-400 bg-white border-2 border-yellow-100 tracking-wider font-light rounded-md focus:ring focus:outline-none focus:ring-yellow-300"
-                                placeholder="02#4567">
-                                <option class="text-base" value="">Creative Writing</option>
-                                <option class="text-base" value="">Short Story & Poerty</option>
-                            </select>
-                        </div>
-                        <div class="relative mb-6">
-                            <label class="absolute px-2 ml-2 -mt-3 font-medium text-gray-600 bg-white">Award
-                                Entry</label>
-                            <textarea type="text"
-                                class="block w-full h-32  p-2 mt-6 text-sm placeholder-gray-300 tracking-wider font-light  bg-white border-2 border-yellow-100 rounded-md focus:ring focus:outline-none focus:ring-yellow-300"
-                                placeholder="Please paste your creative writing or short story/poetry entry here. (Creative Writing: 500 words max, Short Story & Poetry: 300 words max.)"></textarea>
-                        </div>
-                        <div class="block">
-                            <button
-                                class="w-full px-3 py-4 mt-4 font-medium text-white bg-yellow-300 rounded-lg">Submit</button>
-                        </div>
-                        <p class="w-full mt-4 text-sm text-center text-gray-500">Wrong Country? <a href="#_"
-                                class="text-yellow-500 underline">Switch here</a></p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+    <section id="entry-form" class="w-full px-4 py-16 bg-yellow-100 xl:px-4 fade-in">
+        <livewire:entry-form />
     </section>
 
     <!-- FAQs -->
