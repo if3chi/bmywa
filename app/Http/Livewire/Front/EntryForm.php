@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Front;
 
 use App\Models\Entry;
 use Livewire\Component;
@@ -40,11 +40,11 @@ class EntryForm extends Component
         Entry::create($data);
 
         $this->emitSelf('saved');
-        $this->dispatchBrowserEvent('flashalert');
+        $this->flashalert();
     }
 
     public function render()
     {
-        return view('livewire.entry-form');
+        return view('livewire.front.entry-form');
     }
 }

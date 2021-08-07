@@ -6,8 +6,8 @@ use App\Models\Sponsor;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use App\Rules\RequiredIfAdding;
 use App\Http\Livewire\Traits\WithUtilities;
-use App\Http\Livewire\CustomRules\RequiredIfAdding;
 
 class SponsorComponent extends Component
 {
@@ -95,7 +95,8 @@ class SponsorComponent extends Component
 
     public function render()
     {
-        return view('livewire.admin.sponsor-component',
+        return view(
+            'livewire.admin.sponsor-component',
             ['sponsors' => Sponsor::latest()->paginate(8)]
         )
             ->layout('layouts.admin');

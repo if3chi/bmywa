@@ -6,8 +6,8 @@ use App\Models\Judge;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use App\Rules\RequiredIfAdding;
 use App\Http\Livewire\Traits\WithUtilities;
-use App\Http\Livewire\CustomRules\RequiredIfAdding;
 
 class JudgeComponent extends Component
 {

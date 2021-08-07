@@ -152,7 +152,7 @@
 
     <!-- Entry Form -->
     <section id="entry-form" class="w-full px-4 py-16 bg-yellow-100 xl:px-4 fade-in">
-        <livewire:entry-form />
+        <livewire:front.entry-form />
     </section>
 
     <!-- FAQs -->
