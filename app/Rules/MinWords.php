@@ -5,21 +5,20 @@ namespace App\Rules;
 use Illuminate\Support\Str;
 use Illuminate\Contracts\Validation\Rule;
 
-class MaxWords implements Rule
+class MinWords implements Rule
 {
 
-    protected $maxWords;
-    protected $entryCount;
+    protected int $minWords;
+    protected int $entryCount;
 
     /**
      * Create a new rule instance.
      *
      * @return void
-     * 
      */
-    public function __construct($maxWords)
+    public function __construct($minWords)
     {
-        $this->maxWords = $maxWords;
+        $this->minWords = $minWords;
     }
 
     /**
@@ -33,7 +32,7 @@ class MaxWords implements Rule
     {
         $this->entryCount = Str::of($value)->wordCount();
 
-        return $this->maxWords >= $this->entryCount;
+        return $this->entryCount >= $this->minWords;
     }
 
     /**
@@ -43,8 +42,8 @@ class MaxWords implements Rule
      */
     public function message()
     {
-        return 'Entry Submission cannot be more than '
-            . $this->maxWords . ' words, You have '
-            . $this->entryCount . ' words';
+        return 'We allow a minimum of '
+            . $this->minWords . ' words, you have '
+            . $this->entryCount . ' word(s).';
     }
 }

@@ -4,7 +4,7 @@
     <div class="relative">
         <label for="$id" class="absolute px-2 ml-2 -mt-3 font-normal text-gray-500 bg-white">{{ $label }}</label>
         <input {{ $attributes }} id="{{ $id }}" type="number"
-            class="block w-full p-3 mt-0 text-xs placeholder-gray-400 tracking-wider font-light  bg-white border-2 border-yellow-100 rounded-md focus:ring focus:outline-none focus:ring-yellow-300">
+            class="block w-full p-3 mt-0 text-xs placeholder-gray-400 tracking-wider font-light  bg-white border-2 rounded-md focus:ring focus:outline-none  {{ $error ? 'border-red-100 focus:ring-red-400' : 'border-yellow-100 focus:ring-yellow-300' }}">
     </div>
 
 

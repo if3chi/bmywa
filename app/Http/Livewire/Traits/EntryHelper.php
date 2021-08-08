@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Traits;
 
 use App\Rules\MaxWords;
 use App\Rules\AgeLimits;
+use App\Rules\MinWords;
 use Illuminate\Validation\Rule;
 
 trait EntryHelper
@@ -35,6 +36,7 @@ trait EntryHelper
             'editing.award_entry' => [
                 'required',
                 'string',
+                new MinWords(64),
                 new MaxWords(
                     $this->editing->entry_type === $this->entryType[0]
                         ? 500
