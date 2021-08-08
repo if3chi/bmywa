@@ -14,7 +14,6 @@
             <div class="mx-6"></div>
             <li class="mx-auto">
                 <a href="/" class="w-1/4 py-4 pl-6 pr-4 md:pl-4 md:py-0">
-                    {{-- <span class="text-3xl font-black leading-none text-white select-none logo">tails<span class="text-yellow-500">.</span></span> --}}
                     <img class="rounded-md shadow-sm w-24 logo " src="{{ asset('images/logo.jpg') }}" alt="bmywa logo"
                         srcset="">
                 </a>
@@ -66,18 +65,17 @@
     <nav class="top-0 z-30 flex flex-col flex-wrap items-center justify-between w-full h-auto px-6 md:hidden">
         <div class="relative z-30 flex items-center justify-between w-full h-20">
             <a href="/" class="flex items-center flex-shrink-0 mr-6 text-white">
-                {{-- <span class="text-3xl font-black leading-none text-white select-none logo">tails<span class="text-yellow-500">.</span></span> --}}
                 <img class="rounded-sm shadow-sm w-16 logo " src="{{ asset('images/logo.jpg') }}" alt="bmywa logo"
                     srcset="">
             </a>
             <div class="block lg:hidden">
                 <button @click="showMenu = !showMenu"
-                    class="flex items-center justify-center w-10 h-10 text-gray-200 rounded-full hover:text-white hover:bg-white hover:bg-opacity-25 focus:outline-none">
+                    class="flex items-center justify-center w-10 h-10 text-yellow-400 rounded-full hover:text-white hover:bg-white hover:bg-opacity-25 focus:outline-none">
                     <template x-if="!showMenu">
-                        <x-icon.menu strokeWidth="3" class="w-6 h-6 text-gray-700" />
+                        <x-icon.menu strokeWidth="3" class="w-6 h-6 text-yellow-500" />
                     </template>
                     <template x-if="showMenu">
-                        <x-icon.x strokeWidth="3" class="w-6 h-6 text-white" />
+                        <x-icon.x strokeWidth="3" class="w-6 h-6 text-yellow-400" />
                     </template>
                 </button>
             </div>
@@ -88,16 +86,18 @@
 
 <!-- Mobile Menu -->
 <div x-show.transition="showMenu"
-    class="absolute top-0 z-20 flex flex-col items-center justify-center w-full h-full space-y-5 text-lg origin-center bg-yellow-500"
+    class="absolute top-0 z-20 flex flex-col items-center justify-center w-full h-50 pt-24 pb-12  space-y-5 text-lg origin-center bg-gray-50 shadow-lg rounded-b-md"
     x-cloak>
-    <a @click="showMenu = !showMenu" href="{{ route('about') }}" class="block text-white hover:text-white">About</a>
-    <a @click="showMenu = !showMenu" href="#" class="block text-white hover:text-white">News</a>
+    <a @click="showMenu = !showMenu" href="{{ route('about') }}"
+        class="block text-gray-900 hover:text-yellow-500">About</a>
+    <a @click="showMenu = !showMenu" href="#" class="block text-gray-900 hover:text-yellow-500">News</a>
     <a @click="showMenu = !showMenu" href="{{ route('welcome') . '#judges' }}"
-        class="block text-white hover:text-white">Judges</a>
+        class="block text-gray-900 hover:text-yellow-500">Judges</a>
     <a @click="showMenu = !showMenu" href="{{ route('welcome') . '#faq' }}"
-        class="block text-white hover:text-white">FAQs</a>
-    <a @click="showMenu = !showMenu" href="#contact" class="block text-white hover:text-white">Contact Us</a>
+        class="block text-gray-900 hover:text-yellow-500">FAQs</a>
+    <a @click="showMenu = !showMenu" href="#contact" class="block text-gray-900 hover:text-yellow-500">Contact Us</a>
     <a @click="showMenu = !showMenu" href="#entry-form"
-        class="block border-2  p-1.5 border-white rounded-md text-white hover:text-white">Apply Online</a>
+        class="block border-2  p-1.5 border-yellow-400 rounded-md text-gray-900 hover:text-yellow-500">Apply
+        Online</a>
 </div>
 <!-- End Mobile Menu -->
