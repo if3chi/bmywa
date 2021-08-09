@@ -130,9 +130,9 @@
         <x-faq-group />
     </section>
 
-     <!-- Contact Us -->
-     <section id="contact" class="w-full bg-white fade-in">
-        <x-contact />
+    <!-- Contact Us -->
+    <section id="contact" class="w-full bg-white fade-in">
+        <livewire:front.contact-us />
     </section>
 
 </x-front-layout>

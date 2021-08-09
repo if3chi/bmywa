@@ -162,7 +162,7 @@
 
     <!-- Contact Us -->
     <section id="contact" class="w-full bg-white fade-in">
-        <x-contact />
+        <livewire:front.contact-us />
     </section>
 
 </x-front-layout>
