@@ -58,7 +58,7 @@
 
                 <x-entry.switch wire:click.prevent="switchCountry('{{ $country }}')" :country="$country" />
 
-                <x-alert />
+                <x-alert class="absolute left-0 bottom-1 w-full px-1 py-2" />
 
             </x-entry.form>
 

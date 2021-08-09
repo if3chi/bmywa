@@ -98,17 +98,26 @@
                         </h1>
                         <p class="mt-0 text-xl text-gray-500 leading-8 text-justify"> <span
                                 class="font-extrabold text-xl">Blooming Minds Young Writers Awards</span> is one of many
-                            projects run by the Blooming Minds Change Champion Network (BMCCN) founded in 2016. The initiative
-                            is aimed at raising young African leaders by recognizing and rewarding children with creative
-                            abilities in writing and arts. The awards are held in Ghana and Nigeria. Winners are awarded cash
-                            prizes and a possible publishing deal. <span id="readmore"> Children whose stories were shortlisted 
-                            but did not win, will get the opportunity to attend a creative writing workshop to hone their writing skills.</span> </p>
+                            projects run by the Blooming Minds Change Champion Network (BMCCN) founded in 2016. The
+                            initiative
+                            is aimed at raising young African leaders by recognizing and rewarding children with
+                            creative
+                            abilities in writing and arts. The awards are held in Ghana and Nigeria. Winners are awarded
+                            cash
+                            prizes and a possible publishing deal. <span id="readmore"> Children whose stories were
+                                shortlisted
+                                but did not win, will get the opportunity to attend a creative writing workshop to hone
+                                their writing skills.</span> </p>
                     </div>
                     <div class="text-lg max-w-prose mx-auto">
-                        <p class="mt-2 text-xl text-gray-500 leading-8 text-justify">Our mission is to equip and strengthen our
-                            youth community by nurturing a writing culture, promoting literacy development and providing a
-                            platform for children to be imaginative and expressive. Inspiring young children to recognise that
-                            it is possible to control their own narratives by appreciating the rich African culture whilst
+                        <p class="mt-2 text-xl text-gray-500 leading-8 text-justify">Our mission is to equip and
+                            strengthen our
+                            youth community by nurturing a writing culture, promoting literacy development and providing
+                            a
+                            platform for children to be imaginative and expressive. Inspiring young children to
+                            recognise that
+                            it is possible to control their own narratives by appreciating the rich African culture
+                            whilst
                             laying the foundation for their future.</p>
                     </div>
                 </div>

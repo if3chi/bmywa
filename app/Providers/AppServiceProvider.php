@@ -33,8 +33,8 @@ class AppServiceProvider extends ServiceProvider
             $this->dispatchBrowserEvent('notify', $msg);
         });
 
-        Component::macro('flashalert', function () {
-            $this->dispatchBrowserEvent('flashalert');
+        Component::macro('flashalert', function ($msg) {
+            $this->emitSelf('flashalert', $msg);
         });
     }
 }
