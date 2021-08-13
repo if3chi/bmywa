@@ -2,8 +2,9 @@
 
 namespace App\Http\Livewire\Front;
 
-use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
+use App\Mail\ContactSupport;
+use Illuminate\Support\Facades\Mail;
 
 class ContactUs extends Component
 {
@@ -24,21 +25,21 @@ class ContactUs extends Component
         $this->reset(['name', 'email', 'message']);
     }
 
-    public function sendMessage()
+    public function submitMessage()
     {
-        $data = $this->validate();
-
-        Mail::raw($data['message'], function ($message) {
-            $message->from($this->email, $this->name)
-                ->to('care@bmywa.test', 'Care Person')
-                ->subject('Contact message from ' . $this->name);
-        });
+        $this->sendMessage($this->validate());
 
         $this->emitSelf('resetForm');
         $this->flashalert([
             'title' => 'Message Submitted Successfully',
             'body' => 'We will get back to you at the earliest.'
         ]);
+    }
+
+    public function sendMessage($data)
+    {
+        Mail::to('care@bmywa.com', 'Care Person')
+            ->send(new ContactSupport($data));
     }
 
     public function render()

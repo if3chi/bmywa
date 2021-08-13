@@ -21,7 +21,7 @@
         </div>
 
         <div class="w-full bg-white lg:w-6/12 xl:w-5/12">
-            <form wire:submit.prevent="sendMessage"
+            <form wire:submit.prevent="submitMessage"
                 class="flex flex-col items-start justify-start w-full h-full p-10 lg:p-16 xl:p-24">
                 <div class="relative w-full mt-6 space-y-8">
                     <div class="relative">
