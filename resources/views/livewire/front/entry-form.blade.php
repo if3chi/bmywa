@@ -4,9 +4,7 @@
 
             @if ($country == 'ng')
                 <x-contact.nigeria />
-            @endif
-
-            @if ($country == 'gh')
+            @else
                 <x-contact.ghana />
             @endif
 

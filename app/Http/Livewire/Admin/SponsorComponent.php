@@ -24,7 +24,12 @@ class SponsorComponent extends Component
         $this->selectedRecord = Sponsor::make();
     }
 
-    public function rules()
+    protected $messages = [ 
+        'editSponsor.name.required' => "Kindly enter a Company's name.",
+        'sponsorLogo.required' => 'You need to upload an Image!'
+    ];
+
+    protected function rules()
     {
         return [
             'editSponsor.name' => 'required',

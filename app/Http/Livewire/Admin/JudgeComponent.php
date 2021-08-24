@@ -21,7 +21,12 @@ class JudgeComponent extends Component
     public $perPage = 5;
     private String $diskName = 'judge';
 
-    public function rules()
+    protected $messages = [
+        'editing.name.required' => 'Kindly enter the Judges names.',
+        'judgePhoto.required' => 'You need to upload an Image!'
+    ];
+
+    protected function rules()
     {
         return [
             'editing.name' => 'required|string',

@@ -58,6 +58,6 @@ class EntryForm extends Component
 
     public function makeBlank()
     {
-        return Entry::make(['entry_type' => '']);
+        return Entry::make(['age' => '', 'entry_type' => '']);
     }
 }
