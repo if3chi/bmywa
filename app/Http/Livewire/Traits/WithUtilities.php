@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Traits;
 
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
 trait WithUtilities
@@ -34,14 +35,32 @@ trait WithUtilities
     }
 
 
-    // TODO: Resize Image
-    public function processImage($oldImage, $imageFile, String $diskName): String
-    {
+    public function processImage(
+        $oldImage,
+        $imageFile,
+        String $diskName,
+        int $width,
+        int $height
+    ): String {
+
         $imageName = $oldImage;
 
         if ($imageFile) {
+
+            $ext = 'png';
+
             $this->delPhoto($oldImage, $diskName);
-            $imageName = $imageFile->store('/', $diskName);
+
+            $imageFile = (string) Image::make($imageFile)
+                ->resize($width, $height, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->encode($ext, 95);
+
+            $imageName = md5($imageFile).".$ext";
+
+            Storage::disk($diskName)->put("/$imageName", $imageFile);
+
         }
 
         return $imageName;

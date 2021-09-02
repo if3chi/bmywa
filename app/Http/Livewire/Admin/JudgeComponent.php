@@ -66,7 +66,11 @@ class JudgeComponent extends Component
     {
         $this->validate();
 
-        $imageName = $this->processImage($this->editing->avatar, $this->judgePhoto, $this->diskName);
+        $imageName = $this->processImage(
+            $this->editing->avatar, 
+            $this->judgePhoto, 
+            $this->diskName, 
+            512, 512);
 
         $this->editing->updateOrCreate(
             ['id' => $this->editing->id],
