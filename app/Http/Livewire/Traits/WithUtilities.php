@@ -47,9 +47,9 @@ trait WithUtilities
 
         if ($imageFile) {
 
-            $ext = 'png';
-
             $this->delPhoto($oldImage, $diskName);
+
+            $ext = $imageFile->extension();
 
             $imageFile = (string) Image::make($imageFile)
                 ->resize($width, $height, function ($constraint) {
@@ -57,10 +57,9 @@ trait WithUtilities
                 })
                 ->encode($ext, 95);
 
-            $imageName = md5($imageFile).".$ext";
+            $imageName = md5(now() . $imageFile) . ".$ext";
 
             Storage::disk($diskName)->put("/$imageName", $imageFile);
-
         }
 
         return $imageName;
