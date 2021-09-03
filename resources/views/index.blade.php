@@ -106,33 +106,7 @@
     <div class="border-t border-gray-200"></div>
 
     <!-- Sponsors -->
-    <section class="box-border px-5 py-12 text-gray-800 bg-white xl:my-0 fade-in">
-        <div
-            class="flex flex-wrap items-center justify-center px-5 mx-auto md:px-12 md:flex-wrap lg:justify-between max-w-7xl">
-            <span
-                class="box-border block w-full mb-5 text-xs font-bold text-center text-gray-500 tracking-widest uppercase lg:w-auto lg:inline lg:mb-0">Our
-                Sponsors</span>
-            <div class="box-border inline-flex items-center px-5 py-0 my-2 text-center text-gray-800">
-                <img src="{{ asset('images/sponsors/ait.jpeg') }}" alt="Ait logo" class="block object-contain h-12">
-            </div>
-            <div class="box-border inline-block px-5 py-0 my-2 text-center text-gray-800">
-                <img src="{{ asset('images/sponsors/cocowater.jpg') }}" alt="coconut water"
-                    class="block object-contain h-9">
-            </div>
-            <div class="box-border inline-block px-5 py-0 my-2 text-center text-gray-800">
-                <img src="{{ asset('images/sponsors/leadway.jpg') }}" alt="leadway" class="block object-contain h-9">
-            </div>
-            <x-card.sponsor />
-            <div class="box-border inline-block px-5 py-0 my-2 text-center text-gray-800">
-                <img src="{{ asset('images/sponsors/starlife.jpeg') }}" alt="starlife"
-                    class="block object-contain h-9">
-            </div>
-            <div class="box-border inline-block px-5 py-0 my-2 text-center text-gray-800">
-                <img src="{{ asset('images/sponsors/bmccn-logo.png') }}" alt="bmccn"
-                    class="block object-contain h-9">
-            </div>
-        </div>
-    </section>
+    <x-front.sponsor :sponsors="$sponsors" />
 
     <div class="border-t border-gray-200"></div>
 

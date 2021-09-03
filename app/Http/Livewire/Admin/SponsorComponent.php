@@ -32,7 +32,7 @@ class SponsorComponent extends Component
     protected function rules()
     {
         return [
-            'editSponsor.name' => 'required',
+            'editSponsor.name' => 'required|min:3|max:52',
             'sponsorLogo' => [
                 new RequiredIfAdding(str_contains($this->formTitle, 'Add')),
                 'max:512',
@@ -68,8 +68,8 @@ class SponsorComponent extends Component
             $this->editSponsor->logo,
             $this->sponsorLogo,
             $this->diskName,
-            96,
-            64
+            250,
+            150
         );
 
         Sponsor::updateOrCreate(
@@ -100,11 +100,24 @@ class SponsorComponent extends Component
         $this->deleteRecord($this->selectedRecord->logo);
     }
 
+    public function updateStatus(Sponsor $sponsor)
+    {
+        $sponsor->setAttribute('status', !$sponsor->status)->save();
+        $action = $sponsor->status ? 'Enabled' : 'Disabled';
+        $body = $sponsor->status ? 'now' : 'not';
+
+        $this->flashalert([
+            'title' => "$action $sponsor->name",
+            'body' => "This Logo will $body be shown on the website."
+        ]);
+    }
+
     public function render()
     {
-        return view(
-            'livewire.admin.sponsor-component',
-            ['sponsors' => Sponsor::latest()->paginate(8)]
+        return view('livewire.admin.sponsor-component',
+            ['sponsors' => Sponsor::orderBy('status', 'desc')
+                ->latest()
+                ->paginate(8)]
         )
             ->layout('layouts.admin');
     }
