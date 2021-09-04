@@ -10,10 +10,9 @@ class Dashboard extends Component
     public function render()
     {
         $entries = Entry::latest()
-        ->get();
+            ->get();
 
-        return view(
-            'livewire.admin.dashboard',
+        return view('livewire.admin.dashboard',
             [
                 'entries' => $entries->take(5),
                 'entries_count' => count($entries)

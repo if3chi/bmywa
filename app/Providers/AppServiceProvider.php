@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
             $url->forceScheme('https');
         }
 
-        Carbon::macro('toDisplayFormat', function(){
+        Carbon::macro('toDisplayFormat', function () {
             return $this->format('D, M d, Y');
         });
 
