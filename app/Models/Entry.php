@@ -46,7 +46,7 @@ class Entry extends Model
     {
         $categories = [
             'creative-writing' => 'Creative Writing',
-            'short-story' => 'Short Story'
+            'short-story' => 'Short Story / Poetry'
         ];
 
         return $categories[$this->entry_type];

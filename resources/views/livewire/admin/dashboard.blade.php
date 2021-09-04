@@ -78,7 +78,7 @@
                                 </td>
                                 <td class="px-4 py-3 text-xs">
                                     <span
-                                        class="{{ $entry->country_color }} px-2 py-1 font-semibold leading-tight rounded-full">
+                                        class="{{ $entry->country_color }} px-2 py-1 font-semibold leading-tight uppercase rounded-full">
                                         {{ $entry->submission_country }}
                                     </span>
                                 </td>
