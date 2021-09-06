@@ -1,4 +1,4 @@
-<div class="w-full space-y-2 md:w-3/5 xl:mb-64 md:pr-16 text-justify">
+<div class="w-full space-y-2 md:w-3/5 md:pr-16 text-justify">
     <p class="font-bold text-yellow-800 text-xs text-center uppercase">Blooming Minds Young Writers
         Award
         Competition Entry</p>

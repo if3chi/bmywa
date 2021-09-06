@@ -21,6 +21,7 @@ trait EntryHelper
         'editing.entry_type.required' => 'Kindly choose your entry type.',
         'editing.age.required' => 'We need to know your age.',
         'editing.award_entry.required' => 'Hi, you need to actually enter your essay in other to compete.',
+        'editing.title.required' => "How about the Title?",
     ];
 
     protected $validationAttributes = [
@@ -29,6 +30,7 @@ trait EntryHelper
         'editing.email' => 'email address',
         'editing.entry_fee' => 'refrence number',
         'editing.entry_type' => 'entry type',
+        'editing.entry_type' => 'entry title',
     ];
 
     protected function rules()
@@ -52,6 +54,7 @@ trait EntryHelper
                     $this->editing->entry_type
                 )
             ],
+            'editing.title' => 'required|min:3|max:255|string',
             'editing.award_entry' => [
                 'required',
                 'string',

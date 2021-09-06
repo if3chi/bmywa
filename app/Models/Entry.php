@@ -12,7 +12,7 @@ class Entry extends Model
     protected $fillable = [
         'firstname', 'lastname', 'email',
         'phone', 'entry_fee', 'age',
-        'entry_type', 'award_entry', 'country'
+        'entry_type', 'title', 'award_entry', 'country'
     ];
 
     public function getContestantNameAttribute()

@@ -125,7 +125,7 @@
     </section>
 
     <!-- Entry Form -->
-    <section id="entry-form" class="w-full px-4 py-16 bg-yellow-100 xl:px-4 fade-in">
+    <section id="entry-form" class="w-full p-6 bg-yellow-100 xl:px-4 fade-in">
         <livewire:front.entry-form />
     </section>
 

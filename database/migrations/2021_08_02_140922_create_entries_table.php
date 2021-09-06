@@ -23,6 +23,7 @@ class CreateEntriesTable extends Migration
             $table->enum('country', ['gh', 'ng']);
             $table->enum('entry_type', ['creative-writing', 'short-story']);
             $table->string('entry_fee');
+            $table->string('title');
             $table->longText('award_entry');
             $table->softDeletes();
             $table->timestamps();

@@ -45,6 +45,9 @@
                     <option class="text-base" value="short-story">Short Story & Poerty</option>
                 </x-input.select>
 
+                <x-input.group wire:model.lazy="editing.title" type="text"
+                    :error="$errors->first('editing.title')" placeholder="How The Cow Jumped Over the Moon" id="title" label="Entry Title" />
+
                 <x-input.textarea wire:model.lazy="editing.award_entry" id="award-entry" type="text" label="Award Entry"
                     :error="$errors->first('editing.award_entry')" />
 
