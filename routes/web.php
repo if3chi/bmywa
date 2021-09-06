@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Admin\Dashboard;
 use App\Http\Controllers\FrontController;
 use App\Http\Livewire\Admin\JudgeComponent;
 use App\Http\Livewire\Admin\SponsorComponent;
+use App\Http\Livewire\Admin\SubmissionsList;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,13 +27,18 @@ Route::group(
         'middleware' => 'auth'
     ],
     function () {
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', Dashboard::class)->name('dashboard');
 
         Route::get('/judges', JudgeComponent::class)->name('judges.index');
         Route::get('/sponsors', SponsorComponent::class)->name('sponsors.index');
+        Route::get('/submissions', SubmissionsList::class)->name('submissions.index');
     }
 );
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
+Route::get('setup_fresh', function () {
+    Artisan::call('migrate:fresh --seed');
+    Artisan::call('storage:link');
+    return 'Done';
+});

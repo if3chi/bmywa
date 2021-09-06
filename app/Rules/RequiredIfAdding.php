@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\CustomRules;
+namespace App\Rules;
 
 use InvalidArgumentException;
 

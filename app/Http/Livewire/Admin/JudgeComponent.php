@@ -6,8 +6,8 @@ use App\Models\Judge;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use App\Rules\RequiredIfAdding;
 use App\Http\Livewire\Traits\WithUtilities;
-use App\Http\Livewire\CustomRules\RequiredIfAdding;
 
 class JudgeComponent extends Component
 {
@@ -21,7 +21,12 @@ class JudgeComponent extends Component
     public $perPage = 5;
     private String $diskName = 'judge';
 
-    public function rules()
+    protected $messages = [
+        'editing.name.required' => 'Kindly enter the Judges names.',
+        'judgePhoto.required' => 'You need to upload an Image!'
+    ];
+
+    protected function rules()
     {
         return [
             'editing.name' => 'required|string',
@@ -61,7 +66,11 @@ class JudgeComponent extends Component
     {
         $this->validate();
 
-        $imageName = $this->processImage($this->editing->avatar, $this->judgePhoto, $this->diskName);
+        $imageName = $this->processImage(
+            $this->editing->avatar, 
+            $this->judgePhoto, 
+            $this->diskName, 
+            512, 512);
 
         $this->editing->updateOrCreate(
             ['id' => $this->editing->id],

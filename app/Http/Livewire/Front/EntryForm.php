@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Front;
 
 use App\Models\Entry;
 use Livewire\Component;
@@ -13,12 +13,17 @@ class EntryForm extends Component
     public $country;
     public Entry $editing;
 
-    protected $listeners  = ['saved' => 'mount'];
+    protected $listeners  = ['resetForm'];
 
     public function mount()
     {
         $this->country = 'gh';
-        $this->editing = Entry::make(['entry_type' => '']);
+        $this->editing = $this->makeBlank();
+    }
+
+    public function resetForm()
+    {
+        $this->editing = $this->makeBlank();
     }
 
     public function switchCountry($country)
@@ -39,12 +44,20 @@ class EntryForm extends Component
 
         Entry::create($data);
 
-        $this->emitSelf('saved');
-        $this->dispatchBrowserEvent('flashalert');
+        $this->emitSelf('resetForm');
+        $this->flashalert([
+            'title' => 'Entry Submitted',
+            'body' => 'Kindly Check your email for more details.'
+        ]);
     }
 
     public function render()
     {
-        return view('livewire.entry-form');
+        return view('livewire.front.entry-form');
+    }
+
+    public function makeBlank()
+    {
+        return Entry::make(['age' => '', 'entry_type' => '']);
     }
 }

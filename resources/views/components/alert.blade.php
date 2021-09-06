@@ -1,10 +1,7 @@
-<div x-data="{ show: false}" x-on:flashalert.window="show = true;  setTimeout(() => show = false, 5000)"
-    class="absolute w-11/12 bottom-1" aria-live="assertive" x-cloak="">
-    <div x-show="show" x-transition:enter="transform ease-out duration-300 transition"
-        x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
-        x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0"
-        x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0" class="rounded-md bg-green-50 p-4">
+<div x-data="{ show: false, msg: ''}" x-init="@this.on('flashalert', ($data)=>{
+        show = true; msg = $data; setTimeout(() => show = false, 5000);
+    })" {{ $attributes }} x-cloak="">
+    <div x-show.transition.duration.1000ms="show" class="rounded-md bg-green-50 p-4">
         <div class="flex">
             <div class="flex-shrink-0">
                 <!-- Heroicon name: solid/check-circle -->
@@ -16,13 +13,9 @@
                 </svg>
             </div>
             <div class="ml-3">
-                <h3 class="text-sm font-medium text-green-800">
-                    Entry Submitted
-                </h3>
+                <h3 x-text="msg.title" class="text-sm font-medium text-green-800">Title </h3>
                 <div class="mt-2 text-sm text-green-700">
-                    <p>
-                        Kindly Check your email for more details.
-                    </p>
+                    <p x-text="msg.body">Message</p>
                 </div>
             </div>
             <div class="ml-auto pl-3">
