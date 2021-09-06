@@ -5,7 +5,7 @@
         </a>
         <ul class="mt-6">
             <li class="relative px-6 py-3">
-                <x-sidebar-link href="{{ route('dashboard') }}" url='admin/dashboard' >
+                <x-sidebar-link href="{{ route('dashboard') }}" url='admin/dashboard'>
                     <x-icon.home />
                     <span class="ml-4">{{ __('Dashboard') }}</span>
                 </x-sidebar-link>
@@ -13,6 +13,12 @@
         </ul>
         <div class="border-2 dark:border-gray-600  ml-2 mr-4 rounded-lg"></div>
         <ul>
+            <li class="relative px-6 py-3">
+                <x-sidebar-link href="{{ route('submissions.index') }}" url='admin/submissions'>
+                    <x-icon.trademark />
+                    <span class="ml-4">{{ __('Submissions') }}</span>
+                </x-sidebar-link>
+            </li>
             <li class="relative px-6 py-3">
                 <x-sidebar-link href="{{ route('judges.index') }}" url='admin/judges'>
                     <x-icon.users />
@@ -48,7 +54,7 @@
         </a>
         <ul class="mt-6">
             <li class="relative px-6 py-3">
-                <x-sidebar-link href="{{ route('dashboard') }}" url='admin/dashboard' >
+                <x-sidebar-link href="{{ route('dashboard') }}" url='admin/dashboard'>
                     <x-icon.home />
                     <span class="ml-4">{{ __('Dashboard') }}</span>
                 </x-sidebar-link>
@@ -56,6 +62,12 @@
         </ul>
         <div class="border-2 dark:border-gray-600 ml-2 mr-4 rounded-lg"></div>
         <ul>
+            <li class="relative px-6 py-3">
+                <x-sidebar-link href="{{ route('submissions.index') }}" url='admin/submissions'>
+                    <x-icon.trademark />
+                    <span class="ml-4">{{ __('Submissions') }}</span>
+                </x-sidebar-link>
+            </li>
             <li class="relative px-6 py-3">
                 <x-sidebar-link href="{{ route('judges.index') }}" url='admin/judges'>
                     <x-icon.users />

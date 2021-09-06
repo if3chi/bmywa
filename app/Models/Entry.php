@@ -51,4 +51,14 @@ class Entry extends Model
 
         return $categories[$this->entry_type];
     }
+
+    public function getTruncatedAttribute()
+    {
+        return substr($this->award_entry, 0, 144);
+    }
+
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = ucwords($value);
+    }
 }

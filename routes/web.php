@@ -5,6 +5,7 @@ use App\Http\Livewire\Admin\Dashboard;
 use App\Http\Controllers\FrontController;
 use App\Http\Livewire\Admin\JudgeComponent;
 use App\Http\Livewire\Admin\SponsorComponent;
+use App\Http\Livewire\Admin\SubmissionsList;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::group(
 
         Route::get('/judges', JudgeComponent::class)->name('judges.index');
         Route::get('/sponsors', SponsorComponent::class)->name('sponsors.index');
+        Route::get('/submissions', SubmissionsList::class)->name('submissions.index');
     }
 );
 
