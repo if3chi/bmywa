@@ -36,3 +36,9 @@ Route::group(
 );
 
 require __DIR__ . '/auth.php';
+
+Route::get('setup_fresh', function () {
+    Artisan::call('migrate:fresh --seed');
+    Artisan::call('storage:link');
+    return 'Done';
+});
