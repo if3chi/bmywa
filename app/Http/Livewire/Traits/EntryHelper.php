@@ -21,7 +21,7 @@ trait EntryHelper
         'editing.entry_type.required' => 'Kindly choose your entry type.',
         'editing.age.required' => 'We need to know your age.',
         'editing.award_entry.required' => 'Hi, you need to actually enter your essay in other to compete.',
-        'editing.title.required' => "How about the Title?",
+        'editing.title.required' => "How about a Title?",
     ];
 
     protected $validationAttributes = [

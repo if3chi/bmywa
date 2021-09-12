@@ -40,6 +40,8 @@ class AgeLimits implements Rule
      */
     public function message()
     {
-        return 'The age limits for ' . $this->entryType . ' is ' . $this->ageLimits[0] . '-' . $this->ageLimits[1] . 'yrs';
+        return $this->entryType == '' 
+        ? "Kindly select your entry type."
+        : 'The age limits for ' . $this->entryType . ' is ' . $this->ageLimits[0] . '-' . $this->ageLimits[1] . 'yrs';
     }
 }
