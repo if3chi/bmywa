@@ -107,22 +107,12 @@
 
     <!-- Sponsors -->
     <x-front.sponsor :sponsors="$sponsors" />
-
+    
     <div class="border-t border-gray-200"></div>
-
+    
     <!-- Judges -->
-    <section id="judges" class="w-full py-12 bg-gray-50 lg:py-24">
-        <x-judge-group>
-            @forelse ($judges as $judge)
-                <x-card.judge :imagelink="$judge->avatar_url" :name="$judge->name" :work="$judge->profession"
-                    :desc="$judge->description" />
-            @empty
-                <div class="w-full border bg-white border-gray-200 rounded-lg shadow-md p-4  justify-center">
-                    <h2 class="text-lg text-yellow-500 font-bold">Nothing Here Yet...</h2>
-                </div>
-            @endforelse
-        </x-judge-group>
-    </section>
+    <x-front.judge :judges="$judges" />
+   
 
     <!-- Entry Form -->
     <section id="entry-form" class="w-full p-6 bg-yellow-100 xl:px-4 fade-in">

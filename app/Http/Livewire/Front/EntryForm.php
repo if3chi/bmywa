@@ -17,7 +17,7 @@ class EntryForm extends Component
 
     public function mount()
     {
-        $this->country = 'gh';
+        $this->country = 'ng';
         $this->editing = $this->makeBlank();
     }
 
@@ -37,12 +37,17 @@ class EntryForm extends Component
 
     public function submitEntry()
     {
-        $data = array_merge(
-            $this->validate()['editing'],
-            ['country' => $this->country]
-        );
+        $validatedData = $this->validate()['editing'] + ['country' => $this->country];
 
-        Entry::create($data);
+        $entryData = Entry::create($validatedData);
+
+        // dd($entryData);
+
+        // $entryData->notify(new EntryRecieved([
+        //     $entryData->firstname,
+        //     $entryData->lastname,
+        //     $entryData->email,
+        // ]));
 
         $this->emitSelf('resetForm');
         $this->flashalert([

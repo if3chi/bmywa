@@ -19,6 +19,11 @@ use App\Http\Livewire\Admin\SponsorComponent;
 |
 */
 
+Route::get('migrate_db', function () {
+    Artisan::call('migrate:fresh --seed');
+    return 'Done';
+});
+
 Route::get('/', [FrontController::class, 'index'])->name('welcome');
 Route::view('/about', 'about')->name('about');
 

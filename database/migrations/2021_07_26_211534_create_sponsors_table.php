@@ -17,7 +17,6 @@ class CreateSponsorsTable extends Migration
             $table->id();
             $table->string('logo');
             $table->string('name');
-            $table->string('alt_text');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });
