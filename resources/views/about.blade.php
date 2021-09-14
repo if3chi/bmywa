@@ -34,19 +34,19 @@
                                     <div
                                         class="flex flex-col border-t border-b border-gray-100 p-6 text-center sm:border-0 sm:border-l sm:border-r">
                                         <dt class="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">
-                                            Delivery
+                                            Awards
                                         </dt>
                                         <dd class="order-1 text-xl font-extrabold text-yellow-400">
-                                            24/7
+                                            7
                                         </dd>
                                     </div>
                                     <div
                                         class="flex flex-col border-t border-gray-100 p-6 text-center sm:border-0 sm:border-l">
                                         <dt class="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">
-                                            Calories
+                                            Paticipants
                                         </dt>
                                         <dd class="order-1 text-xl font-extrabold text-yellow-400">
-                                            100k
+                                            3k
                                         </dd>
                                     </div>
                                 </dl>
@@ -74,17 +74,17 @@
                         </defs>
                         <rect width="404" height="384" fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)" />
                     </svg>
-                    <div class="relative text-base mx-auto max-w-prose lg:max-w-none">
+                    <div class="relative text-base mx-auto lg:mt-32 max-w-prose lg:max-w-none">
                         <figure>
                             <div class="aspect-w-12 aspect-h-7 lg:aspect-none">
                                 <img class="rounded-lg shadow-lg object-cover object-center"
-                                    src="https://images.unsplash.com/photo-1546913199-55e06682967e?ixlib=rb-1.2.1&auto=format&fit=crop&crop=focalpoint&fp-x=.735&fp-y=.55&w=1184&h=1376&q=80"
-                                    alt="Whitney leaning against a railing on a downtown street" width="1184"
+                                    src="{{ asset('images/winners.jpeg') }}"
+                                    alt="BMYWA Awards Winner" width="1184"
                                     height="1376">
                             </div>
-                            <figcaption class="mt-3 flex text-sm text-gray-500">
+                            <figcaption class="mt-3 flex text-sm text-gray-500 mb-2">
                                 <x-icon.camera />
-                                <span class="ml-2">Photograph by BMYWA</span>
+                                <span class="ml-2">BMYWA 2021 Category A Winners Ghana.</span>
                             </figcaption>
                         </figure>
                     </div>

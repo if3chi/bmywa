@@ -46,11 +46,11 @@
                         class="absolute left-0 z-20 w-full p-3 mt-3 -ml-0 space-y-2 overflow-hidden transform bg-white shadow-lg lg:-ml-24 lg:left-1/2 md:w-32 ring-1 ring-black ring-opacity-5 rounded"
                         style="display: none;">
 
-                        <a href="#entry-form"
+                        <a href="{{ route('welcome') . '#entry-form' }}"
                             class="block  rounded-md py-3 px-6  text-sm text-gray-700 hover:text-yellow-500 capitalize cursor-pointer hover:bg-yellow-50 hover:font-black">
                             Ghana
                         </a>
-                        <a href="#entry-form"
+                        <a href="{{ route('welcome') . '#entry-form' }}"
                             class="block  rounded-md py-3 px-6  text-sm text-gray-700 hover:text-yellow-500 capitalize hover:bg-yellow-50 hover:font-black">
                             Nigeria
                         </a>
@@ -96,7 +96,7 @@
     <a @click="showMenu = !showMenu" href="{{ route('welcome') . '#faq' }}"
         class="block text-gray-900 hover:text-yellow-500">FAQs</a>
     <a @click="showMenu = !showMenu" href="#contact" class="block text-gray-900 hover:text-yellow-500">Contact Us</a>
-    <a @click="showMenu = !showMenu" href="#entry-form"
+    <a @click="showMenu = !showMenu" href="{{ route('welcome') . '#entry-form' }}"
         class="block border-2  p-1.5 border-yellow-400 rounded-md text-gray-900 hover:text-yellow-500">Apply
         Online</a>
 </div>
