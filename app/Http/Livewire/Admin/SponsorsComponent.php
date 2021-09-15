@@ -9,7 +9,7 @@ use Livewire\WithFileUploads;
 use App\Rules\RequiredIfAdding;
 use App\Http\Livewire\Traits\WithUtilities;
 
-class SponsorComponent extends Component
+class SponsorsComponent extends Component
 {
     use WithPagination, WithFileUploads, WithUtilities;
 
@@ -114,7 +114,7 @@ class SponsorComponent extends Component
 
     public function render()
     {
-        return view('livewire.admin.sponsor-component',
+        return view('livewire.admin.sponsors-component',
             ['sponsors' => Sponsor::orderBy('status', 'desc')
                 ->latest()
                 ->paginate(8)]

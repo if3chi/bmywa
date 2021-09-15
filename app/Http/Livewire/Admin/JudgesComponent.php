@@ -9,7 +9,7 @@ use Livewire\WithFileUploads;
 use App\Rules\RequiredIfAdding;
 use App\Http\Livewire\Traits\WithUtilities;
 
-class JudgeComponent extends Component
+class JudgesComponent extends Component
 {
 
     use WithPagination, WithFileUploads, WithUtilities;
@@ -106,7 +106,7 @@ class JudgeComponent extends Component
 
     public function render()
     {
-        return view('livewire.admin.judge-component', [
+        return view('livewire.admin.judges-component', [
             'judges' => Judge::latest()
                 ->paginate($this->perPage)
         ])
