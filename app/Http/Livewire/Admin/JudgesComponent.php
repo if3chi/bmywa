@@ -30,8 +30,8 @@ class JudgesComponent extends Component
     {
         return [
             'editing.name' => 'required|string',
-            'editing.profession' => 'string|max:140',
-            'editing.description' => 'string|max:240',
+            'editing.profession' => 'nullable|string|max:140',
+            'editing.description' => 'nullable|string|max:240',
             'judgePhoto' => [
                 new RequiredIfAdding(str_contains($this->formTitle, 'Add')),
                 'max:512',

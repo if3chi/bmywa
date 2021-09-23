@@ -46,7 +46,7 @@
                                             Paticipants
                                         </dt>
                                         <dd class="order-1 text-xl font-extrabold text-yellow-400">
-                                            3k
+                                            5k+
                                         </dd>
                                     </div>
                                 </dl>

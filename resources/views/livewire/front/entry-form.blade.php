@@ -45,19 +45,25 @@
                     <option class="text-base" value="short-story">Short Story & Poerty</option>
                 </x-input.select>
 
-                <x-input.group wire:model.lazy="editing.title" type="text"
-                    :error="$errors->first('editing.title')" placeholder="How The Cow Jumped Over the Moon" id="title" label="Entry Title" />
+                <x-input.group wire:model.lazy="editing.title" type="text" :error="$errors->first('editing.title')"
+                    placeholder="How The Cow Jumped Over the Moon" id="title" label="Entry Title" />
 
                 <x-input.textarea wire:model.lazy="editing.award_entry" id="award-entry" type="text" label="Award Entry"
                     :error="$errors->first('editing.award_entry')" />
 
                 <div class="block">
-                    <x-entry.button>
-                        Submit
+                    <x-entry.button class="relative space-x-2">
+                        <span class="text-base font-normal tracking-wide">
+                            Submit
+                        </span>
+
+                        <x-icon.tail-spin wire:loading.delay.long class="absolute w-6 h-6 inline-block"
+                            fill="currentColor" aria-hidden="true" />
                     </x-entry.button>
                 </div>
 
-                <x-entry.switch wire:click.prevent="switchCountry('{{ $country }}')" :country="$country" />
+                <x-entry.switch wire:click.prevent="switchCountry('{{ $country }}')" :country="$country"
+                    target="switchCountry" />
 
                 <x-alert class="absolute left-0 bottom-1 w-full px-1 py-2" />
 
