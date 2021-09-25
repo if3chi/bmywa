@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Front;
 
 use App\Models\Entry;
 use Livewire\Component;
+use App\Mail\SubmissionRecieved;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Livewire\Traits\EntryHelper;
 
 class EntryForm extends Component
@@ -41,13 +43,8 @@ class EntryForm extends Component
 
         $entryData = Entry::create($validatedData);
 
-        // dd($entryData);
-
-        // $entryData->notify(new EntryRecieved([
-        //     $entryData->firstname,
-        //     $entryData->lastname,
-        //     $entryData->email,
-        // ]));
+        Mail::to($entryData->email)
+            ->queue(new SubmissionRecieved($entryData));
 
         $this->emitSelf('resetForm');
         $this->flashalert([

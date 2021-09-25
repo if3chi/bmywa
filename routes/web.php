@@ -21,6 +21,8 @@ use App\Http\Livewire\Admin\SponsorsComponent;
 Route::get('/', [FrontController::class, 'index'])->name('welcome');
 Route::view('/about', 'about')->name('about');
 
+Route::get('preview-submission/{entry}', [FrontController::class, 'previewEntry'])->name('preview.entry')->middleware('signed');
+
 Route::group(
     [
         'prefix' => 'admin',
