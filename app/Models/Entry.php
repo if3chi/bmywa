@@ -27,12 +27,7 @@ class Entry extends Model
 
     public function getSubmissionCountryAttribute()
     {
-        $countries = [
-            'gh' => 'Ghana',
-            'ng' => 'Nigeria',
-        ];
-
-        return $countries[$this->country];
+        return entryCountry($this->country);
     }
 
     public function getCountryColorAttribute()

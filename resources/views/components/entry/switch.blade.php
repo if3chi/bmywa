@@ -1,7 +1,7 @@
 @props(['country' => false, 'target' => false])
 
 <p class="flex w-full mt-4 space-x-2 text-sm justify-center text-center text-gray-500">
-    <span class="text-center pt-1">
+    <span class="text-center pt-1 font-semibold">
         Wrong Country?
     </span>
     <span class="relative w-8 h-8 flex-row bg-cover rounded-full shadow-md">

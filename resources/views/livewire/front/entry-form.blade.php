@@ -2,18 +2,20 @@
     <div class="max-w-5xl mx-auto">
         <div class="flex flex-col items-center md:flex-row">
 
-            @if ($country == 'ng')
-                <x-contact.nigeria />
-            @else
-                <x-contact.ghana />
-            @endif
+            <x-entry.notice :country="entryCountry($country)">
+                @if ($country == 'ng')
+                    <x-contact.nigeria />
+                @else
+                    <x-contact.ghana />
+                @endif
+            </x-entry.notice>
 
             <x-entry.form wire:submit.prevent="submitEntry">
                 @csrf
 
                 <input wire:model="editing.country" type="text" name="country" id="country" hidden />
 
-                <h3 class="mb-6 text-2xl font-medium text-center">Submit your entry</h3>
+                <h3 class="mb-6 text-2xl font-semibold text-gray-700 text-center">Submit your entry</h3>
 
                 <x-input.group wire:model.lazy="editing.firstname" type="text"
                     :error="$errors->first('editing.firstname')" placeholder="Ama" id="firstname" label="First Name" />
