@@ -44,17 +44,12 @@ class Entry extends Model
 
     public function getCategoryAttribute()
     {
-        $categories = [
-            'creative-writing' => 'Creative Writing',
-            'short-story' => 'Short Story / Poetry'
-        ];
-
-        return $categories[$this->entry_type];
+        return entryCategories()[$this->entry_type][0];
     }
 
     public function getTruncatedAttribute()
     {
-        return substr($this->award_entry, 0, 144);
+        return substr($this->award_entry, 0, 96);
     }
 
     public function setTitleAttribute($value)

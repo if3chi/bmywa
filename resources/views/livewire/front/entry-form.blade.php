@@ -41,8 +41,9 @@
                 <x-input.select wire:model.lazy="editing.entry_type" id="entry-type" label="Entry Type"
                     :error="$errors->first('editing.entry_type')">
                     <option class="text-base" value="" disabled>Select Entry Type</option>
-                    <option class="text-base" value="creative-writing">Creative Writing</option>
-                    <option class="text-base" value="short-story">Short Story & Poerty</option>
+                    @foreach (entryCategories() as $category => $name)
+                        <option class="text-base" value="{{ $category }}">{{ $name[0] }}</option>
+                    @endforeach
                 </x-input.select>
 
                 <x-input.group wire:model.lazy="editing.title" type="text" :error="$errors->first('editing.title')"

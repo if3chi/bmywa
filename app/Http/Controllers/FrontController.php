@@ -20,6 +20,11 @@ class FrontController extends Controller
         return view('index', compact('judges', 'sponsors'));
     }
 
+    public function about()
+    {
+        return view('about');
+    }
+
     public function previewEntry(Entry $entry)
     {
         return view('submission.preview', compact('entry'));

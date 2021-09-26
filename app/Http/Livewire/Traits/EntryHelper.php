@@ -10,8 +10,6 @@ use Illuminate\Validation\Rule;
 trait EntryHelper
 {
 
-    private $entryType = ['creative-writing', 'short-story'];
-
     protected $messages = [
         'editing.firstname.required' => "We'd like to know you, What's first name?",
         'editing.lastname.required' => "We'd like to know your last name!",
@@ -43,14 +41,12 @@ trait EntryHelper
             'editing.entry_fee' => 'required|string|min:5',
             'editing.entry_type' => [
                 'required',
-                Rule::in($this->entryType)
+                Rule::in(array_keys(entryCategories()))
             ],
             'editing.age' => [
                 'required',
                 new AgeLimits(
-                    $this->editing->entry_type === $this->entryType[0]
-                        ? [9, 15]
-                        : [6, 9],
+                    $this->getAgeRange($this->editing->entry_type),
                     $this->editing->entry_type
                 )
             ],
@@ -59,12 +55,18 @@ trait EntryHelper
                 'required',
                 'string',
                 new MinWords(64),
-                new MaxWords(
-                    $this->editing->entry_type === $this->entryType[0]
-                        ? 500
-                        : 300
-                )
+                new MaxWords($this->getMaxWord($this->editing->entry_type))
             ]
         ];
+    }
+
+    public function getAgeRange($entryType)
+    {
+        return $entryType ? array_slice(entryCategories()[$entryType], 1, 3) : [];
+    }
+
+    public function getMaxWord($entryType)
+    {
+        return $entryType ? entryCategories()[$entryType][3] : 300;
     }
 }
