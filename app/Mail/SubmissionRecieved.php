@@ -23,7 +23,9 @@ class SubmissionRecieved extends Mailable implements ShouldQueue
     {
         $this->contestant = [
             'lastname' => $contestant->lastname,
-            'entryTempUrl' => $this->getTempUrl($contestant->id)
+            'entryTempUrl' => $this->getTempUrl($contestant->id),
+            'closeDate' => entrySchedule('closeDate'),
+            'awardDate' => entrySchedule('awardDate'),
         ];
     }
 

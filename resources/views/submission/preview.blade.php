@@ -1,6 +1,6 @@
 <x-front-layout>
     <x-slot name="title">
-        Link Expired - BMYWA
+        Preview Submission - BMYWA
     </x-slot>
     <x-slot name="hero">
         <x-front.banner class="bg-gray-50 fade-in">
@@ -16,7 +16,7 @@
                             </p>
                         </div>
                         <div class="mt-4 space-y-6 text-sm text-gray-800">
-                            <p>{{ $entry->award_entry}}</p>
+                            <p>{!!  html_entity_decode(htmlspecialchars($entry->award_entry)) !!}</p>
                             <p><strong style="font-weight: 600;">{{ $entry->contestant_name }}</strong><br>{{ $entry->submission_country }}</p>
                         </div>
                     </div>

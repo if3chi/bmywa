@@ -4,8 +4,8 @@
 
 Your submission has been well recieved. Kindly take note of this important dates 
 
-- <strong>Sumbssions Deadline</strong> : 31/12/2021
-- <strong>Winners Annouced</strong> : 1/04/2022
+- <strong>Sumbssions Deadline</strong> : {{ $contestant['closeDate'] }}
+- <strong>Winners Annouced</strong> : {{ $contestant['awardDate'] }}
 
 Please click the button below to view your subsubmssion. 
 > *This link is valid for 72 hours!*

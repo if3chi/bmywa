@@ -46,8 +46,10 @@ class EntryForm extends Component
     {
         $validatedData = $this->validate()['editing'] + ['country' => $this->country];
 
-        $entryData = Entry::create($validatedData);
+        $validatedData['award_entry'] = $this->entryNl2br($validatedData['award_entry']);
 
+        $entryData = Entry::create($validatedData);
+        
         Mail::to($entryData->email)
             ->queue(new SubmissionRecieved($entryData));
 
