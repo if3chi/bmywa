@@ -13,13 +13,9 @@
                             rewarding
                             achievements..</p>
                     </div>
-                    {{-- <button class="w-full px-8 py-3.5 transition duration-300 bg-blue-500 hover:bg-blue-600 shadow text-white font-semibold rounded-lg sm:w-auto">View our services</button> --}}
-                    <div class="flex justify-right md:mt-10 transition duration-300">
-                        <a href="#"
-                            class="rounded-full py-3 px-6 m-2 text-center text-white hover:text-yellow-500 bg-gray-900 border-2 border-gray-900 hover:border-yellow-500 hover:bg-transparent">Ghana</a>
-                        <a href="#"
-                            class="rounded-full py-3 px-6 m-2 text-center text-white hover:text-yellow-500 bg-gray-900 border-2 border-gray-900 hover:border-yellow-500 hover:bg-transparent">Nigeria</a>
-                    </div>
+                                        
+                    <livewire:front.select-country />
+                    
                 </div>
                 <div class="relative w-full my-auto px-3 md:mb-12 lg:-ml-20 lg:w-1/2 order-0 lg:order-1 lg:mb-10">
                     <img class="absolute top-0 right-0 z-1 hidden mx-auto -mt-32 rounded-lg shadow-2xl opacity-100 xl:-mr-12 sm:max-w-xs lg:max-w-sm lg:block"

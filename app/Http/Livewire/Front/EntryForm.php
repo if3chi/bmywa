@@ -15,12 +15,17 @@ class EntryForm extends Component
     public $country;
     public Entry $editing;
 
-    protected $listeners  = ['resetForm'];
+    protected $listeners  = ['resetForm', 'setCountry'];
 
     public function mount()
     {
         $this->country = 'ng';
         $this->editing = $this->makeBlank();
+    }
+
+    public function setCountry($code)
+    {
+        $this->country = $code;
     }
 
     public function resetForm()
