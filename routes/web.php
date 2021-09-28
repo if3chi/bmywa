@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\Dashboard;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\FrontController;
 use App\Http\Livewire\Admin\JudgesComponent;
 use App\Http\Livewire\Admin\SubmissionsList;
@@ -23,6 +24,7 @@ Route::get('/about', [FrontController::class, 'about'])->name('about');
 Route::get('/preview-submission/{entry}', [FrontController::class, 'previewEntry'])
     ->name('preview.entry')
     ->middleware('signed');
+Route::resource('/news', NewsController::class);
 
 Route::group(
     [
