@@ -1,6 +1,6 @@
 @props(['country' => false])
 
-<div class="w-full space-y-2 md:w-3/5  md:pr-16 text-justify">
+<div class="w-full space-y-2 md:w-3/5  md:pr-16 md:mt-16 text-justify">
     <p class="font-bold text-yellow-800 text-xs text-center uppercase">Blooming Minds Young Writers
         Award
         Competition Entry</p>
@@ -34,8 +34,6 @@
 
     <p class="text-sm font-normal pt-2 text-gray-600">To enter competition, complete the form <span
             class="md:hidden">below</span> and insert essay.</p>
-
-    <p class="text-base font-bold pt-2 text-gray-800">Winning Prizes</p>
 
     {{ $slot }}
 </div>

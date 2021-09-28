@@ -2,7 +2,7 @@
 
 # Hello {{ $contestant['lastname'] }},
 
-Your submission has been well recieved. Kindly take note of this important dates 
+Your submission was well recieved. Kindly take note of this important dates 
 
 - <strong>Sumbssions Deadline</strong> : {{ $contestant['closeDate'] }}
 - <strong>Winners Annouced</strong> : {{ $contestant['awardDate'] }}
@@ -16,6 +16,6 @@ Preview Submission
 
 *Terms &amp; Conditions apply.*
 
-Thanks,<br>
+Best regards,<br>
 {{ config('app.name') }}
 @endcomponent

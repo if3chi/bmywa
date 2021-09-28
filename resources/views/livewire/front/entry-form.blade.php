@@ -1,17 +1,10 @@
 <div>
     <div class="max-w-5xl mx-auto">
-        <div class="flex flex-col items-center md:flex-row">
+        <div class="flex flex-col py-4 md:flex-row">
 
-            <x-entry.notice :country="entryCountry($country)">
-                @if ($country == 'ng')
-                    <x-contact.nigeria />
-                @else
-                    <x-contact.ghana />
-                @endif
-            </x-entry.notice>
+            <x-entry.notice :country="entryCountry($country)" />
 
             <x-entry.form wire:submit.prevent="submitEntry">
-                @csrf
 
                 <input wire:model="editing.country" type="text" name="country" id="country" hidden />
 
@@ -60,8 +53,8 @@
                             Submit
                         </span>
 
-                        <x-icon.tail-spin wire:loading.delay.long class="absolute w-6 h-6 inline-block"
-                            fill="currentColor" aria-hidden="true" />
+                        <x-icon.tail-spin wire:loading.delay.long wire:target="submitEntry"
+                            class="absolute w-6 h-6 inline-block" fill="currentColor" aria-hidden="true" />
                     </x-entry.button>
                 </div>
 

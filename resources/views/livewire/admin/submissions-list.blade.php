@@ -78,7 +78,7 @@
                     style="background-image: url(https://static.intercomassets.com/ember/assets/images/messenger-backgrounds/background-1-99a36524645be823aabcd0e673cb47f8.png)">
                     <div class="text-justify text-base" wire:key="{{ $activeEntry }}">
                         @if ($detailView)
-                            {!!  html_entity_decode(htmlspecialchars($detailView->award_entry)) !!}
+                            {!!  html_entity_decode($detailView->award_entry) !!}
                         @else
                             <h2
                                 class="text-center text-base my-24 font-semibold tracking-wide text-gray-700 dark:text-gray-200">

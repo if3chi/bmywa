@@ -20,7 +20,9 @@ use App\Http\Livewire\Admin\SponsorsComponent;
 
 Route::get('/', [FrontController::class, 'index'])->name('welcome');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
-Route::get('/preview-submission/{entry}', [FrontController::class, 'previewEntry'])->name('preview.entry')->middleware('signed');
+Route::get('/preview-submission/{entry}', [FrontController::class, 'previewEntry'])
+    ->name('preview.entry')
+    ->middleware('signed');
 
 Route::group(
     [

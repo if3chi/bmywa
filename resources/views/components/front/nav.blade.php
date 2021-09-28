@@ -6,16 +6,15 @@
                 <x-front.nav-link :url="route('about')" name="About" />
             </li>
             <li class="mx-2 lg:mx-3">
-                <x-front.nav-link url="#" name="News" />
+                <x-front.nav-link :url="route('news.index')" name="News" />
             </li>
             <li class="mx-2 lg:mx-3">
                 <x-front.nav-link :url="route('welcome').'#judges'" name="Judges" />
             </li>
             <div class="mx-6"></div>
             <li class="mx-auto">
-                <a href="/" class="w-1/4 py-4 pl-6 pr-4 md:pl-4 md:py-0">
-                    <img class="rounded-md shadow-sm w-24 logo " src="{{ asset('images/logo.jpg') }}" alt="bmywa logo"
-                        srcset="">
+                <a href="/" class="pt-4">
+                    <x-logo class="rounded-md w-40 logo" />
                 </a>
             </li>
             <li class="mx-2 lg:mx-3">
@@ -40,9 +39,8 @@
     <!-- Mobile Nav  -->
     <nav class=" top-0 z-30 flex flex-col flex-wrap items-center justify-between w-full h-auto px-6 md:hidden">
         <div class="relative z-30 flex items-center justify-between w-full h-20">
-            <a href="/" class="flex items-center flex-shrink-0 mr-6 text-white">
-                <img class="rounded-sm shadow-sm w-16 logo " src="{{ asset('images/logo.jpg') }}" alt="bmywa logo"
-                    srcset="">
+            <a href="/" class="flex items-center flex-shrink-0 pt-2 mr-6 text-white">
+                <x-logo class="rounded-sm w-24 logo" />
             </a>
             <div class="block lg:hidden">
                 <button @click="showMenu = !showMenu"
@@ -66,7 +64,8 @@
     x-cloak>
     <a @click="showMenu = !showMenu" href="{{ route('about') }}"
         class="block text-gray-900 hover:text-yellow-500">About</a>
-    <a @click="showMenu = !showMenu" href="#" class="block text-gray-900 hover:text-yellow-500">News</a>
+    <a @click="showMenu = !showMenu" href="{{ route('news.index') }}"
+        class="block text-gray-900 hover:text-yellow-500">News</a>
     <a @click="showMenu = !showMenu" href="{{ route('welcome') . '#judges' }}"
         class="block text-gray-900 hover:text-yellow-500">Judges</a>
     <a @click="showMenu = !showMenu" href="{{ route('welcome') . '#faq' }}"

@@ -4,7 +4,7 @@
     </x-slot>
     <x-slot name="hero">
         <x-front.banner class="bg-gray-50 fade-in">
-            <!-- This example requires Tailwind CSS v2.0+ -->
+            
             <div class="pt-12 sm:pt-16">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="max-w-4xl mx-auto text-center">
