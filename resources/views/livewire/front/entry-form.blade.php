@@ -1,19 +1,14 @@
 <div>
     <div class="max-w-5xl mx-auto">
-        <div class="flex flex-col items-center md:flex-row">
+        <div class="flex flex-col py-4 md:flex-row">
 
-            @if ($country == 'ng')
-                <x-contact.nigeria />
-            @else
-                <x-contact.ghana />
-            @endif
+            <x-entry.notice :country="entryCountry($country)" />
 
             <x-entry.form wire:submit.prevent="submitEntry">
-                @csrf
 
                 <input wire:model="editing.country" type="text" name="country" id="country" hidden />
 
-                <h3 class="mb-6 text-2xl font-medium text-center">Submit your entry</h3>
+                <h3 class="mb-6 text-2xl font-semibold text-gray-700 text-center">Submit your entry</h3>
 
                 <x-input.group wire:model.lazy="editing.firstname" type="text"
                     :error="$errors->first('editing.firstname')" placeholder="Ama" id="firstname" label="First Name" />
@@ -41,23 +36,30 @@
                 <x-input.select wire:model.lazy="editing.entry_type" id="entry-type" label="Entry Type"
                     :error="$errors->first('editing.entry_type')">
                     <option class="text-base" value="" disabled>Select Entry Type</option>
-                    <option class="text-base" value="creative-writing">Creative Writing</option>
-                    <option class="text-base" value="short-story">Short Story & Poerty</option>
+                    @foreach (entryCategories() as $category => $name)
+                        <option class="text-base" value="{{ $category }}">{{ $name[0] }}</option>
+                    @endforeach
                 </x-input.select>
 
-                <x-input.group wire:model.lazy="editing.title" type="text"
-                    :error="$errors->first('editing.title')" placeholder="How The Cow Jumped Over the Moon" id="title" label="Entry Title" />
+                <x-input.group wire:model.lazy="editing.title" type="text" :error="$errors->first('editing.title')"
+                    placeholder="How The Cow Jumped Over the Moon" id="title" label="Entry Title" />
 
                 <x-input.textarea wire:model.lazy="editing.award_entry" id="award-entry" type="text" label="Award Entry"
                     :error="$errors->first('editing.award_entry')" />
 
                 <div class="block">
-                    <x-entry.button>
-                        Submit
+                    <x-entry.button class="relative space-x-2">
+                        <span class="text-base font-normal tracking-wide">
+                            Submit
+                        </span>
+
+                        <x-icon.tail-spin wire:loading.delay.long wire:target="submitEntry"
+                            class="absolute w-6 h-6 inline-block" fill="currentColor" aria-hidden="true" />
                     </x-entry.button>
                 </div>
 
-                <x-entry.switch wire:click.prevent="switchCountry('{{ $country }}')" :country="$country" />
+                <x-entry.switch wire:click.prevent="switchCountry('{{ $country }}')" :country="$country"
+                    target="switchCountry" />
 
                 <x-alert class="absolute left-0 bottom-1 w-full px-1 py-2" />
 

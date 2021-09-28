@@ -21,8 +21,9 @@ class CreateEntriesTable extends Migration
             $table->string('email');
             $table->integer('age');
             $table->enum('country', ['gh', 'ng']);
-            $table->enum('entry_type', ['creative-writing', 'short-story']);
+            $table->enum('entry_type', ['creative-writing', 'essay-writing', 'short-story']);
             $table->string('entry_fee');
+            // TODO: Entry fee Confirmed field
             $table->string('title');
             $table->longText('award_entry');
             $table->softDeletes();

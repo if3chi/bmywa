@@ -9,7 +9,7 @@ use Livewire\WithFileUploads;
 use App\Rules\RequiredIfAdding;
 use App\Http\Livewire\Traits\WithUtilities;
 
-class JudgeComponent extends Component
+class JudgesComponent extends Component
 {
 
     use WithPagination, WithFileUploads, WithUtilities;
@@ -30,8 +30,8 @@ class JudgeComponent extends Component
     {
         return [
             'editing.name' => 'required|string',
-            'editing.profession' => 'string|max:140',
-            'editing.description' => 'string|max:240',
+            'editing.profession' => 'nullable|string|max:140',
+            'editing.description' => 'nullable|string|max:240',
             'judgePhoto' => [
                 new RequiredIfAdding(str_contains($this->formTitle, 'Add')),
                 'max:512',
@@ -106,7 +106,7 @@ class JudgeComponent extends Component
 
     public function render()
     {
-        return view('livewire.admin.judge-component', [
+        return view('livewire.admin.judges-component', [
             'judges' => Judge::latest()
                 ->paginate($this->perPage)
         ])

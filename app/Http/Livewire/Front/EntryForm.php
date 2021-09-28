@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Front;
 
 use App\Models\Entry;
 use Livewire\Component;
+use App\Mail\SubmissionRecieved;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Livewire\Traits\EntryHelper;
 
 class EntryForm extends Component
@@ -13,12 +15,17 @@ class EntryForm extends Component
     public $country;
     public Entry $editing;
 
-    protected $listeners  = ['resetForm'];
+    protected $listeners  = ['resetForm', 'setCountry'];
 
     public function mount()
     {
-        $this->country = 'gh';
+        $this->country = 'ng';
         $this->editing = $this->makeBlank();
+    }
+
+    public function setCountry($code)
+    {
+        $this->country = $code;
     }
 
     public function resetForm()
@@ -37,12 +44,14 @@ class EntryForm extends Component
 
     public function submitEntry()
     {
-        $data = array_merge(
-            $this->validate()['editing'],
-            ['country' => $this->country]
-        );
+        $validatedData = $this->validate()['editing'] + ['country' => $this->country];
 
-        Entry::create($data);
+        $validatedData['award_entry'] = textNl2br($validatedData['award_entry']);
+
+        $entryData = Entry::create($validatedData);
+        
+        Mail::to($entryData->email)
+            ->queue(new SubmissionRecieved($entryData));
 
         $this->emitSelf('resetForm');
         $this->flashalert([

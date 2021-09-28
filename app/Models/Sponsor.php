@@ -12,10 +12,10 @@ class Sponsor extends Model
 
     protected $fillable = ['name', 'logo'];
 
-public function getAltTextAttribute()
-{
-    return $this->name. " Logo";
-}
+    public function getAltTextAttribute()
+    {
+        return $this->name . " Logo";
+    }
 
     public function getLogoUrlAttribute()
     {

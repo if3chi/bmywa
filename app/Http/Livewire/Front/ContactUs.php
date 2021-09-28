@@ -8,26 +8,35 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactUs extends Component
 {
-    public $name;
+    public $first_name;
+    public $last_name;
     public $email;
+    public $phone;
+    public $subject;
     public $message;
 
     protected $listeners = ['resetForm'];
 
     protected $rules = [
-        'name' => 'required|string|min:3',
+        'first_name' => 'required|string|min:3|max:32',
+        'last_name' => 'required|string|min:3|max:32',
         'email' => 'required|email',
-        'message' => 'required|min:32|string'
+        'phone' => 'nullable|phone:AUTO,GH,NG',
+        'subject' => 'required|string|min:3|max:140',
+        'message' => 'required|min:32|max:1000|string'
     ];
 
     public function resetForm()
     {
-        $this->reset(['name', 'email', 'message']);
+        $this->reset(['first_name', 'last_name', 'phone', 'email', 'subject', 'message']);
     }
 
     public function submitMessage()
     {
-        $this->sendMessage($this->validate());
+        $validatedData = $this->validate();
+        $validatedData['message'] = textNl2br($validatedData['message']);
+
+        $this->sendMessage($validatedData);
 
         $this->emitSelf('resetForm');
         $this->flashalert([
@@ -38,7 +47,7 @@ class ContactUs extends Component
 
     public function sendMessage($data)
     {
-        Mail::to('care@bmywa.com', 'Care Person')
+        Mail::to('info@bmywa.com', 'Care Person')
             ->send(new ContactSupport($data));
     }
 

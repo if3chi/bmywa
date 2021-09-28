@@ -44,3 +44,7 @@ html {
 [x-cloak] {
     display: none !important;
 }
+
+.error-h {
+    height: 60.6vh;
+}

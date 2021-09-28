@@ -15,7 +15,7 @@
         <ul>
             <li class="relative px-6 py-3">
                 <x-sidebar-link href="{{ route('submissions.index') }}" url='admin/submissions'>
-                    <x-icon.trademark />
+                    <x-icon.article class="w-6 h-7" />
                     <span class="ml-4">{{ __('Submissions') }}</span>
                 </x-sidebar-link>
             </li>
@@ -64,7 +64,7 @@
         <ul>
             <li class="relative px-6 py-3">
                 <x-sidebar-link href="{{ route('submissions.index') }}" url='admin/submissions'>
-                    <x-icon.trademark />
+                    <x-icon.article class="w-6 h-7" />
                     <span class="ml-4">{{ __('Submissions') }}</span>
                 </x-sidebar-link>
             </li>

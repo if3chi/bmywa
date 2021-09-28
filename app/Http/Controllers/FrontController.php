@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Entry;
 use App\Models\Judge;
 use App\Models\Sponsor;
 
@@ -17,5 +18,15 @@ class FrontController extends Controller
             ->get();
 
         return view('index', compact('judges', 'sponsors'));
+    }
+
+    public function about()
+    {
+        return view('about');
+    }
+
+    public function previewEntry(Entry $entry)
+    {
+        return view('submission.preview', compact('entry'));
     }
 }
