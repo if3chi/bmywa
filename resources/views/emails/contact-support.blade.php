@@ -193,9 +193,9 @@
                                             <tr>
                                                 <td align="center" valign="top" style="position: relative;">
 
-                                                    <a href="#"><img class="imgUp" editable="true" mc:edit="logo"
-                                                            src="{{ asset('images/logo.jpg') }}" width="140"
-                                                            height="48" alt=""></a>
+                                                    <a href="#"><img class="imgUp" editable="true"
+                                                            mc:edit="logo" src="{{ asset('images/logo.jpg') }}"
+                                                            width="140" height="48" alt=""></a>
 
                                                 </td>
                                             </tr>
@@ -247,20 +247,10 @@
                                                             </tr>
                                                             <tr>
                                                                 <td align="left" valign="top"
-                                                                    style="font: bold 18px / 24px Arial, Helvetica, sans-serif; color: rgb(104, 102, 102); padding-bottom: 10px; position: relative;"
-                                                                    mc:edit="single-post-image-title"
-                                                                    class="editor mce-content-body" id="mce_50">
-                                                                    <multiline>It is a long established fact that a
-                                                                        reader will be distracted by the
-                                                                        readable content layout.</multiline>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td align="left" valign="top"
                                                                     style="font: 13px / 22px Arial, Helvetica, sans-serif; color: rgb(135, 135, 135); position: relative;"
                                                                     mc:edit="single-post-image-inner"
                                                                     class="editor mce-content-body" id="mce_51">
-                                                                    <multiline>{{ $mail_body }}</multiline>
+                                                                    <multiline>{!!  html_entity_decode($body) !!}</multiline>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -280,7 +270,15 @@
                                                                     style="font: bold 18px / 24px Arial, Helvetica, sans-serif; color: rgb(104, 102, 102); padding-bottom: 10px; position: relative;"
                                                                     mc:edit="single-post-image-title"
                                                                     class="editor mce-content-body" id="mce_50">
-                                                                    <multiline>Anonymous</multiline>
+                                                                    <multiline>{{ $name }}</multiline>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" valign="top"
+                                                                    style="font: 13px / 22px Arial, Helvetica, sans-serif; color: rgb(104, 102, 102); padding-bottom: 10px; position: relative;"
+                                                                    mc:edit="single-post-image-title"
+                                                                    class="editor mce-content-body" id="mce_51">
+                                                                    <multiline>{{ $phone }}</multiline>
                                                                 </td>
                                                             </tr>
                                                         </tbody>

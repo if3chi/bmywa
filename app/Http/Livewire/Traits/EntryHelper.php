@@ -69,9 +69,4 @@ trait EntryHelper
     {
         return $entryType ? entryCategories()[$entryType][3] : 300;
     }
-
-    public function entryNl2br($text)                   
-    {
-        return strtr($text, array("\r\n" => '<br />', "\r" => '<br />', "\n" => '<br />'));
-    }
 }

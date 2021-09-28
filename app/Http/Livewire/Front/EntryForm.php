@@ -46,7 +46,7 @@ class EntryForm extends Component
     {
         $validatedData = $this->validate()['editing'] + ['country' => $this->country];
 
-        $validatedData['award_entry'] = $this->entryNl2br($validatedData['award_entry']);
+        $validatedData['award_entry'] = textNl2br($validatedData['award_entry']);
 
         $entryData = Entry::create($validatedData);
         
