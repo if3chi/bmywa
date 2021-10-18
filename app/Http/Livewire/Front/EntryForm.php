@@ -15,17 +15,11 @@ class EntryForm extends Component
     public $country;
     public Entry $editing;
 
-    protected $listeners  = ['resetForm', 'setCountry'];
+    protected $listeners  = ['resetForm'];
 
     public function mount()
     {
-        $this->country = 'ng';
         $this->editing = $this->makeBlank();
-    }
-
-    public function setCountry($code)
-    {
-        $this->country = $code;
     }
 
     public function resetForm()
@@ -33,23 +27,14 @@ class EntryForm extends Component
         $this->editing = $this->makeBlank();
     }
 
-    public function switchCountry($country)
-    {
-        if ($country === 'ng') {
-            $this->country = 'gh';
-        } else {
-            $this->country = 'ng';
-        }
-    }
-
     public function submitEntry()
     {
-        $validatedData = $this->validate()['editing'] + ['country' => $this->country];
+        $validatedData = $this->validate()['editing'];
 
         $validatedData['award_entry'] = textNl2br($validatedData['award_entry']);
 
         $entryData = Entry::create($validatedData);
-        
+
         Mail::to($entryData->email)
             ->queue(new SubmissionRecieved($entryData));
 
@@ -67,6 +52,6 @@ class EntryForm extends Component
 
     public function makeBlank()
     {
-        return Entry::make(['age' => '', 'entry_type' => '']);
+        return Entry::make(['age' => '', 'entry_type' => '', 'country' => '']);
     }
 }

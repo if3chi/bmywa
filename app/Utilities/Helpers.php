@@ -25,12 +25,12 @@ if (!function_exists('entryCategories')) {
 
 if (!function_exists('entryCountry')) {
 
-    function entryCountry($key)
+    function entryCountry()
     {
         return [
             'gh' => 'Ghana',
             'ng' => 'Nigeria'
-        ][$key];
+        ];
     }
 }
 

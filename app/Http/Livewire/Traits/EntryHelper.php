@@ -16,6 +16,7 @@ trait EntryHelper
         'editing.email.required' => 'We need to know your email address!',
         'editing.phone.required' => 'We need to know your Parent/Guardians phone number.',
         'editing.entry_fee.required' => 'We need the refrence number from your payment slip.',
+        'editing.country.required' => 'Kindly choose your country.',
         'editing.entry_type.required' => 'Kindly choose your entry type.',
         'editing.age.required' => 'We need to know your age.',
         'editing.award_entry.required' => 'Hi, you need to actually enter your write-up in other to compete.',
@@ -38,6 +39,10 @@ trait EntryHelper
             'editing.lastname' => 'required|min:2|max:52|string',
             'editing.email' => 'required|email',
             'editing.phone' => 'required|phone:AUTO,GH,NG',
+            'editing.country' => [
+                'required',
+                Rule::in(array_keys(entryCountry()))
+            ],
             'editing.entry_fee' => 'required|string|min:5',
             'editing.entry_type' => [
                 'required',
