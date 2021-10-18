@@ -11,14 +11,14 @@ trait EntryHelper
 {
 
     protected $messages = [
-        'editing.firstname.required' => "We'd like to know you, What's first name?",
+        'editing.firstname.required' => "We'd like to know you, What's your first name?",
         'editing.lastname.required' => "We'd like to know your last name!",
         'editing.email.required' => 'We need to know your email address!',
         'editing.phone.required' => 'We need to know your Parent/Guardians phone number.',
         'editing.entry_fee.required' => 'We need the refrence number from your payment slip.',
         'editing.entry_type.required' => 'Kindly choose your entry type.',
         'editing.age.required' => 'We need to know your age.',
-        'editing.award_entry.required' => 'Hi, you need to actually enter your essay in other to compete.',
+        'editing.award_entry.required' => 'Hi, you need to actually enter your write-up in other to compete.',
         'editing.title.required' => "How about a Title?",
     ];
 

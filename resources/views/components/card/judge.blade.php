@@ -3,7 +3,7 @@
 <div class="w-full border bg-white border-gray-200 rounded-lg shadow-md">
 
     <div class="flex flex-col items-center justify-center p-3">
-        <img class="w-48 h-48 mb-2 zoom rounded-full" src="{{ $imagelink }}">
+        <img class="w-48 h-48 mb-2 zoom rounded-full" src="{{ $imagelink }}" alt="{{ $name }}'s photo">
         <h2 class="text-md text-yellow-500 font-bold">{{ $name }}</h2>
         <p class="text-xs text-gray-700 font-bold {{ $work ? 'm-1' : 'm-3' }}">{{ $work }}</p>
         <p class="font-medium text-gray-500 line-clamp-3">{{ $desc }}</p>

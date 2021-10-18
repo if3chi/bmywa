@@ -2,9 +2,10 @@
     <x-slot name="title">
         About - BMYWA
     </x-slot>
+
     <x-slot name="hero">
         <x-front.banner class="bg-gray-50 fade-in">
-            
+
             <div class="pt-12 sm:pt-16">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="max-w-4xl mx-auto text-center">
@@ -78,8 +79,7 @@
                         <figure>
                             <div class="aspect-w-12 aspect-h-7 lg:aspect-none">
                                 <img class="rounded-lg shadow-lg object-cover object-center"
-                                    src="{{ asset('images/winners.jpeg') }}"
-                                    alt="BMYWA Awards Winner" width="1184"
+                                    src="{{ asset('images/winners.jpeg') }}" alt="BMYWA Awards Winner" width="1184"
                                     height="1376">
                             </div>
                             <figcaption class="mt-3 flex text-sm text-gray-500 mb-2">
