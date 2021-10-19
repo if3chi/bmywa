@@ -97,7 +97,7 @@
                                 Us</span>
                         </h1>
                         <p class="mt-0 text-xl text-gray-500 leading-8 text-justify"> <span
-                                class="font-extrabold text-xl">Blooming Minds Young Writers Awards</span> is one of many
+                                class="font-extrabold text-xl">Blooming Minds Young Writers Achievers Awards</span> is one of many
                             projects run by the Blooming Minds Change Champion Network (BMCCN) founded in 2016. The
                             initiative
                             is aimed at raising young African leaders by recognizing and rewarding children with

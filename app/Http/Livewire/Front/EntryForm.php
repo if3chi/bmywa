@@ -29,20 +29,31 @@ class EntryForm extends Component
 
     public function submitEntry()
     {
-        $validatedData = $this->validate()['editing'];
+        if (entryIsActive()) {
+            $validatedData = $this->validate()['editing'];
 
-        $validatedData['award_entry'] = textNl2br($validatedData['award_entry']);
+            $validatedData['award_entry'] = textNl2br($validatedData['award_entry']);
 
-        $entryData = Entry::create($validatedData);
+            $entryData = Entry::create($validatedData);
 
-        Mail::to($entryData->email)
-            ->queue(new SubmissionRecieved($entryData));
+            Mail::to($entryData->email)
+                ->queue(new SubmissionRecieved($entryData));
+
+            $this->flashalert([
+                'title' => 'Entry Submitted',
+                'body' => 'Kindly Check your email for more details.'
+            ]);
+        } else {
+            $this->flashalert([
+                'title' => 'Submission Invalid',
+                'body' => 'We\'re currently not accepting submissions at the moment.
+                Kindly check the dates.',
+                'type' => 'danger'
+            ]);
+        }
+
 
         $this->emitSelf('resetForm');
-        $this->flashalert([
-            'title' => 'Entry Submitted',
-            'body' => 'Kindly Check your email for more details.'
-        ]);
     }
 
     public function render()

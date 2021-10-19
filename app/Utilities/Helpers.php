@@ -53,6 +53,12 @@ if (!function_exists('entrySchedule')) {
             'awardDate' => formatDate('04/30/2022'),
         ][$key];
     }
+
+    function entryIsActive()
+    {
+        return Carbon::parse(entrySchedule('openDate'))->lessThanOrEqualTo(now()) &&
+            Carbon::parse(entrySchedule('closeDate'))->addDay(1)->greaterThanOrEqualTo(now());
+    }
 }
 
 if (!function_exists('textNl2br')) {
