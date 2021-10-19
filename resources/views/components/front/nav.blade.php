@@ -14,7 +14,7 @@
             <div class="mx-6"></div>
             <li class="mx-auto">
                 <a href="/" class="pt-4">
-                    <x-logo class="rounded-md w-40 logo" />
+                    <x-logo class="rounded-md w-32 logo" />
                 </a>
             </li>
             <li class="mx-2 lg:mx-3">
@@ -37,7 +37,7 @@
     <!-- End Desktop menu -->
 
     <!-- Mobile Nav  -->
-    <nav class=" top-0 z-30 flex flex-col flex-wrap items-center justify-between w-full h-auto px-6 md:hidden">
+    <nav class=" top-0 z-40 flex flex-col flex-wrap items-center justify-between w-full h-auto px-6 md:hidden">
         <div class="relative z-30 flex items-center justify-between w-full h-20">
             <a href="/" class="flex items-center flex-shrink-0 pt-2 mr-6 text-white">
                 <x-logo class="rounded-sm w-24 logo" />
@@ -60,7 +60,7 @@
 
 <!-- Mobile Menu -->
 <div x-show.transition="showMenu"
-    class="absolute top-0 z-20 flex flex-col items-center justify-center w-full h-50 pt-24 pb-12  space-y-5 text-lg origin-center bg-gray-50 shadow-lg rounded-b-md"
+    class="absolute bg-gray-50 flex flex-col h-50 items-center justify-center origin-center pb-12 pt-24 rounded-b-md shadow-lg space-y-5 text-lg top-0 w-full z-30"
     x-cloak>
     <a @click="showMenu = !showMenu" href="{{ route('about') }}"
         class="block text-gray-900 hover:text-yellow-500">About</a>

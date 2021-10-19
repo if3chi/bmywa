@@ -2,9 +2,10 @@
     <x-slot name="title">
         About - BMYWA
     </x-slot>
+
     <x-slot name="hero">
         <x-front.banner class="bg-gray-50 fade-in">
-            
+
             <div class="pt-12 sm:pt-16">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="max-w-4xl mx-auto text-center">
@@ -78,8 +79,7 @@
                         <figure>
                             <div class="aspect-w-12 aspect-h-7 lg:aspect-none">
                                 <img class="rounded-lg shadow-lg object-cover object-center"
-                                    src="{{ asset('images/winners.jpeg') }}"
-                                    alt="BMYWA Awards Winner" width="1184"
+                                    src="{{ asset('images/winners.jpeg') }}" alt="BMYWA Awards Winner" width="1184"
                                     height="1376">
                             </div>
                             <figcaption class="mt-3 flex text-sm text-gray-500 mb-2">
@@ -97,7 +97,7 @@
                                 Us</span>
                         </h1>
                         <p class="mt-0 text-xl text-gray-500 leading-8 text-justify"> <span
-                                class="font-extrabold text-xl">Blooming Minds Young Writers Awards</span> is one of many
+                                class="font-extrabold text-xl">Blooming Minds Young Writers Achievers Awards</span> is one of many
                             projects run by the Blooming Minds Change Champion Network (BMCCN) founded in 2016. The
                             initiative
                             is aimed at raising young African leaders by recognizing and rewarding children with

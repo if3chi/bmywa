@@ -30,7 +30,9 @@ class AgeLimits implements Rule
      */
     public function passes($attribute, $value)
     {
-        return $this->ageLimits[0] <= $value && $value <= $this->ageLimits[1];
+        return $this->entryType == ''
+            ? false
+            : $this->ageLimits[0] <= $value && $value <= $this->ageLimits[1];
     }
 
     /**
@@ -40,8 +42,8 @@ class AgeLimits implements Rule
      */
     public function message()
     {
-        return $this->entryType == '' 
-        ? "Kindly select your entry type."
-        : 'The age limits for ' . $this->entryType . ' is ' . $this->ageLimits[0] . '-' . $this->ageLimits[1] . 'yrs';
+        return $this->entryType == ''
+            ? "Kindly select your entry type."
+            : 'The age limits for ' . $this->entryType . ' is ' . $this->ageLimits[0] . '-' . $this->ageLimits[1] . 'yrs';
     }
 }

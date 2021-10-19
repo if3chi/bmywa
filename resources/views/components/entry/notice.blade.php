@@ -1,11 +1,9 @@
-@props(['country' => false])
-
 <div class="w-full space-y-2 md:w-3/5  md:pr-16 md:mt-16 text-justify">
     <p class="font-bold text-yellow-800 text-xs text-center uppercase">Blooming Minds Young Writers
         Award
         Competition Entry</p>
     <h2 class="text-2xl text-center font-extrabold uppercase leading-none text-gray-800 sm:text-3xl">
-        BMYWA {{ $country }}
+        Competition Info
     </h2>
     <p class="text-base text-gray-600 text-justify">The competition runs every year and is open to all
         kids

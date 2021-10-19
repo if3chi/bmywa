@@ -25,12 +25,12 @@ if (!function_exists('entryCategories')) {
 
 if (!function_exists('entryCountry')) {
 
-    function entryCountry($key)
+    function entryCountry()
     {
         return [
             'gh' => 'Ghana',
             'ng' => 'Nigeria'
-        ][$key];
+        ];
     }
 }
 
@@ -41,6 +41,8 @@ if (!function_exists('entrySchedule')) {
         return Carbon::parse($date)->format('D, M d, Y');
     }
 
+    // TODO: Implement entry form auto enable within valid entry dates.
+
     function entrySchedule($key): string
     {
         return [
@@ -50,6 +52,12 @@ if (!function_exists('entrySchedule')) {
             'shortlistDate' => formatDate('04/15/2022'),
             'awardDate' => formatDate('04/30/2022'),
         ][$key];
+    }
+
+    function entryIsActive()
+    {
+        return Carbon::parse(entrySchedule('openDate'))->lessThanOrEqualTo(now()) &&
+            Carbon::parse(entrySchedule('closeDate'))->addDay(1)->greaterThanOrEqualTo(now());
     }
 }
 

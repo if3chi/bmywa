@@ -27,7 +27,7 @@ class Entry extends Model
 
     public function getSubmissionCountryAttribute()
     {
-        return entryCountry($this->country);
+        return entryCountry()[$this->country];
     }
 
     public function getCountryColorAttribute()

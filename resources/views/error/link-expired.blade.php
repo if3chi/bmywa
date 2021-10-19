@@ -2,6 +2,7 @@
     <x-slot name="title">
         Link Expired - BMYWA
     </x-slot>
+    
     <x-slot name="hero">
         <x-front.banner class="bg-gray-50 fade-in">
             <div class="error-h px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
