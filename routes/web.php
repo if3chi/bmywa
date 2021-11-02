@@ -25,6 +25,7 @@ Route::get('/preview-submission/{entry}', [FrontController::class, 'previewEntry
     ->name('preview.entry')
     ->middleware('signed');
 Route::resource('/news', NewsController::class);
+Route::permanentRedirect('creative-writing-workshop-101', 'how-to-enter');
 
 Route::group(
     [

@@ -40,7 +40,7 @@ class Handler extends ExceptionHandler
         });
 
         $this->renderable(function (InvalidSignatureException $e) {
-            return response()->view('error.link-expired', [], 403);
+            return response()->view('errors.link-expired', [], 403);
         });
     }
 }
