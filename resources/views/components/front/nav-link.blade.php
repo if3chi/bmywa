@@ -1,7 +1,7 @@
 @props(['url', 'name'])
 
 <a href="{{ $url }}" x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false"
-    class="relative inline-block font-medium text-gray-600 hover:text-yellow-500">
+    class="relative inline-block text-gray-600 hover:text-yellow-500">
     <span class="block">{{ $name }}</span>
     <span class="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
         <span x-show="hover" class="absolute inset-0 inline-block w-full h-full transform border-t-2 border-yellow-500"
