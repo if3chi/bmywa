@@ -41,8 +41,6 @@ if (!function_exists('entrySchedule')) {
         return Carbon::parse($date)->format('D, M d, Y');
     }
 
-    // TODO: Implement entry form auto enable within valid entry dates.
-
     function entrySchedule($key): string
     {
         return [
