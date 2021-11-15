@@ -24,8 +24,12 @@ Route::get('/about', [FrontController::class, 'about'])->name('about');
 Route::get('/preview-submission/{entry}', [FrontController::class, 'previewEntry'])
     ->name('preview.entry')
     ->middleware('signed');
+
+// TODO: News
 Route::resource('/news', NewsController::class);
-Route::permanentRedirect('creative-writing-workshop-101', 'how-to-enter');
+
+Route::permanentRedirect('apply', '/#entry-form')->name('apply');
+Route::permanentRedirect('creative-writing-workshop-101', '/how-to-enter')->name('how-to-enter');
 
 Route::group(
     [

@@ -41,7 +41,7 @@ class EntryForm extends Component
 
             $this->flashalert([
                 'title' => 'Entry Submitted',
-                'body' => 'Kindly Check your email for more details.'
+                'body' => 'Kindly Check the email you provided for more details.'
             ]);
         } else {
             $this->flashalert([
