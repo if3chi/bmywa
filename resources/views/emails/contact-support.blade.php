@@ -250,7 +250,7 @@
                                                                     style="font: 13px / 22px Arial, Helvetica, sans-serif; color: rgb(135, 135, 135); position: relative;"
                                                                     mc:edit="single-post-image-inner"
                                                                     class="editor mce-content-body" id="mce_51">
-                                                                    <multiline>{!!  html_entity_decode($body) !!}</multiline>
+                                                                    <multiline>{!! html_entity_decode($body) !!}</multiline>
                                                                 </td>
                                                             </tr>
                                                         </tbody>

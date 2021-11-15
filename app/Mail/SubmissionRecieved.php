@@ -21,11 +21,15 @@ class SubmissionRecieved extends Mailable implements ShouldQueue
      */
     public function __construct($contestant)
     {
+        $salute = ['Dear', 'Hello'];
+
         $this->contestant = [
+            'salute' => $salute[array_rand($salute)],
             'lastname' => $contestant->lastname,
             'entryTempUrl' => $this->getTempUrl($contestant->id),
             'closeDate' => entrySchedule('closeDate'),
-            'awardDate' => entrySchedule('awardDate'),
+            'shortlistDate' => entrySchedule('shortlistDate'),
+            'entryType' => entryCategories()[$contestant->entry_type][0],
         ];
     }
 

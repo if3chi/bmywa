@@ -30,7 +30,7 @@ class ContactSupport extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        $name =  $this->mailData['last_name'] . " " . $this->mailData['last_name'];
+        $name =  $this->mailData['last_name'] . " " . $this->mailData['first_name'];
         $address = $this->mailData['email'];
         $subject = $this->mailData['subject'];
 

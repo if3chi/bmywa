@@ -48,7 +48,7 @@ class ContactUs extends Component
     public function sendMessage($data)
     {
         Mail::to('info@bmywa.com', 'Care Person')
-            ->send(new ContactSupport($data));
+            ->queue(new ContactSupport($data));
     }
 
     public function render()

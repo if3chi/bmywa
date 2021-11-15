@@ -41,15 +41,13 @@ if (!function_exists('entrySchedule')) {
         return Carbon::parse($date)->format('D, M d, Y');
     }
 
-    // TODO: Implement entry form auto enable within valid entry dates.
-
     function entrySchedule($key): string
     {
         return [
             'entryYear' => '2022',
             'openDate' => formatDate('11/01/2021'),
             'closeDate' => formatDate('01/22/2022'),
-            'shortlistDate' => formatDate('04/15/2022'),
+            'shortlistDate' => formatDate('03/18/2022'),
             'awardDate' => formatDate('04/30/2022'),
         ][$key];
     }
