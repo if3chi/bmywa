@@ -10,6 +10,8 @@ class Sponsor extends Model
 {
     use HasFactory;
 
+    // Has Observer
+
     protected $fillable = ['name', 'logo'];
 
     public function getAltTextAttribute()

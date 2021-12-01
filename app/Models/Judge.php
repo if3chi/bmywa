@@ -10,7 +10,8 @@ class Judge extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    // Has Observer
+
 
     public function getAvatarUrlAttribute()
     {

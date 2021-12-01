@@ -68,8 +68,8 @@ class SponsorsComponent extends Component
             $this->editSponsor->logo,
             $this->sponsorLogo,
             $this->diskName,
-            250,
-            150
+            512,
+            512
         );
 
         Sponsor::updateOrCreate(
