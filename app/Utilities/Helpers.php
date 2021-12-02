@@ -1,13 +1,40 @@
 <?php
 
-use App\Models\Faq;
 use Carbon\Carbon;
+use App\Models\Faq;
+use App\Models\Judge;
+use App\Models\Sponsor;
+use Illuminate\Support\Facades\Cache;
 
 if (!function_exists('loadFaqs')) {
 
     function loadFaqs()
     {
-        return Faq::all();
+        return Cache::rememberForever('faqs', function () {
+            return Faq::all();
+        });
+    }
+}
+
+if (!function_exists('loadJudges')) {
+
+    function loadJudges()
+    {
+        return Cache::rememberForever('judges', function () {
+            return Judge::all();
+        });
+    }
+}
+
+if (!function_exists('loadSponsors')) {
+
+    function loadSponsors()
+    {
+        return Cache::rememberForever('sponsors', function () {
+            return Sponsor::select('name', 'logo')
+                ->where('status', 1)
+                ->get();
+        });
     }
 }
 
