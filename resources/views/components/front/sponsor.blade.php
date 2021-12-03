@@ -10,7 +10,7 @@
             </span>
 
             @foreach ($sponsors as $sponsor)
-                <x-card.sponsor :name="$sponsor->name" :imgUrl="$sponsor->logo_url" />
+                <x-card.sponsor :name="$sponsor->name" :imgUrl="$sponsor->logo_url" :url="$sponsor->website" />
             @endforeach
         </div>
     </section>

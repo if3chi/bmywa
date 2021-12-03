@@ -10,11 +10,20 @@ class Sponsor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'logo'];
+    // Has Observer
+
+    protected $fillable = ['name', 'logo', 'web_address'];
 
     public function getAltTextAttribute()
     {
         return $this->name . " Logo";
+    }
+
+    public function getWebsiteAttribute()
+    {
+        $url = $this->web_address;
+
+        return $url ? "https://{$url}" : "";
     }
 
     public function getLogoUrlAttribute()

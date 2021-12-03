@@ -1,5 +1,5 @@
 <div class="max-w-4xl px-8 mx-auto lg:px-16">
-    <h2 class="mb-2 text-xl font-bold text-center md:text-3xl">Frequently Asked Questions</h2>
+    <h2 class="mb-2 text-xl font-bold text-center text-gray-900 md:text-3xl">Frequently Asked Questions</h2>
     <div class="relative mt-12 space-y-5">
         @forelse (loadFaqs() as $faq)
             <x-card.faq :qtn="$faq->question" :ans="$faq->answer" />

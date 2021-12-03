@@ -77,11 +77,17 @@
     <x-modal.form wire:model="showEditModal">
         <x-slot name="title">{{ $formTitle }}</x-slot>
         <x-slot name="content">
-            <div class="mb-8 bg-white rounded-lg dark:bg-gray-800">
+            <div class="mb-8 bg-white rounded-lg dark:bg-gray-800 space-y-2">
                 <x-form.input wire:model.lazy="editSponsor.name" :error="$errors->first('editSponsor.name')" type="text"
-                    label="Name">
+                    name="organization" label="Name" placeholder="example: Blooming Minds">
                     <x-icon.user />
                 </x-form.input>
+
+                <x-form.input-link wire:model="editSponsor.web_address" name="url" id="website"
+                    :error="$errors->first('editSponsor.web_address')" type="text" placeholder="example.com"
+                    label="https://">
+                    Sponsor Website
+                </x-form.input-link>
 
                 <x-form.file wire:model="sponsorLogo" target="sponsorLogo" :error="$errors->first('sponsorLogo')"
                     label="Select Photo" type="file">

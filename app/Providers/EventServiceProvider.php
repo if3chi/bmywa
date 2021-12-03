@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Judge;
+use App\Models\Sponsor;
+use App\Observers\JudgeObserver;
+use App\Observers\SponsorObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -27,6 +31,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Judge::observe(JudgeObserver::class);
+        Sponsor::observe(SponsorObserver::class);
     }
 }

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Entry;
-use App\Models\Judge;
-use App\Models\Sponsor;
 
 class FrontController extends Controller
 {
@@ -12,10 +10,9 @@ class FrontController extends Controller
     public function index()
     {
 
-        $judges = Judge::all();
-        $sponsors = Sponsor::select('name', 'logo')
-            ->where('status', 1)
-            ->get();
+        $judges = loadJudges();
+
+        $sponsors = loadSponsors();
 
         return view('index', compact('judges', 'sponsors'));
     }

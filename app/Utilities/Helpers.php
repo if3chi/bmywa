@@ -1,13 +1,75 @@
 <?php
 
-use App\Models\Faq;
 use Carbon\Carbon;
+use App\Models\Faq;
+use App\Models\Judge;
+use App\Models\Sponsor;
+use Illuminate\Support\Facades\Cache;
+
+if (!function_exists('getAdminEmails')) {
+
+    function getAdminEmails()
+    {
+        return [
+            'Jaspar' => 'j.cyxtus@gmail.com',
+            'Thelma' => 'thelmaofosuasamoah@gmail.com',
+        ];
+    }
+}
+
+if (!function_exists('loadSocialLinks')) {
+
+    function loadSocialLinks(array $usernames): array
+    {
+        $profile_links = [];
+
+        $urls = [
+            'twitter' => 'https://twitter.com/',
+            'linkedin' => 'https://linkedin.com/',
+            'facebook' => 'https://facebook.com/',
+            'instagram' => 'https://instagram.com/',
+        ];
+
+        foreach ($usernames as $key => $value) {
+            if ($value !== null && $value !== "") {
+                $profile_links[$key] = "$urls[$key]$value";
+            }
+        }
+
+        return $profile_links;
+    }
+}
 
 if (!function_exists('loadFaqs')) {
 
     function loadFaqs()
     {
-        return Faq::all();
+        return Cache::rememberForever('faqs', function () {
+            return Faq::select('question', 'answer')->get();
+        });
+    }
+}
+
+if (!function_exists('loadJudges')) {
+
+    function loadJudges()
+    {
+        return Cache::rememberForever('judges', function () {
+            return Judge::select('name', 'avatar', 'profession', 'description', 'socials')
+                ->get();
+        });
+    }
+}
+
+if (!function_exists('loadSponsors')) {
+
+    function loadSponsors()
+    {
+        return Cache::rememberForever('sponsors', function () {
+            return Sponsor::select('name', 'logo', 'web_address')
+                ->where('status', 1)
+                ->get();
+        });
     }
 }
 
@@ -25,7 +87,7 @@ if (!function_exists('entryCategories')) {
 
 if (!function_exists('entryCountry')) {
 
-    function entryCountry()
+    function entryCountry(): array
     {
         return [
             'gh' => 'Ghana',
@@ -61,7 +123,7 @@ if (!function_exists('entrySchedule')) {
 
 if (!function_exists('textNl2br')) {
 
-    function textNl2br($text)
+    function textNl2br($text): string
     {
         return strtr($text, array("\r\n" => '<br />', "\r" => '<br />', "\n" => '<br />'));
     }

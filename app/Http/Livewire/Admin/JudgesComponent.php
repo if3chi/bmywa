@@ -26,6 +26,13 @@ class JudgesComponent extends Component
         'judgePhoto.required' => 'You need to upload an Image!'
     ];
 
+    protected $validationAttributes = [
+        'editing.socials.twitter' => 'Twitter Username',
+        'editing.socials.linkedin' => 'Linkedin Username',
+        'editing.socials.facebook' => 'Facebook Username',
+        'editing.socials.instagram' => 'Instagram Username',
+    ];
+
     protected function rules()
     {
         return [
@@ -36,7 +43,11 @@ class JudgesComponent extends Component
                 new RequiredIfAdding(str_contains($this->formTitle, 'Add')),
                 'max:512',
                 'mimes:png,jpg,jpeg',
-            ]
+            ],
+            'editing.socials.twitter' => 'nullable|string|min:3|max:15|regex:/(^([a-zA-Z0-9_-]+)(\d+)?$)/u',
+            'editing.socials.linkedin' => 'nullable|string|min:3|max:30|regex:/(^([a-zA-Z0-9_-]+)(\d+)?$)/u',
+            'editing.socials.facebook' => 'nullable|string|min:3|max:30|regex:/(^([a-zA-Z0-9_-]+)(\d+)?$)/u',
+            'editing.socials.instagram' => 'nullable|string|min:3|max:30|regex:/(^([a-zA-Z0-9_-]+)(\d+)?$)/u',
         ];
     }
 
@@ -53,6 +64,7 @@ class JudgesComponent extends Component
         if ($type === 'edit') {
             $this->formTitle = 'Edit Judge';
             $this->editing = $judge;
+            $this->editing->socials = json_decode($judge->socials);
             $this->editJudgePhoto = $judge->avatar_url;
         } else {
             $this->formTitle = 'Add a Judge';
@@ -64,21 +76,25 @@ class JudgesComponent extends Component
 
     public function save()
     {
-        $this->validate();
+        $validatedData = $this->validate()['editing'];
 
         $imageName = $this->processImage(
-            $this->editing->avatar, 
-            $this->judgePhoto, 
-            $this->diskName, 
-            512, 512);
+            $this->editing->avatar,
+            $this->judgePhoto,
+            $this->diskName,
+            512,
+            512
+        );
+
 
         $this->editing->updateOrCreate(
             ['id' => $this->editing->id],
             [
-                'name' => ucwords($this->editing->name),
+                'name' => ucwords($validatedData['name']),
                 'avatar' => $imageName,
-                'profession' => ucwords($this->editing->profession),
-                'description' => ucwords($this->editing->description)
+                'profession' => ucwords($validatedData['profession']),
+                'description' => ucwords($validatedData['description']),
+                'socials' => json_encode($validatedData['socials']),
             ]
         );
 

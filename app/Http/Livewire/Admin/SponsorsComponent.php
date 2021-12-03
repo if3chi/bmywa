@@ -33,6 +33,7 @@ class SponsorsComponent extends Component
     {
         return [
             'editSponsor.name' => 'required|min:3|max:52',
+            'editSponsor.web_address' => 'nullable|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/|max:100',
             'sponsorLogo' => [
                 new RequiredIfAdding(str_contains($this->formTitle, 'Add')),
                 'max:512',
@@ -62,21 +63,22 @@ class SponsorsComponent extends Component
 
     public function save()
     {
-        $this->validate();
+        $validatedData = $this->validate()['editSponsor'];
 
         $imageName = $this->processImage(
             $this->editSponsor->logo,
             $this->sponsorLogo,
             $this->diskName,
-            250,
-            150
+            512,
+            512
         );
 
         Sponsor::updateOrCreate(
             ['id' => $this->editSponsor->id],
             [
                 'logo' => $imageName,
-                'name' => $this->editSponsor->name,
+                'name' => $validatedData['name'],
+                'web_address' => $validatedData['web_address'],
             ]
         );
 
@@ -114,7 +116,8 @@ class SponsorsComponent extends Component
 
     public function render()
     {
-        return view('livewire.admin.sponsors-component',
+        return view(
+            'livewire.admin.sponsors-component',
             ['sponsors' => Sponsor::orderBy('status', 'desc')
                 ->latest()
                 ->paginate(8)]

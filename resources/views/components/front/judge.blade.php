@@ -6,7 +6,7 @@
         <x-judge-group>
             @foreach ($judges as $judge)
                 <x-card.judge :imagelink="$judge->avatar_url" :name="$judge->name" :work="$judge->profession"
-                    :desc="$judge->description" />
+                    :desc="$judge->description" :socials="$judge->social_links"/>
             @endforeach
         </x-judge-group>
     </section>
