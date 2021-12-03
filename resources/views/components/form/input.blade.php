@@ -2,8 +2,8 @@
 
 @php
     $classes = $error 
-                ? 'block w-full pl-10 mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input'
-                : 'block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-yellow-400 focus:outline-none focus:shadow-outline-yellow dark:focus:shadow-outline-yellow form-input';
+                ? 'block w-full pl-10 mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input placeholder-gray-300 dark:placeholder-gray-500'
+                : 'block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-yellow-400 focus:outline-none focus:shadow-outline-yellow dark:focus:shadow-outline-yellow form-input placeholder-gray-300 dark:placeholder-gray-500';
 @endphp
 
 <div class="block text-sm space-y-1">

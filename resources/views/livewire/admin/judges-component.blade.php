@@ -113,17 +113,17 @@
                 <div>
                     <span class="text-sm text-gray-700 dark:text-gray-400">Social Media Handles</span>
                     <div class="flex w-full space-x-2">
-                        <x-form.input-link wire:model="editing.socials.twitter"
+                        <x-form.input-link wire:model="editing.socials.twitter" name="username" id="twitter"
                             :error="$errors->first('editing.socials.twitter')" type="text" label="twitter.com/" />
 
-                        <x-form.input-link wire:model="editing.socials.linkedin"
+                        <x-form.input-link wire:model="editing.socials.linkedin" name="username" id="linkedin"
                             :error="$errors->first('editing.socials.linkedin')" type="text" label="linkedin.com/" />
                     </div>
                     <div class="flex space-x-2">
-                        <x-form.input-link wire:model="editing.socials.instagram"
+                        <x-form.input-link wire:model="editing.socials.instagram" name="username" id="instagram"
                             :error="$errors->first('editing.socials.instagram')" type="text" label="instagram.com/" />
 
-                        <x-form.input-link wire:model="editing.socials.facebook"
+                        <x-form.input-link wire:model="editing.socials.facebook" name="username" id="facebook"
                             :error="$errors->first('editing.socials.facebook')" type="text" label="facebook.com/" />
                     </div>
                 </div>

@@ -34,7 +34,7 @@ if (!function_exists('loadFaqs')) {
     function loadFaqs()
     {
         return Cache::rememberForever('faqs', function () {
-            return Faq::all();
+            return Faq::select('question', 'answer')->get();
         });
     }
 }
@@ -44,7 +44,8 @@ if (!function_exists('loadJudges')) {
     function loadJudges()
     {
         return Cache::rememberForever('judges', function () {
-            return Judge::all();
+            return Judge::select('name', 'avatar', 'profession', 'description', 'socials')
+                ->get();
         });
     }
 }
@@ -54,7 +55,7 @@ if (!function_exists('loadSponsors')) {
     function loadSponsors()
     {
         return Cache::rememberForever('sponsors', function () {
-            return Sponsor::select('name', 'logo')
+            return Sponsor::select('name', 'logo', 'web_address')
                 ->where('status', 1)
                 ->get();
         });
