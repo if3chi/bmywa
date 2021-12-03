@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Front;
 
 use App\Models\Entry;
 use Livewire\Component;
+use App\Mail\NewEntrySubmitted;
 use App\Mail\SubmissionRecieved;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Livewire\Traits\EntryHelper;
@@ -43,6 +44,11 @@ class EntryForm extends Component
                 'title' => 'Entry Submitted',
                 'body' => 'Kindly Check the email you provided for more details.'
             ]);
+
+            // TODO: Use Notifications 
+            foreach (getAdminEmails() as $email) {
+                Mail::to($email)->queue(new NewEntrySubmitted($entryData));
+            }
         } else {
             $this->flashalert([
                 'title' => 'Submission Invalid',
@@ -51,7 +57,6 @@ class EntryForm extends Component
                 'type' => 'danger'
             ]);
         }
-
 
         $this->emitSelf('resetForm');
     }

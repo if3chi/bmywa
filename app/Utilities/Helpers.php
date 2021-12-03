@@ -6,6 +6,17 @@ use App\Models\Judge;
 use App\Models\Sponsor;
 use Illuminate\Support\Facades\Cache;
 
+if (!function_exists('getAdminEmails')) {
+
+    function getAdminEmails()
+    {
+        return [
+            'Jaspar' => 'j.cyxtus@gmail.com',
+            'Thelma' => 'thelmaofosuasamoah@gmail.com',
+        ];
+    }
+}
+
 if (!function_exists('loadSocialLinks')) {
 
     function loadSocialLinks(array $usernames): array

@@ -49,7 +49,7 @@ class SubmissionRecieved extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->from('no-reply@bmywa.com', 'BMYWA')
+        return $this->from('no-reply@bmywa.com', 'BMYWA Submissions')
             ->markdown('emails.submission.recieved')
             ->with(['contestant' => $this->contestant]);
     }
