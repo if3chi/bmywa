@@ -93,7 +93,7 @@
     <x-modal.form wire:model="showEditModal">
         <x-slot name="title">{{ $formTitle }}</x-slot>
         <x-slot name="content">
-            <div class="mb-8 bg-white rounded-lg dark:bg-gray-800">
+            <div class="mb-4 bg-white rounded-lg dark:bg-gray-800 space-y-1">
                 <x-form.input wire:model="editing.name" :error="$errors->first('editing.name')" type="text"
                     label="Name">
                     <x-icon.user />
@@ -108,6 +108,25 @@
                     type="text" label="Description">
                     <x-icon.anotation />
                 </x-form.input>
+
+                {{-- Socials --}}
+                <div>
+                    <span class="text-sm text-gray-700 dark:text-gray-400">Social Media Handles</span>
+                    <div class="flex w-full space-x-2">
+                        <x-form.input-link wire:model="editing.socials.twitter"
+                            :error="$errors->first('editing.socials.twitter')" type="text" label="twitter.com/" />
+
+                        <x-form.input-link wire:model="editing.socials.linkedin"
+                            :error="$errors->first('editing.socials.linkedin')" type="text" label="linkedin.com/" />
+                    </div>
+                    <div class="flex space-x-2">
+                        <x-form.input-link wire:model="editing.socials.instagram"
+                            :error="$errors->first('editing.socials.instagram')" type="text" label="instagram.com/" />
+
+                        <x-form.input-link wire:model="editing.socials.facebook"
+                            :error="$errors->first('editing.socials.facebook')" type="text" label="facebook.com/" />
+                    </div>
+                </div>
 
                 <x-form.file wire:model="judgePhoto" target="judgePhoto" :error="$errors->first('judgePhoto')"
                     label="Select Photo" type="file">

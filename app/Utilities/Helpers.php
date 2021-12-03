@@ -6,6 +6,29 @@ use App\Models\Judge;
 use App\Models\Sponsor;
 use Illuminate\Support\Facades\Cache;
 
+if (!function_exists('loadSocialLinks')) {
+
+    function loadSocialLinks(array $usernames): array
+    {
+        $profile_links = [];
+
+        $urls = [
+            'twitter' => 'https://twitter.com/',
+            'linkedin' => 'https://linkedin.com/',
+            'facebook' => 'https://facebook.com/',
+            'instagram' => 'https://instagram.com/',
+        ];
+
+        foreach ($usernames as $key => $value) {
+            if ($value !== null && $value !== "") {
+                $profile_links[$key] = "$urls[$key]$value";
+            }
+        }
+
+        return $profile_links;
+    }
+}
+
 if (!function_exists('loadFaqs')) {
 
     function loadFaqs()
@@ -52,7 +75,7 @@ if (!function_exists('entryCategories')) {
 
 if (!function_exists('entryCountry')) {
 
-    function entryCountry()
+    function entryCountry(): array
     {
         return [
             'gh' => 'Ghana',
@@ -88,7 +111,7 @@ if (!function_exists('entrySchedule')) {
 
 if (!function_exists('textNl2br')) {
 
-    function textNl2br($text)
+    function textNl2br($text): string
     {
         return strtr($text, array("\r\n" => '<br />', "\r" => '<br />', "\n" => '<br />'));
     }

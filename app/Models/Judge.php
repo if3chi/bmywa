@@ -12,6 +12,20 @@ class Judge extends Model
 
     // Has Observer
 
+    protected $fillable = [
+        'name',
+        'avatar',
+        'profession',
+        'description',
+        'socials'
+    ];
+
+    public function getSocialLinksAttribute()
+    {
+        $usernames = collect(json_decode($this->socials))->all();
+
+        return loadSocialLinks($usernames);
+    }
 
     public function getAvatarUrlAttribute()
     {
