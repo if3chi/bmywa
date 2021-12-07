@@ -25,7 +25,7 @@ if (!function_exists('loadSocialLinks')) {
 
         $urls = [
             'twitter' => 'https://twitter.com/',
-            'linkedin' => 'https://linkedin.com/',
+            'linkedin' => 'https://www.linkedin.com/in/',
             'facebook' => 'https://facebook.com/',
             'instagram' => 'https://instagram.com/',
         ];
