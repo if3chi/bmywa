@@ -49,6 +49,32 @@
                 <x-input.group wire:model.lazy="editing.entry_fee" label="Entry Fee Ref"
                     :error="$errors->first('editing.entry_fee')" placeholder="02#4567" />
 
+                <div x-data="{open: @entangle('editing.country')}" class="w-full p-2 -mt-4" x-cloak>
+
+                    <div x-show.transition.enter.duration.1000ms="open"
+                        class="mx-auto text-center text-yellow-500 text-sm">
+
+                        <template x-if="open == `gh`">
+                            <p class="flex w-full space-x-2 justify-center bg-cover">
+                                <img src="{{ asset('images/logos/mtn-momo.jpg') }}" alt="mtn mobile money logo"
+                                    class="w-12 bg-cover rounded-sm text-xs">
+                                {{-- <span class="my-auto">Kindly send 5ghc to </span> --}}
+                                <span class="my-auto text-blue-500 font-semibold tracking-wider">0543807829</span>
+                            </p>
+                        </template>
+
+                        <template x-if="open == `ng`">
+                            <p class="flex w-full space-x-2 justify-center bg-cover">
+                                <img src="{{ asset('images/logos/gtb.svg') }}" alt="GT Bank logo"
+                                    class="w-8 bg-cover rounded-sm text-xs">
+                                <span class="my-auto text-yellow-800">Acct: </span>
+                                <span class="my-auto text-green-600 font-semibold tracking-wider">0236472335</span>
+                            </p>
+                        </template>
+
+                    </div>
+                </div>
+
                 <x-input.group wire:model.lazy="editing.title" type="text" :error="$errors->first('editing.title')"
                     placeholder="How The Cow Jumped Over the Moon" id="title" label="Entry Title" />
 

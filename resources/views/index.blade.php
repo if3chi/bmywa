@@ -8,15 +8,14 @@
                         <div class="order-1 w-full px-3 lg:w-1/2 lg:order-0">
                             <div class="w-full max-w-md xl:max-w-xl">
                                 <div class="space-y-4">
-                                    <h1 class="text-2xl font-black md:max-w-xl md:text-3xl lg:text-4xl text-gray-900 tracking-wide">
-                                        <span class="justify-between">Blooming
-                                            Minds</span> <br class="block lg:hidden">Young Writers <span
-                                            class="block">and </span>Achievers Award
+                                    <h1
+                                        class="text-2xl font-black md:max-w-xl md:text-3xl lg:text-4xl text-gray-900 tracking-wide">
+                                        <span class="">Blooming Minds</span> Young Writers and
+                                        Achievers Award
                                     </h1>
-                                    <p class="max-w-sm text-lg text-gray-700 md:max-w-md md:text-xl">Recognising
-                                        abilities,
-                                        rewarding
-                                        achievements...</p>
+                                    <p class="max-w-sm text-lg text-gray-700 md:max-w-md md:text-xl">
+                                        Recognising abilities, rewarding achievements...
+                                    </p>
                                 </div>
                             </div>
                         </div>
