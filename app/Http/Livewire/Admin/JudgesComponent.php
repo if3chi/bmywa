@@ -35,6 +35,8 @@ class JudgesComponent extends Component
 
     protected function rules()
     {
+        $regx = "/(^([a-zA-Z0-9._-]+)(\d+)?$)/u";
+
         return [
             'editing.name' => 'required|string',
             'editing.profession' => 'nullable|string|max:140',
@@ -44,10 +46,10 @@ class JudgesComponent extends Component
                 'max:512',
                 'mimes:png,jpg,jpeg',
             ],
-            'editing.socials.twitter' => 'nullable|string|min:3|max:15|regex:/(^([a-zA-Z0-9_-]+)(\d+)?$)/u',
-            'editing.socials.linkedin' => 'nullable|string|min:3|max:30|regex:/(^([a-zA-Z0-9_-]+)(\d+)?$)/u',
-            'editing.socials.facebook' => 'nullable|string|min:3|max:30|regex:/(^([a-zA-Z0-9_-]+)(\d+)?$)/u',
-            'editing.socials.instagram' => 'nullable|string|min:3|max:30|regex:/(^([a-zA-Z0-9_-]+)(\d+)?$)/u',
+            'editing.socials.twitter' => 'nullable|string|min:3|max:15|regex:' . $regx,
+            'editing.socials.linkedin' => 'nullable|string|min:3|max:30|regex:' . $regx,
+            'editing.socials.facebook' => 'nullable|string|min:3|max:30|regex:' . $regx,
+            'editing.socials.instagram' => 'nullable|string|min:3|max:30|regex:' . $regx,
         ];
     }
 
