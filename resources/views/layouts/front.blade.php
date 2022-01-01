@@ -5,14 +5,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Jaspar Ifechi">
-    <meta name="description"
-        content="Blooming Minds Young Writers Awards is an initiative aimed at raising young African leaders by recognizing and rewarding children with creative abilities in writing and arts.">
     <meta name="keyword" content="Blooming, Minds, arts, creatives, young, writer, creative thinking">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@bmywa">
+    <meta name="twitter:creator" content="@ifeabasi">
+    <meta name="twitter:title" content="Blooming Minds Young Writers Award">
+    <meta name="twitter:description"
+        content="BMYWA - Blooming Minds Young Writers Awards is an initiative aimed at raising young African leaders by recognizing and rewarding children with creative abilities in writing and arts.">
+    <meta name="twitter:image" content="{{ asset('images/about.jpg') }}">
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Blooming Minds Young Writers Award" />
     <meta property="og:description"
-        content="BMYWA is an initiative aimed at raising young African leaders by recognizing and rewarding creativity.">
+        content="BMYWA - Blooming Minds Young Writers Awards is an initiative aimed at raising young African leaders by recognizing and rewarding children with creative abilities in writing and arts.">
     <meta property="og:image" content="{{ asset('images/about.jpg') }}">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="300">
