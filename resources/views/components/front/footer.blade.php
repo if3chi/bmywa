@@ -44,11 +44,9 @@
         </div>
         <div class="pt-4 mt-4 leading-7 text-center text-gray-600 border-t border-gray-200 md:mt-5 md:pt-5">
             <p class="box-border mt-0 text-sm border-0 border-solid content-between">
-                <span class="mr-1">
-                    Crafted with
-                    <x-icon.heart class="h-4 w-4 text-red-500 inline mb-0.5" />
-                </span>
-                © 2021 Bmywa. All Rights Reserved.
+                Crafted with
+                <x-icon.heart class="h-4 w-4 text-red-500 inline mb-0.5" />
+                © {{ date('Y') }} Bmywa. All Rights Reserved.
             </p>
         </div>
     </div>
