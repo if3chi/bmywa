@@ -45,7 +45,10 @@ class Entry extends Model
 
     public function getTruncatedAttribute()
     {
-        return substr($this->award_entry, 0, 96);
+        return strtr(
+            substr($this->award_entry, 0, 96),
+            ["<br />" => ' ']
+        );
     }
 
     public function setTitleAttribute($value)
