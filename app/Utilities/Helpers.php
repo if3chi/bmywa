@@ -109,15 +109,25 @@ if (!function_exists('entrySchedule')) {
             'entryYear' => '2022',
             'openDate' => formatDate('11/01/2021'),
             'closeDate' => formatDate('01/22/2022'),
+            'xCloseDate' => formatDate('02/15/2022'),
             'shortlistDate' => formatDate('03/18/2022'),
             'awardDate' => formatDate('04/30/2022'),
         ][$key];
     }
 
+    function closeDateIsExtended(): bool
+    {
+        $newDeadLine = entrySchedule('xCloseDate');
+
+        return $newDeadLine !== null && $newDeadLine !== '';
+    }
+
     function entryIsActive()
     {
+        $deadline = closeDateIsExtended() ? 'xCloseDate' : 'closeDate';
+
         return Carbon::parse(entrySchedule('openDate'))->lessThanOrEqualTo(now()) &&
-            Carbon::parse(entrySchedule('closeDate'))->addDay(1)->greaterThanOrEqualTo(now());
+            Carbon::parse(entrySchedule($deadline))->addDay(1)->greaterThanOrEqualTo(now());
     }
 }
 

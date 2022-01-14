@@ -23,8 +23,16 @@
             class="text-sm font-normal text-gray-600">Ages 6-9 – Not more than 300 words.</span> </p>
 
     <p class="text-base font-bold pt-2 text-gray-800">BMYWA {{ entrySchedule('entryYear') }}: <br><span
-            class="text-sm font-normal text-gray-600">Entry Submissions opens {{ entrySchedule('openDate') }} and
-            closes {{ entrySchedule('closeDate') }}.</span> </p>
+            class="text-sm font-normal text-gray-600">
+            Entry Submissions opens <span class="font-semibold">{{ entrySchedule('openDate') }}</span> and closes
+            <span class="{{ closeDateIsExtended() ? 'line-through text-red-500' : 'font-semibold' }}">
+                {{ entrySchedule('closeDate') }}
+            </span>
+            @if (closeDateIsExtended())
+                <span class="text-green-700 ml-2 font-semibold">{{ entrySchedule('xCloseDate') }}</span>
+            @endif.
+        </span>
+    </p>
 
     {{-- <p class="text-sm font-normal pt-2 text-gray-600">Shortlist and Winners will be announced
         {{ entrySchedule('shortlistDate') }}.

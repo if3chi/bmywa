@@ -233,6 +233,7 @@ return [
 
         // Custom
         'Image' => Intervention\Image\Facades\Image::class,
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
 
     ],
 
