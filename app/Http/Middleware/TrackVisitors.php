@@ -26,7 +26,7 @@ class TrackVisitors
 
             $newVisitor = Visitor::where('visit_date', today())->where('visitor_ip', $ip)->count() < 1;
 
-            if ($newVisitor) {
+            if ($newVisitor && !Agent::isRobot()) {
                 Visitor::create([
                     'visit_time' => now(),
                     'visit_date' => today(),
