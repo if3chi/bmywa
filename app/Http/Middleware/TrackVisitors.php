@@ -3,11 +3,12 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Models\Visitor;
 use Exception;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Jenssegers\Agent\Facades\Agent;
+use Stevebauman\Location\Facades\Location;
 
 class TrackVisitors
 {
@@ -22,18 +23,25 @@ class TrackVisitors
     {
         try {
 
-            $ip = hash('sha512', $request->ip());
-
-            $newVisitor = Visitor::where('visit_date', today())->where('visitor_ip', $ip)->count() < 1;
+            $ip = $request->ip();
+            $hashed_ip = hash('sha512', $ip);
+            $newVisitor = Visitor::where('visit_date', today())->where('ip', $hashed_ip)->count() < 1;
 
             if ($newVisitor && !Agent::isRobot()) {
+
+                $visitor_location = Location::get($ip);
+
                 Visitor::create([
                     'visit_time' => now(),
                     'visit_date' => today(),
-                    'visitor_ip' => $ip,
-                    'visitor_browser' => Agent::browser(),
-                    'visitor_platform' => Agent::platform(),
-                    'visitor_device' => Agent::device(),
+                    'ip' => $hashed_ip,
+                    'browser' => Agent::browser(),
+                    'platform' => Agent::platform(),
+                    'device' => Agent::device(),
+                    'country_code' => $visitor_location->countryCode ?? null,
+                    'city_name' => $visitor_location->cityName ?? null,
+                    'region_name' => $visitor_location->regionName ?? null,
+                    'country_name' => $visitor_location->countryName ?? null,
                 ]);
             }
         } catch (Exception $e) {

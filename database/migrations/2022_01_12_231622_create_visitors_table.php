@@ -15,10 +15,16 @@ class CreateVisitorsTable extends Migration
     {
         Schema::create('visitors', function (Blueprint $table) {
             $table->id();
-            $table->string('visitor_ip')->nullable();
-            $table->string('visitor_browser', 12)->nullable();
-            $table->string('visitor_platform', 12)->nullable();
-            $table->string('visitor_device', 12)->nullable();
+            $table->string('browser', 32)->nullable();
+            $table->string('platform', 32)->nullable();
+            $table->string('device', 32)->nullable();
+            $table->string('ip')->nullable();
+            // Location
+            $table->string('country_code', 8)->nullable();
+            $table->string('city_name')->nullable();
+            $table->string('region_name')->nullable();
+            $table->string('country_name', 64)->nullable();
+            // Date
             $table->time('visit_time');
             $table->date('visit_date');
         });
