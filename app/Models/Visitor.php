@@ -17,7 +17,8 @@ class Visitor extends Model
     ];
 
     protected $fillable = [
-        'visitor_ip', 'visitor_browser', 'visitor_platform', 'visitor_device', 'visit_time', 'visit_date'
+        'ip', 'browser', 'platform', 'device', 'visit_time',
+        'visit_date', 'country_code', 'city_name', 'region_name', 'country_name',
     ];
 
     public function getVisitDateAttribute($value)
