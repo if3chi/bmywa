@@ -4,7 +4,8 @@
     </x-slot>
     <div class="container p-2 mx-auto grid">
         <div
-            class="flex flex-row flex-auto h-screen bg-white dark:bg-gray-800 rounded-t-xl border-l dark:border-gray-600 shadow-xl">
+            class="flex flex-row flex-auto bg-white dark:bg-gray-800 rounded-t-xl border-l dark:border-gray-600 shadow-xl"
+            style="max-height: 87vh;">
             <div class="flex flex-col w-2/6">
                 <div class="flex-none h-24 bg-grey-200 border-b-2 -mt-4 p-4 border-gray-200 dark:border-gray-700">
                     <h2 class="text-xl ml-1 mt-2 font-semibold tracking-wide text-gray-700 dark:text-gray-200">

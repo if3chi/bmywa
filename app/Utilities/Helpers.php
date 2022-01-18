@@ -135,6 +135,6 @@ if (!function_exists('textNl2br')) {
 
     function textNl2br($text): string
     {
-        return strtr($text, array("\r\n" => '<br />', "\r" => '<br />', "\n" => '<br />'));
+        return trim(strtr($text, array("\r\n" => '<br />', "\r" => '<br />', "\n" => '<br />')), '<br />');
     }
 }
