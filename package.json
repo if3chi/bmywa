@@ -21,6 +21,7 @@
         "tailwindcss": "^2.2.19"
     },
     "dependencies": {
-        "@tailwindcss/line-clamp": "^0.2.2"
+        "@tailwindcss/line-clamp": "^0.2.2",
+        "@tailwindcss/typography": "^0.3.1"
     }
 }

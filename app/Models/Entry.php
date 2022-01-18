@@ -55,4 +55,9 @@ class Entry extends Model
     {
         $this->attributes['title'] = ucwords($value);
     }
+
+    public function getReadingTimeAttribute()
+    {
+        return readingTime("$this->title $this->award_entry");
+    }
 }

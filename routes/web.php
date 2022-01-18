@@ -32,6 +32,7 @@ Route::middleware('visitor')->group(function () {
     Route::permanentRedirect('apply', '/#entry-form')->name('apply');
     Route::permanentRedirect('creative-writing-workshop-101', '/how-to-enter')->name('how-to-enter');
 
+    Route::view('/creative-writing-workshop-101', 'creative-writing')->name('creative-writing');
 });
 
 Route::group(

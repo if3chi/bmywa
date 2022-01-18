@@ -6,6 +6,35 @@ use App\Models\Judge;
 use App\Models\Sponsor;
 use Illuminate\Support\Facades\Cache;
 
+if (!function_exists('readingTime')) {
+    function readingTime(string $words = '', int $wpm = 130)
+    {
+        $wordsCount = str_word_count($words);
+
+        $readTime = null;
+
+        if ($wordsCount > 10) {
+            $readTime = explode('.', (string) $wordsCount / $wpm);
+
+            $hr = $readTime[0];
+            $sec = 0;
+
+            if (count($readTime)  > 1) {
+                $secs = (int) $readTime[1] * 60;
+                $secsLen = strlen((string)$secs);
+
+                $setPow = $secsLen > 3 ? $secsLen - 2 : $secsLen - 1;
+
+                $sec = ceil($secs / pow(10, $setPow));
+            }
+
+            $readTime = $sec ? "{$hr}m {$sec}s read" : "{$hr}m read";
+        }
+
+        return $readTime;
+    }
+}
+
 if (!function_exists('getAdminEmails')) {
 
     function getAdminEmails()

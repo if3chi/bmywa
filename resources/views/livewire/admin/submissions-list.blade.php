@@ -58,8 +58,9 @@
                 <div
                     class="flex-none h-20 flex flex-row justify-between items-center p-5 border-b-2 border-gray-200 text-gray-600 dark:border-gray-700 dark:text-gray-100">
                     <div class="flex flex-col space-y-1">
-                        @if ($detailView)
-                            <strong>{{ $detailView->title }}</strong>
+                        @if ($readingView)
+                            <strong>{{ $readingView->title }}</strong>
+                            <p class="text-xs tracking-tighter">{{ $readingView->reading_time }}</p>
                         @endif
                     </div>
                     <div class="flex flex-row items-center space-x-1">
@@ -78,8 +79,8 @@
                 <div class="flex-auto overflow-y-auto p-6 dark:text-gray-100"
                     style="background-image: url(https://static.intercomassets.com/ember/assets/images/messenger-backgrounds/background-1-99a36524645be823aabcd0e673cb47f8.png)">
                     <div class="text-justify text-base" wire:key="{{ $activeEntry }}">
-                        @if ($detailView)
-                            {!!  html_entity_decode($detailView->award_entry) !!}
+                        @if ($readingView)
+                            {!!  html_entity_decode($readingView->award_entry) !!}
                         @else
                             <h2
                                 class="text-center text-base my-24 font-semibold tracking-wide text-gray-700 dark:text-gray-200">
