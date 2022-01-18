@@ -23,7 +23,7 @@ $country_flag = in_array($country, array_keys(entryCountry())) ? $country . '-fl
             class="absolute px-2 ml-2 -mt-1 z-10 font-normal text-gray-500 bg-white">{{ $label }}</label>
 
         <select id="{{ $id }}" {{ $attributes }}
-            class="block w-full p-3 mt-2 mb-2 text-xs text-gray-500 bg-white border-2 tracking-wider font-light rounded-md focus:ring focus:outline-none  {{ $error ? 'border-red-100 focus:ring-red-400' : 'border-yellow-100 focus:ring-yellow-300' }}">
+            class="block w-full p-3 mt-2 mb-2 text-xs text-gray-500 bg-white border-2 tracking-wider font-light rounded-md focus:ring focus:outline-none  {{ $error ? 'border-red-100 focus:border-red-100 focus:ring-red-400' : 'border-yellow-100 focus:border-yellow-100 focus:ring-yellow-300' }}">
             {{ $slot }}
         </select>
 

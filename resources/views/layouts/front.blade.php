@@ -30,9 +30,7 @@
 
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css">
-
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     @livewireStyles
 </head>
@@ -49,8 +47,7 @@
 
     @livewireScripts
 
-    <!-- AlpineJS Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.0/alpine.js"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <script>
         const callback = function(entries) {
