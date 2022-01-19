@@ -7,13 +7,13 @@ use Livewire\Component;
 
 class SubmissionsList extends Component
 {
-    public $detailView;
+    public $readingView;
     public $activeEntry;
 
     public function openEntry(Entry $entry)
     {
         $this->activeEntry = $entry->id;
-        $this->detailView = $entry;
+        $this->readingView = $entry;
     }
 
     public function render()

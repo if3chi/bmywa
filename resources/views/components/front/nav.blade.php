@@ -8,15 +8,15 @@
             <li class="mx-2 lg:mx-3">
                 <x-front.nav-link :url="route('news.index')" name="News" />
             </li>
-            <li class="mx-2 lg:mx-3">
-                <x-front.nav-link :url="route('welcome').'#judges'" name="Judges" />
+            <li class="mx-2 ">
+                <x-front.nav-link :url="route('creative-writing')" name="Creative Writing 101" />
+                <li class="mx-auto">
+                    <a href="/" class="pt-4">
+                        <x-logo class="rounded-md w-32 logo" />
+                    </a>
+                </li>
             </li>
-            <div class="mx-6"></div>
-            <li class="mx-auto">
-                <a href="/" class="pt-4">
-                    <x-logo class="rounded-md w-32 logo" />
-                </a>
-            </li>
+            <div class="mx-4"></div>
             <li class="mx-2 lg:mx-3">
                 <x-front.nav-link :url="route('welcome').'#faq'" name="FAQs" />
             </li>
@@ -66,8 +66,8 @@
         class="block text-gray-900 hover:text-yellow-500">About</a>
     <a @click="showMenu = !showMenu" href="{{ route('news.index') }}"
         class="block text-gray-900 hover:text-yellow-500">News</a>
-    <a @click="showMenu = !showMenu" href="{{ route('welcome') . '#judges' }}"
-        class="block text-gray-900 hover:text-yellow-500">Judges</a>
+    <a @click="showMenu = !showMenu" href="{{ route('creative-writing') }}"
+        class="block text-gray-900 hover:text-yellow-500">Creative Writing 101</a>
     <a @click="showMenu = !showMenu" href="{{ route('welcome') . '#faq' }}"
         class="block text-gray-900 hover:text-yellow-500">FAQs</a>
     <a @click="showMenu = !showMenu" href="#contact" class="block text-gray-900 hover:text-yellow-500">Contact Us</a>
