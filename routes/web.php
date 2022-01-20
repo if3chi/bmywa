@@ -20,12 +20,14 @@ use App\Http\Livewire\Admin\SponsorsComponent;
 */
 
 Route::middleware('visitor')->group(function () {
-    Route::get('/', [FrontController::class, 'index'])->name('welcome');
-    Route::get('/about', [FrontController::class, 'about'])->name('about');
-    Route::get('/preview-submission/{entry}', [FrontController::class, 'previewEntry'])
-        ->name('preview.entry')
-        ->middleware('signed');
-
+    Route::controller(FrontController::class)
+        ->group(function () {
+            Route::get('/', 'index')->name('welcome');
+            Route::get('/about', 'about')->name('about');
+            Route::get('/preview-submission/{entry}', 'previewEntry')
+                ->name('preview.entry')
+                ->middleware('signed');
+        });
 
     Route::view('/creative-writing-workshop-101', 'creative-writing')->name('creative-writing');
 
