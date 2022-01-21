@@ -12,6 +12,9 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            zIndex: {
+                'neg-99': '-99',
+            }
         },
     },
 
@@ -22,7 +25,7 @@ module.exports = {
     },
 
     plugins: [
-        require('@tailwindcss/forms'), 
+        require('@tailwindcss/forms'),
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/typography')
     ],
