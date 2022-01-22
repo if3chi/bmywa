@@ -38,7 +38,7 @@
                                             Awards
                                         </dt>
                                         <dd class="order-1 text-xl font-extrabold text-yellow-400">
-                                            7
+                                            10
                                         </dd>
                                     </div>
                                     <div
@@ -75,7 +75,7 @@
                         </defs>
                         <rect width="404" height="384" fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)" />
                     </svg>
-                    <div class="relative text-base mx-auto lg:mt-32 max-w-prose lg:max-w-none">
+                    <div class="relative text-base mx-auto lg:mt-16 max-w-prose lg:max-w-none">
                         <figure>
                             <div class="aspect-w-12 aspect-h-7 lg:aspect-none">
                                 <img class="rounded-lg shadow-lg object-cover object-center"
