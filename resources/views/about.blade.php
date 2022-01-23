@@ -84,7 +84,7 @@
                             </div>
                             <figcaption class="mt-3 flex text-sm text-gray-500 mb-2">
                                 <x-icon.camera />
-                                <span class="ml-2">BMYWA 2021 Category A Winners Ghana.</span>
+                                <span class="ml-2">Blooming Minds Young Writers Award 2019.</span>
                             </figcaption>
                         </figure>
                     </div>
