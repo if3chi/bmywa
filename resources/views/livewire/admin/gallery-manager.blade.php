@@ -50,7 +50,7 @@
                                         <!-- Avatar with inset shadow -->
                                         <div class="w-12 h-12 mr-4 rounded-full md:block">
                                             <img class="object-cover w-full h-full rounded-full"
-                                                src="{{ $album->avatar_url }}" alt="" loading="lazy" />
+                                                src="{{ $album->cover_image }}" alt="" loading="lazy" />
                                         </div>
                                     </div>
                                 </td> --}}
@@ -139,7 +139,7 @@
                                 </td>
                                 <td class="px-2 py-3 w-56">
                                     <div class="items-center text-sm">
-                                        <p class="font-semibold">{{entryCountry()[$photo->country] }}</p>
+                                        <p class="font-semibold">{{ entryCountry()[$photo->country] }}</p>
                                     </div>
                                 </td>
                                 <td class="px-4 py-3">
@@ -211,8 +211,8 @@
                         <x-form.select wire:model.lazy="editingPhoto.album_id"
                             :error="$errors->first('editingPhoto.album_id')" type="text" name="album" label="Album">
                             <option class="text-base" value="" disabled>Select Photo(s) Album</option>
-                            @foreach (getAlbums() as $id => $name)
-                                <option class="text-base" value="{{ $id }}">{{ $name }}
+                            @foreach (getAlbums() as $album)
+                                <option class="text-base" value="{{ $album->id }}">{{ "$album->name ($album->year)" }}
                                 </option>
                             @endforeach
                         </x-form.select>

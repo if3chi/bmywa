@@ -21,7 +21,7 @@ class Dashboard extends Component
             [
                 'entries' => $entries->take(5),
                 'entries_count' => count($entries),
-                'total_visits_today' => collect($visitors)->last()->visit_date === date('Y-m-d') ? $visitors->last()->total_today : 0,
+                'total_visits_today' => count($visitors) > 0 && collect($visitors)->last()->visit_date === date('Y-m-d') ? $visitors->last()->total_today : 0,
                 'total_visits' => $monthly_visits
             ]
         )->layout('layouts.admin');

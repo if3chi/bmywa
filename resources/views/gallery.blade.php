@@ -11,7 +11,7 @@
                     <div class="carousel-inner relative w-full overflow-hidden">
                         @foreach ($photos as $photo)
                             <div class="carousel-item h-48 md:h-64 active relative float-left w-full bg-center bg-cover"
-                                style="background-position: 50%; background-image: url({{ $photo->url }});">
+                                style="background-position: 50%; background-image: url({{ $photo->url ?? asset('images/about.jpg') }});">
                                 <div
                                     class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-75">
                                 </div>

@@ -105,21 +105,13 @@ if (!function_exists('loadSponsors')) {
 
 if (!function_exists('getAlbums')) {
 
-    function getAlbums(): array
+    function getAlbums()
     {
 
         return Cache::rememberForever('albums', function () {
-            $albums = Album::select('id', 'name', 'year')
+            return Album::select('id', 'name', 'year')
                 ->orderBy('year', 'desc')
                 ->get();
-
-            $albumsArray = [];
-
-            foreach ($albums as $album) {
-                $albumsArray[$album->id] = [$album->name,  $album->year];
-            }
-
-            return $albumsArray;
         });
     }
 }
