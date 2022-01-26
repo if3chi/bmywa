@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Album;
 use Carbon\Carbon;
 use App\Models\Faq;
 use App\Models\Judge;
@@ -98,6 +99,27 @@ if (!function_exists('loadSponsors')) {
             return Sponsor::select('name', 'logo', 'web_address')
                 ->where('status', 1)
                 ->get();
+        });
+    }
+}
+
+if (!function_exists('getAlbums')) {
+
+    function getAlbums(): array
+    {
+
+        return Cache::rememberForever('albums', function () {
+            $albums = Album::select('id', 'name', 'year')
+                ->orderBy('year', 'desc')
+                ->get();
+
+            $albumsArray = [];
+
+            foreach ($albums as $album) {
+                $albumsArray[$album->id] = [$album->name,  $album->year];
+            }
+
+            return $albumsArray;
         });
     }
 }

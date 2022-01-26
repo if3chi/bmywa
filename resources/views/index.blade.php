@@ -67,9 +67,9 @@
 
                         <div class="flex flex-col sm:flex-row sm:space-x-4 md:justify-between">
                             <div class="flex flex-col sm:flex-row sm:space-x-2">
-                                <a href="#entry-form"
+                                <a href="{{ route('gallery') }}"
                                     class="flex items-center w-full px-2 py-3 justify-center mb-3 text-lg text-white bg-yellow-600 rounded-md sm:mb-0 hover:bg-yellow-700 sm:w-auto">
-                                    Submit An Entry
+                                    View our Gallery
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round">

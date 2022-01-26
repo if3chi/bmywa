@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Entry;
+use App\Models\Photo;
 
 class FrontController extends Controller
 {
@@ -25,5 +26,12 @@ class FrontController extends Controller
     public function previewEntry(Entry $entry)
     {
         return view('submission.preview', compact('entry'));
+    }
+
+    public function gallery()
+    {
+        $photos = Photo::with('Album')->select('*')->get()->random(3);
+
+        return view('gallery', compact('photos'));
     }
 }
