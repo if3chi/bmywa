@@ -38,21 +38,28 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
-        
+
         'judge' => [
             'driver' => 'local',
             'root' => storage_path('app/images/judges'),
-            'url' => env('APP_URL').'/images/judge',
+            'url' => env('APP_URL') . '/images/judge',
             'visibility' => 'public',
         ],
-        
+
         'sponsor' => [
             'driver' => 'local',
             'root' => storage_path('app/images/sponsors'),
-            'url' => env('APP_URL').'/images/sponsor',
+            'url' => env('APP_URL') . '/images/sponsor',
+            'visibility' => 'public',
+        ],
+
+        'gallery' => [
+            'driver' => 'local',
+            'root' => storage_path('app/images/albums'),
+            'url' => env('APP_URL') . '/images/album',
             'visibility' => 'public',
         ],
 
@@ -84,6 +91,7 @@ return [
         // public_path('storage') => storage_path('app/public'),
         public_path('images/judge') => storage_path('app/images/judges'),
         public_path('images/sponsor') => storage_path('app/images/sponsors'),
+        public_path('images/album') => storage_path('app/images/albums'),
     ],
 
 ];

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\Dashboard;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\FrontController;
+use App\Http\Livewire\Admin\GalleryManager;
 use App\Http\Livewire\Admin\JudgesComponent;
 use App\Http\Livewire\Admin\SubmissionsList;
 use App\Http\Livewire\Admin\SponsorsComponent;
@@ -24,6 +25,7 @@ Route::middleware('visitor')->group(function () {
         ->group(function () {
             Route::get('/', 'index')->name('welcome');
             Route::get('/about', 'about')->name('about');
+            Route::get('/gallery', 'gallery')->name('gallery');
             Route::get('/preview-submission/{entry}', 'previewEntry')
                 ->name('preview.entry')
                 ->middleware('signed');
@@ -45,6 +47,7 @@ Route::group(
     function () {
         Route::get('/dashboard', Dashboard::class)->name('dashboard');
 
+        Route::get('/gallery', GalleryManager::class)->name('gallery.index');
         Route::get('/judges', JudgesComponent::class)->name('judges.index');
         Route::get('/sponsors', SponsorsComponent::class)->name('sponsors.index');
         Route::get('/submissions', SubmissionsList::class)->name('submissions.index');

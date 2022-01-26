@@ -6,17 +6,20 @@
                 <x-front.nav-link :url="route('about')" name="About" />
             </li>
             <li class="mx-2 lg:mx-3">
-                <x-front.nav-link :url="route('news.index')" name="News" />
+                <x-front.nav-link :url="route('gallery')" name="Gallery" />
             </li>
             <li class="mx-2 ">
                 <x-front.nav-link :url="route('creative-writing')" name="Creative Writing 101" />
-                <li class="mx-auto">
-                    <a href="/" class="pt-4">
-                        <x-logo class="rounded-md w-32 logo" />
-                    </a>
-                </li>
+            <li class="mx-auto">
+                <a href="/" class="pt-4">
+                    <x-logo class="rounded-md w-32 logo" />
+                </a>
+            </li>
             </li>
             <div class="mx-4"></div>
+            <li class="mx-2 lg:mx-3">
+                <x-front.nav-link :url="route('news.index')" name="News" />
+            </li>
             <li class="mx-2 lg:mx-3">
                 <x-front.nav-link :url="route('welcome').'#faq'" name="FAQs" />
             </li>
@@ -64,6 +67,8 @@
     x-cloak>
     <a @click="showMenu = !showMenu" href="{{ route('about') }}"
         class="block text-gray-900 hover:text-yellow-500">About</a>
+    <a @click="showMenu = !showMenu" href="{{ route('gallery') }}"
+        class="block text-gray-900 hover:text-yellow-500">Gallery</a>
     <a @click="showMenu = !showMenu" href="{{ route('news.index') }}"
         class="block text-gray-900 hover:text-yellow-500">News</a>
     <a @click="showMenu = !showMenu" href="{{ route('creative-writing') }}"

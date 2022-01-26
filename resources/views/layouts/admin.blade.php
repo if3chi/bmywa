@@ -12,20 +12,26 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('admin/css/tailwind.output.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+
+    @stack('styles')
 
     @livewireStyles
 
     <style>
-        [x-cloak] { display: none !important; }
+        [x-cloak] {
+            display: none !important;
+        }
+
     </style>
 </head>
 
 <body>
-    
+
     <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }" x-cloak="">
         <!-- Sidebar -->
         <x-admin.sidebar />
-        
+
         <!-- notification -->
         <x-notification />
 
@@ -39,10 +45,13 @@
         </div>
     </div>
 
-
+    <script src="{{ asset('js/moment.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script src="{{ asset('admin/js/init-alpine.js') }}"></script>
     <script src="{{ asset('admin/js/focus-trap.js') }}" defer></script>
+
+    @stack('scripts')
     @livewireScripts
 </body>
 

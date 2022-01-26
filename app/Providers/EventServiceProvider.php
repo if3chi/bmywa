@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Album;
 use App\Models\Judge;
 use App\Models\Sponsor;
+use App\Observers\AlbumObserver;
 use App\Observers\JudgeObserver;
 use App\Observers\SponsorObserver;
 use Illuminate\Auth\Events\Registered;
@@ -31,6 +33,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Album::observe(AlbumObserver::class);
         Judge::observe(JudgeObserver::class);
         Sponsor::observe(SponsorObserver::class);
     }

@@ -38,9 +38,10 @@ trait WithUtilities
     public function processImage(
         $oldImage,
         $imageFile,
-        String $diskName,
         int $width,
-        int $height
+        int $height,
+        String $diskName,
+        String $saveFolder = ''
     ): String {
 
         $imageName = $oldImage;
@@ -49,7 +50,7 @@ trait WithUtilities
 
             $this->delPhoto($oldImage, $diskName);
 
-            $ext = $imageFile->extension();
+            $ext = 'webp';
 
             $imageFile = (string) Image::make($imageFile)
                 ->resize($width, $height, function ($constraint) {
@@ -59,7 +60,7 @@ trait WithUtilities
 
             $imageName = md5(now() . $imageFile) . ".$ext";
 
-            Storage::disk($diskName)->put("/$imageName", $imageFile);
+            Storage::disk($diskName)->put("$saveFolder/$imageName", $imageFile);
         }
 
         return $imageName;
