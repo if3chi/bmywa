@@ -123,6 +123,12 @@
                 <x-input.textarea wire:model.lazy="editing.award_entry" id="award-entry" type="text" label="Award Entry"
                     :error="$errors->first('editing.award_entry')" />
 
+                <div class="p-1 text-center bg-yellow-50 rounded-md text-xs">
+                    <span class="text-gray-700">By submitting this form, you confirm that you have read and
+                        agree to our</span>
+                    <a href="{{ route('terms') }}" class="font-medium text-blue-600 italic"> terms & Conditions.</a>
+                </div>
+
                 <div class="block">
                     <x-entry.button class="relative space-x-2">
                         <span class="text-base font-normal tracking-wide">
