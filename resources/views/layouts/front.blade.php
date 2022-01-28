@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Jaspar Ifechi">
     <meta name="keyword" content="Blooming, Minds, arts, creatives, young, writer, creative thinking">
+    <meta name="description"
+        content="BMYWA - Blooming Minds Young Writers Awards is an initiative aimed at raising young African leaders by recognizing and rewarding children with creative abilities in writing and arts.">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@bmywa">

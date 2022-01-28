@@ -37,6 +37,7 @@ Route::middleware('visitor')->group(function () {
     Route::resource('/news', NewsController::class);
 
     Route::permanentRedirect('apply', '/#entry-form')->name('apply');
+    Route::view('/terms', 'terms')->name('terms');
 });
 
 Route::group(

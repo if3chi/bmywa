@@ -22,7 +22,7 @@
                         class="box-border items-center block w-full px-2 md:pd-4 text-base font-normal leading-normal text-white no-underline border-solid cursor-pointer hover:text-yellow-600 focus-within:text-yellow-700 sm:px-0 sm:text-left">Creative Writing 101</a>
                 </li>
                 <li class="relative mt-2 leading-7 text-left text-white border-0 border-gray-200 md:border-b-0 md:mt-0">
-                    <a href="#_"
+                    <a href="{{ route('terms') }}"
                         class="box-border items-center block w-full px-2 md:pd-4 text-base font-normal leading-normal text-white no-underline border-solid cursor-pointer hover:text-yellow-600 focus-within:text-yellow-700 sm:px-0 sm:text-left">Terms</a>
                 </li>
             </ul>

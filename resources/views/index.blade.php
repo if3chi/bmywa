@@ -22,11 +22,11 @@
                         <div
                             class="relative w-full px-3 mb-12 lg:-ml-14 lg:w-1/2 order-0 lg:order-1 lg:mb-0 h-50 lg:mt-8">
                             <img class="absolute top-0 right-0 z-10 hidden mx-auto -mt-32 rounded-lg shadow-2xl opacity-100 xl:-mr-12 sm:max-w-xs lg:max-w-sm lg:block"
-                                src="{{ asset('images/banner/banner2.jpg') }}">
+                                src="{{ asset('images/banner/banner2.jpg') }}" alt="banner image">
                             <img class="relative z-20 w-full mx-auto mt-3 rounded-lg shadow-2xl sm:max-w-none lg:-ml-10 lg:max-w-sm"
-                                src="{{ asset('images/banner/banner1.jpg') }}" alt="feature image">
+                                src="{{ asset('images/banner/banner1.jpg') }}" alt="banner image">
                             <img class="absolute bottom-0 right-0 z-10 hidden mx-auto -mb-40 rounded-lg shadow-2xl xl:-mr-12 sm:max-w-xs lg:max-w-sm lg:block"
-                                src="{{ asset('images/banner/banner3.jpg') }}">
+                                src="{{ asset('images/banner/banner3.jpg') }}" alt="banner image">
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                 <div class="w-full md:w-1/2 md:px-3">
                     <div
                         class="w-full pb-6 space-y-6 lg:max-w-lg md:space-y-4 lg:space-y-6 xl:space-y-8 sm:pr-5 lg:pr-0 md:pb-0 text-center sm:text-left">
-                        <h1
+                        <h2
                             class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl md:text-3xl lg:text-4xl xl:text-4xl">
                             <span class="text-justify">
                                 <span class="">
@@ -49,7 +49,7 @@
                                     Minds
                                 </span> Young Writers and Achievers</span>
                             <span class="text-yellow-500">Awards</span>
-                        </h1>
+                        </h2>
                         <p
                             class="mx-auto text-sm text-justify  text-gray-500  overflow-hidden lg:text-base md:max-w-3xl">
                             is
@@ -101,7 +101,7 @@
                 </div>
                 <div class="w-full md:w-1/2">
                     <div class="w-full h-auto overflow-hidden rounded-md shadow-xl sm:rounded-xl">
-                        <img src="{{ asset('images/about.jpg') }}">
+                        <img src="{{ asset('images/about.jpg') }}" alt="about bmywa image">
                     </div>
                 </div>
             </div>
