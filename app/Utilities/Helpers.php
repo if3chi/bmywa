@@ -176,9 +176,14 @@ if (!function_exists('entrySchedule')) {
 
 if (!function_exists('siteLogo')) {
 
-    function siteLogo(): string
+    function siteLogo(string $type = 'tp'): string
     {
-        return asset('images/logo.png');
+        $logo = [
+            'tp' => 'logo.png',
+            'withBg' => 'logo.jpg'
+        ][$type];
+
+        return asset("images/{$logo}");
     }
 }
 
