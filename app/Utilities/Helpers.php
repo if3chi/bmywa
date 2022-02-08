@@ -174,6 +174,19 @@ if (!function_exists('entrySchedule')) {
     }
 }
 
+if (!function_exists('siteLogo')) {
+
+    function siteLogo(string $type = 'tp'): string
+    {
+        $logo = [
+            'tp' => 'logo.png',
+            'withBg' => 'logo.jpg'
+        ][$type];
+
+        return asset("images/{$logo}");
+    }
+}
+
 if (!function_exists('textNl2br')) {
 
     function textNl2br($text): string

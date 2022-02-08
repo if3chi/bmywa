@@ -194,7 +194,7 @@
                                                 <td align="center" valign="top" style="position: relative;">
 
                                                     <a href="#"><img class="imgUp" editable="true"
-                                                            mc:edit="logo" src="{{ asset('images/logo.jpg') }}"
+                                                            mc:edit="logo" src="{{ siteLogo() }}"
                                                             width="140" height="48" alt=""></a>
 
                                                 </td>

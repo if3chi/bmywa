@@ -5,7 +5,7 @@
             class="relative flex flex-col items-start justify-between leading-7 text-gray-900 border-0 border-gray-200 md:flex-row md:items-center">
             <a href="/"
                 class="left-0 flex items-center justify-center order-first w-full mb-4 font-medium text-gray-900 md:justify-start md:absolute md:w-64 lg:order-none lg:w-auto title-font lg:items-center lg:justify-center md:mb-0">
-                <img class="rounded-sm shadow-sm w-14 logo " src="{{ asset('images/logo.jpg') }}" alt="bmywa logo"
+                <img class="rounded-sm shadow-sm w-14 logo " src="{{ siteLogo('withBg') }}" alt="bmywa logo"
                     srcset="">
             </a>
             <ul class="box-border flex mx-auto my-6 md:space-x-4 lg:space-x-6">
