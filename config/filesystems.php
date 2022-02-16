@@ -42,6 +42,11 @@ return [
             'visibility' => 'public',
         ],
 
+        'bkup' => [
+            'driver' => 'local',
+            'root' => storage_path('backups'),
+        ],
+
         'judge' => [
             'driver' => 'local',
             'root' => storage_path('app/images/judges'),
