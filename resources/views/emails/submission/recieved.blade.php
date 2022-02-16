@@ -19,7 +19,11 @@ Please click the button below to preview your submssion.
 Preview Submission 
 @endcomponent
 
-Wishing you all the best.
+We wish you all the best and kindly follow us on social media to get regular updates.
+
+- Instagram: [@bmywa](https://www.instagram.com/bmywa)
+- Twitter: [@bmywa](https://www.twitter.com/bmywa)
+- Facebook- [@bmyoungwriters](https://www.facebook.com/bmyoungwriters)
 
 Kind regards,<br>
 <strong>{{ config('app.name') }}</strong>

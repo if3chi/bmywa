@@ -65,7 +65,7 @@
                             class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                             <th class="px-4 py-3">Contestant</th>
                             <th class="px-4 py-3">Contact</th>
-                            <th class="px-4 py-3">Country</th>
+                            <th class="px-4 py-3 text-center">Country/School</th>
                             <th class="px-4 py-3">Category</th>
                             <th class="px-4 py-3">Date Submitted</th>
                         </tr>
@@ -91,11 +91,14 @@
                                         </p>
                                     </div>
                                 </td>
-                                <td class="px-4 py-3 text-xs">
-                                    <span
-                                        class="{{ $entry->country_color }} px-2 py-1 font-semibold leading-tight uppercase rounded-full">
-                                        {{ $entry->submission_country }}
-                                    </span>
+                                <td class="px-4 py-3 text-xs max-w-xs overflow-hidden">
+                                    <div class="">
+                                        <p
+                                            class="{{ $entry->country_color }} w-20 mx-auto px-2 py-1 mb-1 font-semibold leading-tight uppercase rounded-full text-center">
+                                            {{ $entry->submission_country }}
+                                        </p>
+                                        <p class="font-semibold w-56 trucate">{{ $entry->school }}</p>
+                                    </div>
                                 </td>
                                 <td class="px-4 py-3 text-xs">
                                     <span

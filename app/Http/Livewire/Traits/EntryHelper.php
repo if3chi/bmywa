@@ -26,6 +26,7 @@ trait EntryHelper
     protected $validationAttributes = [
         'editing.firstname' => 'first name',
         'editing.lastname' => 'last name',
+        'editing.school' => 'school name',
         'editing.email' => 'email address',
         'editing.entry_fee' => 'refrence number',
         'editing.entry_type' => 'entry type',
@@ -39,6 +40,7 @@ trait EntryHelper
             'editing.lastname' => 'required|min:2|max:52|string',
             'editing.email' => 'required|email',
             'editing.phone' => 'required|phone:AUTO,GH,NG',
+            'editing.school' => 'nullable|max:256|string',
             'editing.country' => [
                 'required',
                 Rule::in(array_keys(entryCountry()))

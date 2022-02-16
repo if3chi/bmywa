@@ -12,7 +12,7 @@ class Entry extends Model
 
     protected $fillable = [
         'firstname', 'lastname', 'email',
-        'phone', 'entry_fee', 'age',
+        'phone', 'entry_fee', 'age', 'school',
         'entry_type', 'title', 'award_entry', 'country'
     ];
 
@@ -54,6 +54,11 @@ class Entry extends Model
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = ucwords($value);
+    }
+    
+    public function setSchoolAttribute($value)
+    {
+        $this->attributes['school'] = ucwords($value);
     }
 
     public function getReadingTimeAttribute()
