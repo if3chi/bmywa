@@ -27,7 +27,8 @@ class SubmissionRecieved extends Mailable implements ShouldQueue
             'salute' => $salute[array_rand($salute)],
             'lastname' => $contestant->lastname,
             'entryTempUrl' => $this->getTempUrl($contestant->id),
-            'closeDate' => entrySchedule('closeDate'),
+            // REVIEW: Consider proper implementation of date extension
+            'closeDate' => entrySchedule(closeDateIsExtended() ? 'xCloseDate' : 'closeDate'),
             'shortlistDate' => entrySchedule('shortlistDate'),
             'entryType' => entryCategories()[$contestant->entry_type][0],
         ];
