@@ -72,6 +72,8 @@
                     @endfor
                 </x-input.select>
 
+                <x-input.group wire:model.lazy="editing.school" type="text" :error="$errors->first('editing.school')"
+                    placeholder="The Best Academy Int." id="school" label="School Name" />
 
                 <x-input.select-country wire:model.lazy="editing.country" id="country" label="Country"
                     :country="$editing->country" :error="$errors->first('editing.country')">
