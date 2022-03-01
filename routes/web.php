@@ -5,9 +5,11 @@ use App\Http\Livewire\Admin\Dashboard;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\FrontController;
 use App\Http\Livewire\Admin\GalleryManager;
+use App\Http\Livewire\Admin\UsersComponent;
 use App\Http\Livewire\Admin\JudgesComponent;
 use App\Http\Livewire\Admin\SubmissionsList;
 use App\Http\Livewire\Admin\SponsorsComponent;
+use App\Http\Livewire\Front\CreateUserAccountComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,9 @@ Route::middleware('visitor')->group(function () {
                 ->middleware('signed');
         });
 
+    Route::get('/create-your-account/{tempUser}', CreateUserAccountComponent::class)
+        ->name('create.account')->middleware('signed');
+
     Route::view('/creative-writing-workshop-101', 'creative-writing')->name('creative-writing');
 
     // TODO: News
@@ -52,6 +57,7 @@ Route::group(
         Route::get('/judges', JudgesComponent::class)->name('judges.index');
         Route::get('/sponsors', SponsorsComponent::class)->name('sponsors.index');
         Route::get('/submissions', SubmissionsList::class)->name('submissions.index');
+        Route::get('/users', UsersComponent::class)->name('users.index');
     }
 );
 

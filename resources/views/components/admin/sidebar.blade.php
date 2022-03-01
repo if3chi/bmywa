@@ -37,6 +37,12 @@
                     <span class="ml-4">{{ __('Sponsors') }}</span>
                 </x-sidebar-link>
             </li>
+            <li class="relative px-6 py-3">
+                <x-sidebar-link href="{{ route('users.index') }}" url='admin/users'>
+                    <x-icon.users />
+                    <span class="ml-4">{{ __('Users') }}</span>
+                </x-sidebar-link>
+            </li>
         </ul>
     </div>
 </aside>
@@ -90,6 +96,12 @@
                 <x-sidebar-link href="{{ route('sponsors.index') }}" url='admin/sponsors'>
                     <x-icon.trademark />
                     <span class="ml-4">{{ __('Sponsors') }}</span>
+                </x-sidebar-link>
+            </li>
+            <li class="relative px-6 py-3">
+                <x-sidebar-link href="{{ route('users.index') }}" url='admin/users'>
+                    <x-icon.users />
+                    <span class="ml-4">{{ __('Users') }}</span>
                 </x-sidebar-link>
             </li>
         </ul>

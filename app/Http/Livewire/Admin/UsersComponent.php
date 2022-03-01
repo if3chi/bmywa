@@ -1,0 +1,121 @@
+<?php
+
+namespace App\Http\Livewire\Admin;
+
+use App\Models\Role;
+use App\Models\User;
+use Livewire\Component;
+use App\Models\TempUser;
+use App\Utilities\Constant;
+use Livewire\WithPagination;
+use App\Mail\SendTempUserEmail;
+use App\Actions\User\CreateTempUser;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Livewire\Traits\WithUtilities;
+
+class UsersComponent extends Component
+{
+    use WithPagination, WithUtilities;
+
+    public $selectedRecord;
+    public $editing;
+    public $userRole = '';
+
+    protected function rules()
+    {
+        return [
+            'editing.name' => 'nullable|string',
+            'editing.email' => 'required|email',
+            'userRole' => 'required|exists:roles,id'
+        ];
+    }
+
+    public function mount()
+    {
+        $this->selectedRecord = User::make();
+    }
+
+    public function getForm($type, User $user)
+    {
+        $this->resetValidation();
+        $this->reset('userRole');
+
+        if ($type === Constant::EDIT) {
+            $this->formTitle = 'Edit User';
+            $this->editing = $user;
+            foreach ($user->roles as $role) {
+                $this->userRole = strval($role->id);
+            }
+        } else {
+            $this->formTitle = 'Add a User';
+            $this->editing = TempUser::make();
+        }
+
+        $this->openModal('form');
+    }
+
+    public function save()
+    {
+        $data = $this->validate();
+
+        $validatedData = array_merge(
+            $data['editing'],
+            ['role' => $data['userRole']]
+        );
+
+        if (str_contains($this->formTitle, Constant::ADD)) {
+            $tempUserEmail = (new CreateTempUser)($validatedData);
+            Mail::to($tempUserEmail->email)
+                ->queue(new SendTempUserEmail($tempUserEmail->id));
+        } else {
+            $user = $this->editing;
+            $user->update(
+                [
+                    'name' => ucwords($validatedData['name']),
+                    'email' => $validatedData['email'],
+                ]
+            );
+
+            $user->roles()->sync($validatedData['role']);
+        }
+
+        $this->notify([
+            'title' => str_contains($this->formTitle, Constant::EDIT)
+                ? 'User\'s Info Updated Successfully'
+                : 'Temporary User Account Created Successfully',
+            'body' => $this->editing->name
+        ]);
+
+        $this->hideModal('form');
+    }
+
+    public function confirmDelete(User $user)
+    {
+        $this->getDelModal("Delete User's Data", $user);
+    }
+
+    public function destroy()
+    {
+        // TODO: Fix Deleting
+        // $user = $this->selectedRecord->delete();
+        // // $user->roles()->detach($roleId);
+
+        // dd($user);
+
+        // $this->notify([
+        //     'title' => 'Deleted Successfully',
+        //     'body' => $this->selectedRecord->name
+        // ]);
+
+        $this->hideModal('del');
+    }
+
+    public function render()
+    {
+        return view('livewire.admin.users-component', [
+            'users' => User::with('roles')->paginate(5),
+            'roles' => Role::pluck('name', 'id')
+        ])
+            ->layout('layouts.admin');
+    }
+}
