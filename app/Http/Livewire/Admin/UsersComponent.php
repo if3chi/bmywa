@@ -9,6 +9,7 @@ use App\Models\TempUser;
 use App\Utilities\Constant;
 use Livewire\WithPagination;
 use App\Mail\SendTempUserEmail;
+use Illuminate\Support\Facades\DB;
 use App\Actions\User\CreateTempUser;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Livewire\Traits\WithUtilities;
@@ -89,21 +90,26 @@ class UsersComponent extends Component
 
     public function confirmDelete(User $user)
     {
-        $this->getDelModal("Delete User's Data", $user);
+        $this->getDelModal("Delete User's Account", $user);
     }
 
     public function destroy()
     {
-        // TODO: Fix Deleting
-        // $user = $this->selectedRecord->delete();
-        // // $user->roles()->detach($roleId);
-
-        // dd($user);
-
-        // $this->notify([
-        //     'title' => 'Deleted Successfully',
-        //     'body' => $this->selectedRecord->name
-        // ]);
+        if (User::count() > 1 && $this->selectedRecord->id !== 1) {
+            DB::transaction(function () {
+                $this->selectedRecord->roles()->detach($this->selectedRecord->abilities);
+                $this->selectedRecord->delete();
+            });
+            $this->notify([
+                'title' => 'Deleted Successfully',
+                'body' => $this->selectedRecord->name
+            ]);
+        } else {
+            $this->notify([
+                'title' => 'This Account Cannot Deleted ',
+                'body' => $this->selectedRecord->name
+            ]);
+        }
 
         $this->hideModal('del');
     }
