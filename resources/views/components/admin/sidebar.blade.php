@@ -11,32 +11,42 @@
                 </x-sidebar-link>
             </li>
         </ul>
-        <div class="border-2 dark:border-gray-600  ml-2 mr-4 rounded-lg"></div>
-        <ul>
-            <li class="relative px-6 py-3">
-                <x-sidebar-link href="{{ route('submissions.index') }}" url='admin/submissions'>
-                    <x-icon.article class="w-6 h-7" />
-                    <span class="ml-4">{{ __('Submissions') }}</span>
-                </x-sidebar-link>
-            </li>
-            <li class="relative px-6 py-3">
-                <x-sidebar-link href="{{ route('gallery.index') }}" url='admin/gallery'>
-                    <x-icon.camera />
-                    <span class="ml-4">{{ __('Gallery') }}</span>
-                </x-sidebar-link>
-            </li>
-            <li class="relative px-6 py-3">
-                <x-sidebar-link href="{{ route('judges.index') }}" url='admin/judges'>
-                    <x-icon.users />
-                    <span class="ml-4">{{ __('Judges') }}</span>
-                </x-sidebar-link>
-            </li>
-            <li class="relative px-6 py-3">
-                <x-sidebar-link href="{{ route('sponsors.index') }}" url='admin/sponsors'>
-                    <x-icon.trademark />
-                    <span class="ml-4">{{ __('Sponsors') }}</span>
-                </x-sidebar-link>
-            </li>
+        <div class="border-2 dark:border-gray-600 my-1 ml-2 mr-4 rounded-lg"></div>
+        <ul class="mt-4">
+            @can(\App\Utilities\Constant::CURATE_ENTRY)
+                <li class="relative px-6 py-3">
+                    <x-sidebar-link href="{{ route('submissions.index') }}" url='admin/submissions'>
+                        <x-icon.article class="w-6 h-7" />
+                        <span class="ml-4">{{ __('Submissions') }}</span>
+                    </x-sidebar-link>
+                </li>
+            @endcan
+            @can(\App\Utilities\Constant::MANAGE_SITE)
+                <li class="relative px-6 py-3">
+                    <x-sidebar-link href="{{ route('gallery.index') }}" url='admin/manage-gallery'>
+                        <x-icon.camera />
+                        <span class="ml-4">{{ __('Gallery') }}</span>
+                    </x-sidebar-link>
+                </li>
+                <li class="relative px-6 py-3">
+                    <x-sidebar-link href="{{ route('judges.index') }}" url='admin/judges'>
+                        <x-icon.users />
+                        <span class="ml-4">{{ __('Judges') }}</span>
+                    </x-sidebar-link>
+                </li>
+                <li class="relative px-6 py-3">
+                    <x-sidebar-link href="{{ route('sponsors.index') }}" url='admin/sponsors'>
+                        <x-icon.trademark />
+                        <span class="ml-4">{{ __('Sponsors') }}</span>
+                    </x-sidebar-link>
+                </li>
+                <li class="relative px-6 py-3">
+                    <x-sidebar-link href="{{ route('users.index') }}" url='admin/users'>
+                        <x-icon.users />
+                        <span class="ml-4">{{ __('Users') }}</span>
+                    </x-sidebar-link>
+                </li>
+            @endcan
         </ul>
     </div>
 </aside>
@@ -66,32 +76,42 @@
                 </x-sidebar-link>
             </li>
         </ul>
-        <div class="border-2 dark:border-gray-600 ml-2 mr-4 rounded-lg"></div>
-        <ul>
-            <li class="relative px-6 py-3">
-                <x-sidebar-link href="{{ route('submissions.index') }}" url='admin/submissions'>
-                    <x-icon.article class="w-6 h-7" />
-                    <span class="ml-4">{{ __('Submissions') }}</span>
-                </x-sidebar-link>
-            </li>
-            <li class="relative px-6 py-3">
-                <x-sidebar-link href="{{ route('gallery.index') }}" url='admin/gallery'>
-                    <x-icon.camera />
-                    <span class="ml-4">{{ __('Gallery') }}</span>
-                </x-sidebar-link>
-            </li>
-            <li class="relative px-6 py-3">
-                <x-sidebar-link href="{{ route('judges.index') }}" url='admin/judges'>
-                    <x-icon.users />
-                    <span class="ml-4">{{ __('Judges') }}</span>
-                </x-sidebar-link>
-            </li>
-            <li class="relative px-6 py-3">
-                <x-sidebar-link href="{{ route('sponsors.index') }}" url='admin/sponsors'>
-                    <x-icon.trademark />
-                    <span class="ml-4">{{ __('Sponsors') }}</span>
-                </x-sidebar-link>
-            </li>
+        <div class="border-2 dark:border-gray-600 my-1 ml-2 mr-4 rounded-lg"></div>
+        <ul class="mt-4">
+            @can(\App\Utilities\Constant::CURATE_ENTRY)
+                <li class="relative px-6 py-3">
+                    <x-sidebar-link href="{{ route('submissions.index') }}" url='admin/submissions'>
+                        <x-icon.article class="w-6 h-7" />
+                        <span class="ml-4">{{ __('Submissions') }}</span>
+                    </x-sidebar-link>
+                </li>
+            @endcan
+            @can(\App\Utilities\Constant::MANAGE_SITE)
+                <li class="relative px-6 py-3">
+                    <x-sidebar-link href="{{ route('gallery.index') }}" url='admin/manage-gallery'>
+                        <x-icon.camera />
+                        <span class="ml-4">{{ __('Gallery') }}</span>
+                    </x-sidebar-link>
+                </li>
+                <li class="relative px-6 py-3">
+                    <x-sidebar-link href="{{ route('judges.index') }}" url='admin/judges'>
+                        <x-icon.users />
+                        <span class="ml-4">{{ __('Judges') }}</span>
+                    </x-sidebar-link>
+                </li>
+                <li class="relative px-6 py-3">
+                    <x-sidebar-link href="{{ route('sponsors.index') }}" url='admin/sponsors'>
+                        <x-icon.trademark />
+                        <span class="ml-4">{{ __('Sponsors') }}</span>
+                    </x-sidebar-link>
+                </li>
+                <li class="relative px-6 py-3">
+                    <x-sidebar-link href="{{ route('users.index') }}" url='admin/users'>
+                        <x-icon.users />
+                        <span class="ml-4">{{ __('Users') }}</span>
+                    </x-sidebar-link>
+                </li>
+            @endcan
         </ul>
     </div>
 </aside>

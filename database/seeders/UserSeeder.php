@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UserSeeder extends Seeder
 {
@@ -15,20 +17,28 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'name' => 'Jaspar Ifechi',
-            'email' => 'admin@bmywa.com',
-            'email_verified_at' => now(),
-            'password' => bcrypt('password'),
-            'remember_token' => Str::random(10)
-        ]);
-        
-        User::create([
-            'name' => 'App Demo',
-            'email' => 'demo@bmywa.com',
-            'email_verified_at' => now(),
-            'password' => bcrypt('demopasswd'),
-            'remember_token' => Str::random(10)
-        ]);
+        DB::transaction(function () {
+            $user = User::create([
+                'name' => 'Jaspar Ifechi',
+                'email' => 'admin@bmywa.com',
+                'email_verified_at' => now(),
+                'password' => bcrypt('password'),
+                'remember_token' => Str::random(10)
+            ]);
+
+            $user->roles()->attach(Role::first()->id);
+        });
+
+        DB::transaction(function () {
+            $user = User::create([
+                'name' => 'Entry Curator',
+                'email' => 'curator@bmywa.com',
+                'email_verified_at' => now(),
+                'password' => bcrypt('curatorpasswd'),
+                'remember_token' => Str::random(10)
+            ]);
+
+            $user->roles()->attach([3]);
+        });
     }
 }
