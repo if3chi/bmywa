@@ -43,9 +43,7 @@ class UsersComponent extends Component
         if ($type === Constant::EDIT) {
             $this->formTitle = 'Edit User';
             $this->editing = $user;
-            foreach ($user->roles as $role) {
-                $this->userRole = strval($role->id);
-            }
+            $this->userRole = $user->abilities;
         } else {
             $this->formTitle = 'Add a User';
             $this->editing = TempUser::make();

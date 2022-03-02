@@ -3,8 +3,7 @@
         {{ __('Submissions') }}
     </x-slot>
     <div class="container p-2 mx-auto grid">
-        <div
-            class="flex flex-row flex-auto bg-white dark:bg-gray-800 rounded-t-xl border-l dark:border-gray-600 shadow-xl"
+        <div class="flex flex-row flex-auto bg-white dark:bg-gray-800 rounded-t-xl border-l dark:border-gray-600 shadow-xl"
             style="max-height: 87vh;">
             <div class="flex flex-col w-2/6">
                 <div class="flex-none h-24 bg-grey-200 border-b-2 -mt-4 p-4 border-gray-200 dark:border-gray-700">
@@ -76,11 +75,22 @@
                     </div>
                 </div>
 
-                <div class="flex-auto overflow-y-auto p-6 dark:text-gray-100"
+                <div class="flex-auto overflow-y-auto p-4 dark:text-gray-100"
                     style="background-image: url(https://static.intercomassets.com/ember/assets/images/messenger-backgrounds/background-1-99a36524645be823aabcd0e673cb47f8.png)">
-                    <div class="text-justify text-base" wire:key="{{ $activeEntry }}">
+                    <div class="text-justify text-base p-2" wire:key="{{ $activeEntry }}">
                         @if ($readingView)
-                            {!!  html_entity_decode($readingView->award_entry) !!}
+                            <div class="mb-4">
+                                {!! html_entity_decode($readingView->award_entry) !!}
+                            </div>
+                            @can(\App\Utilities\Constant::SCORE_ENTRY)
+                                <div class="p-4 mt-1 item-center">
+                                    <button wire:click.prevent="scoreEntry" type="button"
+                                        class="flex items-center cursor-pointer space-x-2 mx-auto justify-between px-4 py-2 text-md font-medium leading-5 text-white transition-colors duration-150 bg-yellow-400 border border-transparent rounded-lg active:bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:shadow-outline-yellow">
+                                        <x-icon.check-circle class="text-white w-6 h-6" />
+                                        <span>Score Entry</span>
+                                    </button>
+                                </div>
+                            @endcan
                         @else
                             <h2
                                 class="text-center text-base my-24 font-semibold tracking-wide text-gray-700 dark:text-gray-200">
@@ -92,4 +102,27 @@
             </div>
         </div>
     </div>
+    <x-modal.form wire:model="showScoreModal">
+        <x-slot name="title">{{ $formTitle }}</x-slot>
+
+        <x-slot name="content">
+            <div class="mb-4 bg-white rounded-lg dark:bg-gray-800 space-y-1">
+                <x-form.input wire:model="entryScore" :error="$errors->first('entryScore')" type="text"
+                    placeholder="Enter a Score" label="Score">
+                    <x-icon.check-square class="w-4 h-4 mr-3" />
+                </x-form.input>
+            </div>
+        </x-slot>
+
+        <x-slot name="footer">
+            <button wire:click="$set('showScoreModal', false)"
+                class="w-full px-5 py-3 text-sm font-medium leading-5 dark:text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 sm:px-4 sm:py-2 sm:w-auto active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray">
+                Cancel
+            </button>
+            <button wire:click="setScore"
+                class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-yellow-400 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:shadow-outline-yellow">
+                Save
+            </button>
+        </x-slot>
+    </x-modal.form>
 </div>

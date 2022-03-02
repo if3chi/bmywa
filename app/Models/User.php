@@ -51,4 +51,15 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+
+    public function getAbilitiesAttribute(): array
+    {
+        $roles = [];
+
+        foreach ($this->roles as $role) {
+            array_push($roles, $role->id);
+        }
+
+        return $roles;
+    }
 }
