@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Album;
 use Carbon\Carbon;
 use App\Models\Faq;
+use App\Models\Album;
 use App\Models\Judge;
 use App\Models\Sponsor;
 use Illuminate\Support\Facades\Cache;
@@ -192,5 +192,16 @@ if (!function_exists('textNl2br')) {
     function textNl2br($text): string
     {
         return trim(strtr($text, array("\r\n" => '<br />', "\r" => '<br />', "\n" => '<br />')), '<br />');
+    }
+}
+
+if (!function_exists('getFormattedUrl')) {
+    function getFormattedUrl(string $name = '')
+    {
+        return str_replace(
+            env('APP_ENV') !== 'local' ? "https://" : "http://",
+            "",
+            $name ? route($name) : url($name)
+        );
     }
 }

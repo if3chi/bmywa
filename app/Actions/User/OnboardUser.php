@@ -7,7 +7,6 @@ use App\Models\TempUser;
 use App\Mail\NewUserOnboarded;
 use Illuminate\Support\Facades\DB;
 use App\Mail\RegistrationSuccessful;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
@@ -29,8 +28,6 @@ class OnboardUser
             TempUser::find($data['id'])->delete();
 
             event(new Registered($user));
-
-            Auth::login($user);
 
             // TODO: Use Notifications and events
             Mail::to($user->email)->queue(new RegistrationSuccessful($user->name));
