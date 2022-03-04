@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
                 'name' => 'Jaspar Ifechi',
                 'email' => 'admin@bmywa.com',
                 'email_verified_at' => now(),
-                'password' => bcrypt('password'),
+                'password' => bcrypt('admin.passwd'),
                 'remember_token' => Str::random(10)
             ]);
 
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
                 'name' => 'Entry Curator',
                 'email' => 'curator@bmywa.com',
                 'email_verified_at' => now(),
-                'password' => bcrypt('curatorpasswd'),
+                'password' => bcrypt('curator.passwd'),
                 'remember_token' => Str::random(10)
             ]);
 

@@ -6,51 +6,23 @@
         <div class="flex flex-row flex-auto bg-white dark:bg-gray-800 rounded-t-xl border-l dark:border-gray-600 shadow-xl"
             style="max-height: 87vh;">
             <div class="flex flex-col w-2/6">
-                <div class="flex-none h-24 bg-grey-200 border-b-2 -mt-4 p-4 border-gray-200 dark:border-gray-700">
+                <div
+                    class="flex-none h-24 bg-grey-200 border-b-2 -mt-4 p-2 border-gray-200 dark:border-gray-700 space-y-3">
                     <h2 class="text-xl ml-1 mt-2 font-semibold tracking-wide text-gray-700 dark:text-gray-200">
                         {{ __('Submissions List') }}
                     </h2>
-                </div>
-
-                <div class="flex-auto overflow-y-auto">
-                    <div>
-                        @forelse ($entries as $entry)
-                            <a href="#" class="block border-b" wire:click="openEntry({{ $entry->id }})">
-                                <div
-                                    class="border-l-2 {{ $activeEntry == $entry->id ? 'border-yellow-400 bg-yellow-100' : 'bg-yellow-50' }}  hover:bg-yellow-200 p-3 space-y-1">
-                                    <div class="flex flex-row items-center space-x-2 text-yellow-800">
-                                        <strong class="flex-grow text-sm">{{ $entry->contestant_name }}</strong>
-                                        <div class="flex space-x-1">
-                                            <div class="text-sm font-medium text-yellow-800">{{ $entry->age }}yrs
-                                            </div>
-                                            <div
-                                                class="text-sm {{ $entry->country == 'ng' ? 'text-green-800 bg-green-100' : 'text-yellow-800 bg-yellow-300' }}  p-1 -m-1 rounded-full">
-                                                {{ strtoupper($entry->country) }}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex flex-row items-center space-x-1 text-yellow-600">
-                                        <div class="flex-grow truncate text-xs font-medium tracking-wide">
-                                            {{ $entry->title }} </div>
-                                        <div class="truncate text-xs font-medium tracking-wide">{{ $entry->category }}
-                                        </div>
-                                    </div>
-
-                                    <div class="flex flex-row items-center space-x-1 text-yellow-600">
-                                        <div class="flex-grow truncate text-xs">{{ $entry->truncated }}</div>
-                                    </div>
-                                </div>
-                            </a>
-                        @empty
-                            <h2
-                                class="text-center text-xl my-10 font-semibold tracking-wide text-gray-700 dark:text-gray-200">
-                                Nothing Here...
-                            </h2>
-                        @endforelse
+                    <div class="flex justify-between text-gray-700 dark:text-gray-200">
+                        @can(\App\Utilities\Constant::SCORE_ENTRY)
+                            <button wire:click.prevent="getScoredList" type="button"
+                                class="flex items-center cursor-pointer space-x-2 justify-between px-1 py-0.5 text-md font-medium leading-5 text-white transition-colors duration-150 bg-green-400 border border-transparent rounded-lg active:bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline-green">
+                                <x-icon.menu class="text-white w-6 h-6" />
+                                <span>Scored List</span>
+                            </button>
+                        @endcan
                     </div>
-
                 </div>
+
+                <x-entry.list :entries="$entries" :activeEntry="$activeEntry" />
             </div>
 
             <div class="w-4/6 border-l-2 border-gray-200 dark:border-gray-700 flex flex-col">
@@ -102,6 +74,7 @@
             </div>
         </div>
     </div>
+
     <x-modal.form wire:model="showScoreModal">
         <x-slot name="title">{{ $formTitle }}</x-slot>
 
@@ -125,4 +98,22 @@
             </button>
         </x-slot>
     </x-modal.form>
+
+    @can(\App\Utilities\Constant::SCORE_ENTRY)
+        <x-modal.form wire:model="showScoredList">
+            <x-slot name="title">{{ $formTitle }}</x-slot>
+
+            <x-slot name="content">
+                <div class="h-72 rounded-md overflow-y-auto">
+                    <x-entry.list :entries="$scoredList" :activeEntry="$activeEntry" />
+            </x-slot>
+
+            <x-slot name="footer">
+                <button wire:click="$set('showScoredList', false)"
+                    class="w-full px-5 py-3 text-sm font-medium leading-5 dark:text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 sm:px-4 sm:py-2 sm:w-auto active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray">
+                    Close
+                </button>
+            </x-slot>
+        </x-modal.form>
+    @endcan
 </div>

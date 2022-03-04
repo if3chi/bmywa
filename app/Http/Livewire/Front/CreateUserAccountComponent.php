@@ -7,8 +7,6 @@ use Livewire\Component;
 use App\Models\TempUser;
 use App\Actions\User\OnboardUser;
 use App\Http\Livewire\Traits\WithUserValidation;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Validation\Rules\Password;
 
 class CreateUserAccountComponent extends Component
 {
@@ -38,7 +36,8 @@ class CreateUserAccountComponent extends Component
             $this->tempData
         ));
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(route('login'))
+            ->with('status', "Registration Successful, login to your Dashboard!");
     }
 
     public function render()
