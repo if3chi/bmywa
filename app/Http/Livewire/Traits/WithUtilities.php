@@ -50,7 +50,7 @@ trait WithUtilities
 
             $this->delPhoto($oldImage, $diskName);
 
-            $ext = 'webp';
+            $ext = 'png'; // TODO: use webp
 
             $imageFile = (string) Image::make($imageFile)
                 ->resize($width, $height, function ($constraint) {

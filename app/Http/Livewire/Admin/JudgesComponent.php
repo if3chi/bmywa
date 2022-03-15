@@ -83,9 +83,9 @@ class JudgesComponent extends Component
         $imageName = $this->processImage(
             $this->editing->avatar,
             $this->judgePhoto,
-            $this->diskName,
             512,
-            512
+            512,
+            $this->diskName
         );
 
 
