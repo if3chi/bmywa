@@ -47,7 +47,7 @@
 
     <script src="{{ asset('js/moment.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="{{ asset('admin/js/init-alpine.js') }}"></script>
     <script src="{{ asset('admin/js/focus-trap.js') }}" defer></script>
 

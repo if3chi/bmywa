@@ -103,16 +103,17 @@ if (!function_exists('loadSponsors')) {
     }
 }
 
-if (!function_exists('getAlbums')) {
+if (!function_exists('getAlbumList')) {
 
-    function getAlbums()
+    function getAlbumList(bool $filterOn = false)
     {
-
-        return Cache::rememberForever('albums', function () {
-            return Album::select('id', 'name', 'year')
-                ->orderBy('year', 'desc')
-                ->get();
-        });
+        return Album::query()
+            ->select('id', 'name', 'year')
+            ->when($filterOn, function ($query) {
+                $query->whereHas('photos');
+            })
+            ->orderBy('year', 'desc')
+            ->get();
     }
 }
 

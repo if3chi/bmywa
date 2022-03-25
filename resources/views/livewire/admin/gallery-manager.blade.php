@@ -16,9 +16,11 @@
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     href="" wire:click.prevent="getForm('album', 'add')" @click="open = !open" x-cloak>Create New
                     Album</a>
-                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                    href="" wire:click.prevent="getForm('photos', 'add')" @click="open = !open" x-cloak>Add New
-                    Photos</a>
+                @if (count($albums))
+                    <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                        href="" wire:click.prevent="getForm('photos', 'add')" @click="open = !open" x-cloak>Add New
+                        Photos</a>
+                @endif
             </x-dropdown-btn>
         </div>
 
@@ -211,8 +213,9 @@
                         <x-form.select wire:model.lazy="editingPhoto.album_id"
                             :error="$errors->first('editingPhoto.album_id')" type="text" name="album" label="Album">
                             <option class="text-base" value="" disabled>Select Photo(s) Album</option>
-                            @foreach (getAlbums() as $album)
-                                <option class="text-base" value="{{ $album->id }}">{{ "$album->name ($album->year)" }}
+                            @foreach (getAlbumList() as $album)
+                                <option class="text-base" value="{{ $album->id }}">
+                                    {{ "$album->name ($album->year)" }}
                                 </option>
                             @endforeach
                         </x-form.select>
