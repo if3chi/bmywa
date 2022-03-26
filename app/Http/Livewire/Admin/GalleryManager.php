@@ -8,6 +8,8 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Livewire\Traits\WithUtilities;
 
 class GalleryManager extends Component
@@ -16,6 +18,7 @@ class GalleryManager extends Component
     public $mode;
     public $country;
     public $images = [];
+    public $editAlbumYear;
     public Album $editingAlbum;
     public Photo $editingPhoto;
 
@@ -24,7 +27,11 @@ class GalleryManager extends Component
         $albumRules = [
             'editingAlbum.name' => 'required|string|max:140',
             'editingAlbum.description' => 'nullable|string|max:255',
-            'editingAlbum.year' => 'required|max:4',
+            'editingAlbum.year' => [
+                'required', 'max:4',
+                Rule::unique('albums', 'year')
+                    ->ignore($this->editingAlbum->id)
+            ],
         ];
 
         $photoRules =  [
@@ -56,6 +63,7 @@ class GalleryManager extends Component
         if ($mode == 'album') {
             if ($type == 'edit') {
                 $this->editingAlbum = Album::findOrFail($model);
+                $this->editAlbumYear = $this->editingAlbum->year;
                 $this->formTitle = "Edit Album {$this->editingAlbum->name}";
             } else {
                 $this->editingAlbum = $this->makeBlankAlbum();
@@ -77,10 +85,21 @@ class GalleryManager extends Component
         $validatedData = $this->validate();
 
         if ($this->checkMode()) {
-            $this->editingAlbum->updateOrCreate(
-                ['id' => $this->editingAlbum->id],
-                $validatedData['editingAlbum']
-            );
+            DB::transaction(function () use ($validatedData) {
+                $oldAlbumYear = $this->editAlbumYear;
+                $album = $this->editingAlbum->updateOrCreate(
+                    ['id' => $this->editingAlbum->id],
+                    $validatedData['editingAlbum']
+                );
+
+                if (str_contains($this->formTitle, 'Edit Album') && $oldAlbumYear !== $album->year) {
+                    rename(
+                        Storage::disk('gallery')->path($oldAlbumYear),
+                        Storage::disk('gallery')->path($album->year)
+                    );
+                }
+            });
+
 
             $this->notify([
                 'title' => str_contains($this->formTitle, 'Edit')
