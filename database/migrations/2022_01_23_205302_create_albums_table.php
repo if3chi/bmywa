@@ -18,7 +18,7 @@ class CreateAlbumsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('cover_image')->nullable();
-            $table->year('year');
+            $table->year('year')->unique();
             $table->timestamps();
         });
     }

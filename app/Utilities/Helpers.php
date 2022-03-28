@@ -7,6 +7,16 @@ use App\Models\Judge;
 use App\Models\Sponsor;
 use Illuminate\Support\Facades\Cache;
 
+
+if (!function_exists('clear_cache')) {
+    function clear_cache(...$keys): void
+    {
+        foreach (collect($keys)->flatten() as $key) {
+            Cache::forget($key);
+        }
+    }
+}
+
 if (!function_exists('readingTime')) {
     function readingTime(string $words = '', int $wpm = 130)
     {
@@ -84,8 +94,9 @@ if (!function_exists('loadJudges')) {
 
     function loadJudges()
     {
-        return Cache::rememberForever('judges', function () {
+        return Cache::remember('judges', now()->endOfMonth()->subSeconds(), function () {
             return Judge::select('name', 'avatar', 'profession', 'description', 'socials')
+                ->inRandomOrder()
                 ->get();
         });
     }
@@ -95,9 +106,10 @@ if (!function_exists('loadSponsors')) {
 
     function loadSponsors()
     {
-        return Cache::rememberForever('sponsors', function () {
+        return Cache::remember('sponsors', now()->endOfMonth()->subSeconds(), function () {
             return Sponsor::select('name', 'logo', 'web_address')
                 ->where('status', 1)
+                ->inRandomOrder()
                 ->get();
         });
     }
