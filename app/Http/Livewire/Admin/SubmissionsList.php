@@ -39,18 +39,19 @@ class SubmissionsList extends Component
     public function scoreEntry()
     {
         $this->authorize(Constant::SCORE_ENTRY);
-        $this->getScoreForm('Score:', 'setEntryScore');
+        $this->getScoreForm('Score:', 'setEntryScore', $this->readingView->score);
     }
 
     public function judgeEntry()
     {
         $this->authorize(Constant::JUDGE_ENTRY);
-        $this->getScoreForm('Judge:', 'setJusdgeScore');
+        $this->getScoreForm('Judge:', 'setJusdgeScore', $this->readingView->judge_score);
     }
 
-    private function getScoreForm(string $title, string $method): void
+    private function getScoreForm(string $title, string $method, $score): void
     {
         $this->reset('entryScore', 'methodName');
+        $this->entryScore = $score;
         $this->methodName = $method;
         $this->formTitle = "$title {$this->readingView->contestant_name}";
 
