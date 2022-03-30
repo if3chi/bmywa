@@ -34,6 +34,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define(Constant::SCORE_ENTRY, function (User $user) {
             return 0 < count(array_intersect($user->abilities, [Role::ADMIN, Role::CURATOR]));
         });
+        Gate::define(Constant::JUDGE_ENTRY, function (User $user) {
+            return 0 < count(array_intersect($user->abilities, [Role::ADMIN, Role::JUDGE]));
+        });
         Gate::define(Constant::MANAGE_SITE, fn (User $user) => in_array(Role::ADMIN, $user->abilities));
     }
 }

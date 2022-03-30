@@ -17,6 +17,7 @@ class Constant
 
     // For Gate
     const SCORE_ENTRY = 'score_entry';
+    const JUDGE_ENTRY = 'judge_entry';
     const MANAGE_SITE = 'manage_site';
     const CURATE_ENTRY = 'curate_entry';
 

@@ -30,7 +30,7 @@ class FrontController extends Controller
 
     public function gallery()
     {
-        $photos = Photo::with('Album')->select('*')->get();
+        $photos = Photo::with('Album')->get();
         $photos = $photos->count() > 2 ? $photos->random(3) : Photo::make();
 
         return view('gallery', compact('photos'));
