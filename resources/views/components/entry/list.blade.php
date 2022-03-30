@@ -48,7 +48,6 @@
                             {{ $entry->title }} </div>
                         <div class="text-xs font-medium tracking-wide truncate">{{ $entry->category }} </div>
                     </div>
-
                     <div class="flex flex-row items-center space-x-1 text-gray-600">
                         <div class="flex-grow text-xs truncate">{{ $entry->truncated }}</div>
                     </div>
