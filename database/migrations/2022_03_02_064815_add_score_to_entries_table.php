@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('entries', function (Blueprint $table) {
-            $table->string('score')->after('award_entry')->nullable();
+            $table->integer('score')->after('award_entry')->nullable();
+            $table->integer('judge_score')->after('score')->nullable();
         });
     }
 

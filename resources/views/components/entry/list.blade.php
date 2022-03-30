@@ -24,10 +24,19 @@
                                 class="text-sm {{ $entry->country == 'ng' ? 'text-green-800 bg-green-200' : 'text-yellow-800 bg-yellow-300' }}  p-1 -m-1 rounded-full">
                                 {{ strtoupper($entry->country) }}
                             </div>
-                            @if ($entry->score)
+                            @can(\App\Utilities\Constant::SCORE_ENTRY)
+                                @if ($entry->score)
+                                    <div class="mx-1">
+                                        | <span class="bg-green-700 text-white px-0.5 rounded-sm">
+                                            {{ $entry->score }}
+                                        </span>
+                                    </div>
+                                @endif
+                            @endcan
+                            @if ($entry->judge_score)
                                 <div class="mx-1">
                                     | <span class="bg-green-700 text-white px-0.5 rounded-sm">
-                                        {{ $entry->score }}
+                                        {{ $entry->judge_score }}
                                     </span>
                                 </div>
                             @endif
@@ -35,18 +44,17 @@
                     </div>
 
                     <div class="flex flex-row items-center space-x-1 text-gray-600">
-                        <div class="flex-grow truncate text-xs font-medium tracking-wide">
+                        <div class="flex-grow text-xs font-medium tracking-wide truncate">
                             {{ $entry->title }} </div>
-                        <div class="truncate text-xs font-medium tracking-wide">{{ $entry->category }} </div>
+                        <div class="text-xs font-medium tracking-wide truncate">{{ $entry->category }} </div>
                     </div>
-
                     <div class="flex flex-row items-center space-x-1 text-gray-600">
-                        <div class="flex-grow truncate text-xs">{{ $entry->truncated }}</div>
+                        <div class="flex-grow text-xs truncate">{{ $entry->truncated }}</div>
                     </div>
                 </div>
             </a>
         @empty
-            <h2 class="text-center text-xl my-10 font-semibold tracking-wide text-gray-700 dark:text-gray-200">
+            <h2 class="my-10 text-xl font-semibold tracking-wide text-center text-gray-700 dark:text-gray-200">
                 Nothing Here...
             </h2>
         @endforelse

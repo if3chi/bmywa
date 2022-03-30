@@ -68,9 +68,9 @@ class SponsorsComponent extends Component
         $imageName = $this->processImage(
             $this->editSponsor->logo,
             $this->sponsorLogo,
-            $this->diskName,
             512,
-            512
+            512,
+            $this->diskName
         );
 
         Sponsor::updateOrCreate(

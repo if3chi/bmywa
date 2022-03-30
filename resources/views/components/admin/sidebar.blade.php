@@ -1,4 +1,4 @@
-<aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
+<aside class="z-20 flex-shrink-0 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block">
     <div class="py-4 text-gray-500 dark:text-gray-400">
         <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" target="_blank" href="/">
             {{ __('BMYWA') }}
@@ -11,16 +11,16 @@
                 </x-sidebar-link>
             </li>
         </ul>
-        <div class="border-2 dark:border-gray-600 my-1 ml-2 mr-4 rounded-lg"></div>
+        <div class="my-1 ml-2 mr-4 border-2 rounded-lg dark:border-gray-600"></div>
         <ul class="mt-4">
-            @can(\App\Utilities\Constant::CURATE_ENTRY)
+            @canany([\App\Utilities\Constant::CURATE_ENTRY, \App\Utilities\Constant::JUDGE_ENTRY])
                 <li class="relative px-6 py-3">
                     <x-sidebar-link href="{{ route('submissions.index') }}" url='admin/submissions'>
                         <x-icon.article class="w-6 h-7" />
                         <span class="ml-4">{{ __('Submissions') }}</span>
                     </x-sidebar-link>
                 </li>
-            @endcan
+            @endcanany
             @can(\App\Utilities\Constant::MANAGE_SITE)
                 <li class="relative px-6 py-3">
                     <x-sidebar-link href="{{ route('gallery.index') }}" url='admin/manage-gallery'>
@@ -76,16 +76,16 @@
                 </x-sidebar-link>
             </li>
         </ul>
-        <div class="border-2 dark:border-gray-600 my-1 ml-2 mr-4 rounded-lg"></div>
+        <div class="my-1 ml-2 mr-4 border-2 rounded-lg dark:border-gray-600"></div>
         <ul class="mt-4">
-            @can(\App\Utilities\Constant::CURATE_ENTRY)
+            @canany([\App\Utilities\Constant::CURATE_ENTRY, \App\Utilities\Constant::JUDGE_ENTRY])
                 <li class="relative px-6 py-3">
                     <x-sidebar-link href="{{ route('submissions.index') }}" url='admin/submissions'>
                         <x-icon.article class="w-6 h-7" />
                         <span class="ml-4">{{ __('Submissions') }}</span>
                     </x-sidebar-link>
                 </li>
-            @endcan
+            @endcanany
             @can(\App\Utilities\Constant::MANAGE_SITE)
                 <li class="relative px-6 py-3">
                     <x-sidebar-link href="{{ route('gallery.index') }}" url='admin/manage-gallery'>

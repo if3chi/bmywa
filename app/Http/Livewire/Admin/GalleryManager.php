@@ -5,9 +5,12 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Album;
 use App\Models\Photo;
 use Livewire\Component;
+use App\Utilities\Constant;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Livewire\Traits\WithUtilities;
 
 class GalleryManager extends Component
@@ -15,16 +18,23 @@ class GalleryManager extends Component
     use WithPagination, WithFileUploads, WithUtilities;
     public $mode;
     public $country;
+    public $diskName = 'gallery';
     public $images = [];
+    public $editAlbumYear;
     public Album $editingAlbum;
     public Photo $editingPhoto;
+    public $selectedRecord;
 
-    protected function rules()
+    protected function rules(): array
     {
         $albumRules = [
             'editingAlbum.name' => 'required|string|max:140',
             'editingAlbum.description' => 'nullable|string|max:255',
-            'editingAlbum.year' => 'required|max:4',
+            'editingAlbum.year' => [
+                'required', 'max:4',
+                Rule::unique('albums', 'year')
+                    ->ignore($this->editingAlbum->id)
+            ],
         ];
 
         $photoRules =  [
@@ -41,21 +51,22 @@ class GalleryManager extends Component
         'country' => 'Country',
     ];
 
-    public function mount()
+    public function mount(): void
     {
         $this->editingAlbum = $this->makeBlankAlbum();
         $this->editingPhoto = $this->makeBlankPhoto();
     }
 
-    public function getForm($mode, $type, $model = null)
+    public function getForm($mode, $type, $model = null): void
     {
         $this->mode = $mode;
         $this->resetValidation();
         $this->reset('images');
 
-        if ($mode == 'album') {
-            if ($type == 'edit') {
+        if ($mode == Constant::ALBUM) {
+            if ($type == Constant::EDIT) {
                 $this->editingAlbum = Album::findOrFail($model);
+                $this->editAlbumYear = $this->editingAlbum->year;
                 $this->formTitle = "Edit Album {$this->editingAlbum->name}";
             } else {
                 $this->editingAlbum = $this->makeBlankAlbum();
@@ -63,27 +74,41 @@ class GalleryManager extends Component
             }
         }
 
-        if ($mode == 'photos') {
+        if ($mode == Constant::PHOTOS) {
             $this->editingPhoto = $this->makeBlankPhoto();
-            // dd(getAlbums());
             $this->formTitle = 'Add New Photo(s)';
         }
 
         $this->openModal('form');
     }
 
-    public function save()
+    public function save(): void
     {
         $validatedData = $this->validate();
 
         if ($this->checkMode()) {
-            $this->editingAlbum->updateOrCreate(
-                ['id' => $this->editingAlbum->id],
-                $validatedData['editingAlbum']
-            );
+            DB::transaction(function () use ($validatedData) {
+                $oldAlbumYear = $this->editAlbumYear;
+                $album = $this->editingAlbum->updateOrCreate(
+                    ['id' => $this->editingAlbum->id],
+                    $validatedData['editingAlbum']
+                );
+
+                $oldFolder = Storage::disk($this->diskName)->path($oldAlbumYear);
+
+                if (
+                    str_contains($this->formTitle, 'Edit Album')
+                    && $oldAlbumYear !== $album->year
+                    && file_exists($oldFolder)
+                ) {
+                    rename($oldFolder, Storage::disk($this->diskName)->path($album->year));
+                    $this->clearPhotosCache($album->id);
+                }
+            });
+
 
             $this->notify([
-                'title' => str_contains($this->formTitle, 'Edit')
+                'title' => str_contains($this->formTitle, Constant::EDIT)
                     ? 'Album Updated Successfully'
                     : 'Album Created Successfully',
                 'body' => $this->editingAlbum->name
@@ -92,63 +117,114 @@ class GalleryManager extends Component
 
         if (!$this->checkMode()) {
 
-            // dd($validatedData);
-
-            $albumYear = Album::select('year')->where('id', $validatedData['editingPhoto']['album_id'])->value('year');
-
-            // dd($albumYear);
+            $validatedData = $validatedData['editingPhoto'];
+            $saveFolder = Album::where('id', $validatedData['album_id'])->value('year');
 
             foreach ($this->images as $image) {
 
-                $imageName = $this->processImage('', $image,  1080, 1080, 'gallery', $albumYear);
+                $imageName = $this->processImage(
+                    null,
+                    $image,
+                    1080,
+                    1080,
+                    $this->diskName,
+                    $saveFolder
+                );
 
                 $this->editingPhoto->updateOrCreate(
                     ['id' => $this->editingPhoto->id],
                     [
-                        "album_id" => $validatedData['editingPhoto']['album_id'],
-                        "country" => $validatedData['editingPhoto']['country'],
+                        "album_id" => $validatedData['album_id'],
+                        "country" => $validatedData['country'],
                         "image" => $imageName
                     ]
                 );
             }
 
+            $cacheKey = Constant::album_cache_key($validatedData['album_id']);
+            clear_cache(Constant::ALL_PHOTO);
+            if (cache()->has($cacheKey)) clear_cache($cacheKey);
+
             $this->notify([
-                'title' => str_contains($this->formTitle, 'Edit')
+                'title' => str_contains($this->formTitle, Constant::EDIT)
                     ? 'Photo(s) Updated Successfully'
-                    : 'Photo(s) Created Successfully',
-                // 'body' => $this->editingAlbum->name
+                    : 'Photo(s) Created Successfully'
             ]);
         }
 
         $this->hideModal('form');
     }
 
-    public function confirmDelete($judge)
+    // TODO: Implement deleting album
+    public function confirmDelete(string $mode, $model): void
     {
-        $this->getDelModal("Delete Judge's Data", $judge);
+        $record = '';
+        $this->mode = $mode;
+        if ($this->checkMode()) {
+            $record = Album::findOrFail($model);
+        }
+        if (!$this->checkMode()) {
+            $record = Photo::findOrFail($model);
+        }
+        $this->getDelModal(ucwords("Delete $mode"), $record);
+    }
+
+    public function destroy(): void
+    {
+        $record = $this->selectedRecord;
+
+        if ($this->checkMode()) {
+            DB::transaction(function () use ($record) {
+                Photo::destroy($record->photos);
+                $record->delete();
+                Storage::disk($this->diskName)->deleteDirectory($record->year);
+                $this->clearPhotosCache($record->id);
+
+                $this->notify([
+                    'title' => 'Deleted Successfully',
+                    'body' => "{$record->name} and all it's photos.."
+                ]);
+            });
+        }
+
+        if (!$this->checkMode()) {
+            $this->delPhoto("{$record->album->year}/{$record->image}", $this->diskName);
+            $record->delete();
+            $this->clearPhotosCache($record->album_id);
+            $this->notify([
+                'title' => 'Deleted Successfully',
+            ]);
+        }
+
+        $this->hideModal('del');
+    }
+
+    private function clearPhotosCache(int $id): void
+    {
+        clear_cache(Constant::album_cache_key($id), Constant::ALL_PHOTO);
     }
 
     public function render()
     {
         return view('livewire.admin.gallery-manager', [
-            'albums' => Album::withCount('Photos')->latest()->paginate(3),
-            'photos' => Photo::with('Album')->paginate(5),
+            'albums' => Album::withCount('Photos')->orderBy('year', 'desc')->paginate(3),
+            'photos' => Photo::with('Album')->latest()->paginate(5),
         ])
             ->layout('layouts.admin');
     }
 
-    public function makeBlankAlbum()
+    public function makeBlankAlbum(): Album
     {
         return Album::make();
     }
 
-    public function makeBlankPhoto()
+    public function makeBlankPhoto(): Photo
     {
         return Photo::make(['album_id' => '', 'country' => '']);
     }
 
-    public function checkMode()
+    public function checkMode(): bool
     {
-        return $this->mode === 'album';
+        return $this->mode === Constant::ALBUM;
     }
 }

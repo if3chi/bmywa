@@ -44,7 +44,7 @@
                     <span aria-hidden="true"
                         class="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full dark:border-gray-800"></span>
                 </button>
-                <template x-if="isNotificationsMenuOpen">
+                <div x-show="isNotificationsMenuOpen">
                     <ul x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
                         x-transition:leave-end="opacity-0" @click.away="closeNotificationsMenu"
                         @keydown.escape="closeNotificationsMenu"
@@ -70,7 +70,7 @@
                             </a>
                         </li>
                     </ul>
-                </template>
+                </div>
             </li>
             <!-- Profile menu -->
             <li class="relative">
@@ -81,7 +81,7 @@
                         src="{{ asset('images/favicon.png') }}"
                         alt="" aria-hidden="true" />
                 </button>
-                <template x-if="isProfileMenuOpen">
+                <div x-show="isProfileMenuOpen">
                     <ul x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
                         x-transition:leave-end="opacity-0" @click.away="closeProfileMenu"
                         @keydown.escape="closeProfileMenu"
@@ -117,7 +117,7 @@
                             </form>
                         </li>
                     </ul>
-                </template>
+                </div>
             </li>
         </ul>
     </div>

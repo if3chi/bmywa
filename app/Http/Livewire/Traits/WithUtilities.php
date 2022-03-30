@@ -12,7 +12,7 @@ trait WithUtilities
     public bool $showEditModal = false;
     public bool $showDelModal = false;
 
-    public function hideModal(String $type)
+    public function hideModal(String $type): void
     {
         if ($type === 'del') {
             $this->showDelModal = false;
@@ -23,7 +23,7 @@ trait WithUtilities
         }
     }
 
-    public function openModal(String $type)
+    public function openModal(String $type): void
     {
         if ($type === 'del') {
             $this->showDelModal = true;
@@ -50,7 +50,7 @@ trait WithUtilities
 
             $this->delPhoto($oldImage, $diskName);
 
-            $ext = 'webp';
+            $ext = 'png'; // TODO: use webp
 
             $imageFile = (string) Image::make($imageFile)
                 ->resize($width, $height, function ($constraint) {
@@ -66,14 +66,14 @@ trait WithUtilities
         return $imageName;
     }
 
-    public function getDelModal($formTitle, $record)
+    public function getDelModal($formTitle, $record): void
     {
         $this->formTitle = $formTitle;
         $this->selectedRecord = $record;
         $this->openModal('del');
     }
 
-    public function deleteRecord($imageName)
+    public function deleteRecord($imageName): void
     {
         $this->delPhoto($imageName, $this->diskName);
         $this->selectedRecord->delete();
@@ -90,7 +90,7 @@ trait WithUtilities
         $this->hideModal('del');
     }
 
-    public function delPhoto($filename, $diskName)
+    public function delPhoto($filename, $diskName): void
     {
         if ($filename) Storage::disk($diskName)->delete($filename);
     }

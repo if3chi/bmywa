@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Front;
 use App\Models\Album;
 use App\Models\Photo;
 use Livewire\Component;
+use App\Utilities\Constant;
 
 class GalleryComponent extends Component
 {
@@ -28,8 +29,16 @@ class GalleryComponent extends Component
 
     public function loadPhotos()
     {
-        $allPhotos = Photo::paginate(20);
-        return $this->activeTab === 'all' ? $allPhotos : Photo::whereRelation('Album', 'id', $this->activeTab)->paginate(2);
+        $cache_untill = now()->endOfMonth()->subSecond();
+
+        $allPhotos = cache()->remember(Constant::ALL_PHOTO, $cache_untill, function () {
+            return Photo::inRandomOrder()->paginate(20);
+        });
+
+        $album = cache()->remember(Constant::album_cache_key($this->activeTab), $cache_untill, function () {
+            return Photo::whereRelation('Album', 'id', $this->activeTab)->inRandomOrder()->paginate(20);
+        });
+        return $this->activeTab === Constant::ALL ? $allPhotos : $album;
     }
 
     public function render()

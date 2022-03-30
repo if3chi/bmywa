@@ -44,6 +44,8 @@
 
 <body>
 
+    <livewire:front.info-banner />
+
     {{ $hero }}
 
     <main>

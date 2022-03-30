@@ -14,11 +14,15 @@
 
             <x-dropdown-btn label="Add New">
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                    href="" wire:click.prevent="getForm('album', 'add')" @click="open = !open" x-cloak>Create New
+                    href="" wire:click.prevent="getForm('{{ \App\Utilities\Constant::ALBUM }}', 'add')"
+                    @click="open = !open" x-cloak>Create New
                     Album</a>
-                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                    href="" wire:click.prevent="getForm('photos', 'add')" @click="open = !open" x-cloak>Add New
-                    Photos</a>
+                @if (count($albums))
+                    <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                        href="" wire:click.prevent="getForm('{{ \App\Utilities\Constant::PHOTOS }}', 'add')"
+                        @click="open = !open" x-cloak>Add New
+                        Photos</a>
+                @endif
             </x-dropdown-btn>
         </div>
 
@@ -76,12 +80,14 @@
                                 </td>
                                 <td class="px-4 py-3 text-sm w-12">
                                     <div class="inline-flex">
-                                        <button wire:click="getForm('album', 'edit', {{ $album->id }})"
+                                        <button
+                                            wire:click="getForm('{{ \App\Utilities\Constant::ALBUM }}', '{{ \App\Utilities\Constant::EDIT }}', {{ $album->id }})"
                                             class="flex items-center justify-between mr-4 px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-yellow-400 border border-transparent rounded-full active:bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:shadow-outline-yellow"
                                             aria-label="Edit">
                                             <x-icon.pen />
                                         </button>
-                                        <button wire:click="confirmDelete({{ $album->id }})"
+                                        <button
+                                            wire:click="confirmDelete('{{ \App\Utilities\Constant::ALBUM }}', {{ $album->id }})"
                                             class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-full active:bg-yellow-400 hover:bg-red-700 focus:outline-none focus:shadow-outline-yellow"
                                             aria-label="Delete">
                                             <x-icon.trash />
@@ -154,12 +160,13 @@
                                 </td>
                                 <td class="px-4 py-3 text-sm w-12">
                                     <div class="inline-flex">
-                                        <button wire:click="getForm('photos', 'edit', {{ $photo->id }})"
+                                        {{-- <button wire:click="getForm('photos', 'edit', {{ $photo->id }})"
                                             class="flex items-center justify-between mr-4 px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-yellow-400 border border-transparent rounded-full active:bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:shadow-outline-yellow"
                                             aria-label="Edit">
                                             <x-icon.pen />
-                                        </button>
-                                        <button wire:click="confirmDelete({{ $photo->id }})"
+                                        </button> --}}
+                                        <button
+                                            wire:click="confirmDelete('{{ \App\Utilities\Constant::PHOTOS }}', {{ $photo->id }})"
                                             class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-full active:bg-yellow-400 hover:bg-red-700 focus:outline-none focus:shadow-outline-yellow"
                                             aria-label="Delete">
                                             <x-icon.trash />
@@ -211,8 +218,9 @@
                         <x-form.select wire:model.lazy="editingPhoto.album_id"
                             :error="$errors->first('editingPhoto.album_id')" type="text" name="album" label="Album">
                             <option class="text-base" value="" disabled>Select Photo(s) Album</option>
-                            @foreach (getAlbums() as $album)
-                                <option class="text-base" value="{{ $album->id }}">{{ "$album->name ($album->year)" }}
+                            @foreach (getAlbumList() as $album)
+                                <option class="text-base" value="{{ $album->id }}">
+                                    {{ "$album->name ($album->year)" }}
                                 </option>
                             @endforeach
                         </x-form.select>
@@ -247,5 +255,12 @@
         </x-slot>
     </x-modal.form>
 
-    {{-- <x-modal.delete wire:model="showDelModal" :title="$formTitle" :record="$this->selectedRecord->name" /> --}}
+    @if ($this->checkMode())
+        <x-modal.delete wire:model="showDelModal" :title="$formTitle" :record="$this->selectedRecord->name ?? ''" />
+    @else
+        <x-modal.delete-photo wire:model="showDelModal" :title="$formTitle">
+            <img class="inline-block max-h-fit max-w-fit rounded-md mx-auto"
+                src="{{ $this->selectedRecord->url ?? '' }}" alt="image to delete">
+        </x-modal.delete-photo>
+    @endif
 </div>
