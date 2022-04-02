@@ -10,7 +10,7 @@
                     data-bs-ride="carousel">
                     <div class="relative w-full overflow-hidden carousel-inner">
                         <div class="relative float-left w-full h-48 bg-center bg-cover carousel-item md:h-64 active"
-                            style="background-position: 50%; background-image: url({{ asset('images/flyer.jpeg') }});">
+                            style="background-position: 50%; background-image: url({{ asset('images/flyer-ng.jpeg') }});">
                             <div
                                 class="absolute top-0 bottom-0 left-0 right-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-75">
                             </div>
@@ -37,6 +37,7 @@
                 <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Upcoming Events</h2>
                 <p class="max-w-2xl mx-auto mt-3 text-xl text-gray-500 sm:mt-4">Select your ticket</p>
             </div>
+            <div class="grid max-w-lg gap-5 mx-auto mt-12 lg:grid-cols-4 lg:max-w-none">
                 <x-front.ticket-card link="https://flutterwave.com/pay/vf4defmntweb"
                     :imgLink="asset('images/flyer-ng.jpeg')" country="Nigeria" day="24"
                     location="Oriental Hotel, Lagos">
