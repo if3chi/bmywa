@@ -9,5 +9,5 @@ class TempUser extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['email', 'name', 'role_id'];
+    protected $fillable = ['email', 'name', 'role_id', 'country'];
 }

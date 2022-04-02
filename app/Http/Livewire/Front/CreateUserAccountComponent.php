@@ -23,7 +23,8 @@ class CreateUserAccountComponent extends Component
         ];
         $this->editing = User::make([
             'name' => $tempUser->name,
-            'email' => $tempUser->email
+            'email' => $tempUser->email,
+            'country' => $tempUser->country,
         ]);
     }
 
