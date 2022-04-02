@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('entries', function (Blueprint $table) {
-            $table->integer('score')->after('award_entry')->nullable();
+        Schema::create('entry_user', function (Blueprint $table) {
+            $table->foreignId('entry_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->integer('score');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('entries', function (Blueprint $table) {
-            $table->dropColumn('score');
-        });
+        Schema::dropIfExists('entry_user');
     }
 };

@@ -1,8 +1,7 @@
 @props(['label'])
 
 <div @click.away="open = false" class="relative" x-data="{ open: false }">
-    <button @click="open = !open"
-        class="flex items-center cursor-pointer justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-yellow-400 border border-transparent rounded-lg active:bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:shadow-outline-yellow space-x-2">
+    <button @click="open = !open" {!! $attributes->merge(['class' => 'flex items-center cursor-pointer justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-yellow-400 border border-transparent rounded-lg active:bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:shadow-outline-yellow space-x-2']) !!}>
         <span>{{ $label }}</span>
         <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}"
             class="inline w-6 h-6 transition-transform duration-200 transform">

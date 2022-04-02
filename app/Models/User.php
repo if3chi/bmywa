@@ -53,6 +53,14 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function entries()
+    {
+        return $this->belongsToMany(Entry::class)
+            ->as('grade')
+            ->withPivot('score')
+            ->withTimestamps();
+    }
+
     public function getAbilitiesAttribute(): array
     {
         $roles = [];
