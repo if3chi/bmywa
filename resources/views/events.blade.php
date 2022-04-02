@@ -14,9 +14,10 @@
                             <div
                                 class="absolute top-0 bottom-0 left-0 right-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-75">
                             </div>
-                            <div class="absolute text-center carousel-caption md:block">
+                            <div class="absolute inset-x-0 bottom-0 justify-center min-w-full text-center carousel-caption md:block">
                                 <h5 class="mb-2 text-2xl font-bold text-yellow-100">BMYWA Awards</h5>
-                                <p class="text-sm font-medium tracking-wide">Blooming Minds Kids Runway Fashion Show 2022
+                                <p class="text-sm font-medium tracking-wide text-white">Blooming Minds Kids Runway
+                                    Fashion Show 2022
                                 </p>
                             </div>
                         </div>
@@ -36,12 +37,13 @@
                 <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Upcoming Events</h2>
                 <p class="max-w-2xl mx-auto mt-3 text-xl text-gray-500 sm:mt-4">Select your ticket</p>
             </div>
-            <div class="grid max-w-lg gap-5 mx-auto mt-12 lg:grid-cols-4 lg:max-w-none">
-                <x-front.ticket-card link="https://flutterwave.com/pay/vf4defmntweb" country="Nigeria" day="24"
+                <x-front.ticket-card link="https://flutterwave.com/pay/vf4defmntweb"
+                    :imgLink="asset('images/flyer-ng.jpeg')" country="Nigeria" day="24"
                     location="Oriental Hotel, Lagos">
                     Single ticket - Admits 1
                 </x-front.ticket-card>
-                <x-front.ticket-card link="https://flutterwave.com/pay/tdxroc6ga9jy" country="Nigeria" day="24"
+                <x-front.ticket-card link="https://flutterwave.com/pay/tdxroc6ga9jy"
+                    :imgLink="asset('images/flyer-ng.jpeg')" country="Nigeria" day="24"
                     location="Oriental Hotel, Lagos">
                     Family ticket - Admits 4
                 </x-front.ticket-card>

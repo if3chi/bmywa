@@ -1,7 +1,7 @@
-@props(['country' => 'Ghana', 'month' => 'Apr', 'day' => 30, 'location' => 'Dubois Center, Cantonments, Accra.', 'link' => '#'])
+@props(['imgLink' => asset('images/flyer-gh.jpeg'), 'country' => 'Ghana', 'month' => 'Apr', 'day' => 30, 'location' => 'Dubois Center, Cantonments, Accra.', 'link' => '#'])
 <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
     <div class="flex-shrink-0">
-        <img class="object-cover w-full h-56" src="{{ asset('images/flyer.jpeg') }}" alt="event flyer">
+        <img class="object-cover w-full h-56" src="{{ $imgLink }}" alt="event flyer">
     </div>
     <div class="flex flex-col justify-between flex-1 p-6 bg-white">
         <div class="flex-1 space-y-6">
