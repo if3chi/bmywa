@@ -9,6 +9,7 @@ use App\Models\TempUser;
 use App\Utilities\Constant;
 use Livewire\WithPagination;
 use App\Mail\SendTempUserEmail;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use App\Actions\User\CreateTempUser;
 use Illuminate\Support\Facades\Mail;
@@ -27,7 +28,8 @@ class UsersComponent extends Component
         return [
             'editing.name' => 'nullable|string',
             'editing.email' => 'required|email',
-            'userRole' => 'required|exists:roles,id'
+            'userRole' => 'required|exists:roles,id',
+            'editing.country' => ['required', Rule::in(array_keys(entryCountry()))]
         ];
     }
 
@@ -47,7 +49,7 @@ class UsersComponent extends Component
             $this->userRole = $user->abilities ? $user->abilities : '';
         } else {
             $this->formTitle = 'Add a User';
-            $this->editing = TempUser::make();
+            $this->editing = TempUser::make(['country' => '']);
         }
 
         $this->openModal('form');

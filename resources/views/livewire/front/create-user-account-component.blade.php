@@ -26,6 +26,20 @@
                     disabled />
             </div>
 
+            <!-- Country -->
+            <div class="mt-4">
+                <x-label for="country" :value="__('Country')" />
+
+                <x-select wire:model="editing.country" name="country" id="country" class="block mt-1 w-full" disabled>
+                    <option class="text-base" value="" disabled>Select Country</option>
+                    @foreach (entryCountry() as $id => $name)
+                        <option class="text-base" value="{{ $id }}">
+                            {{ $name }}
+                        </option>
+                    @endforeach
+                </x-select>
+            </div>
+
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />

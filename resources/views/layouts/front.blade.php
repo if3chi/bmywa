@@ -44,10 +44,13 @@
 
 <body>
 
-    <livewire:front.info-banner />
+    @if (!Request::is('events'))
+        <livewire:front.info-banner />
+    @endif
 
-    {{ $hero }}
-
+    <div class="fade-in">
+        {{ $hero }}
+    </div>
     <main>
         {{ $slot }}
     </main>

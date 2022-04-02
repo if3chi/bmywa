@@ -25,6 +25,7 @@
                             class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                             <th class="px-4 py-3">Name</th>
                             <th class="px-4 py-3">Email</th>
+                            <th class="px-4 py-3">Country</th>
                             <th class="px-4 py-3">Roles</th>
                             <th class="px-4 py-3">Action</th>
                         </tr>
@@ -40,6 +41,11 @@
                                 <td class="px-4 py-3">
                                     <div class="items-center text-sm">
                                         <p class="font-semibold">{{ $user->email }}</p>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-3">
+                                    <div class="items-center text-sm">
+                                        <p class="font-semibold">{{ entryCountry()[$user->country] }}</p>
                                     </div>
                                 </td>
                                 <td class="px-4 py-3">
@@ -96,6 +102,16 @@
                     label="Email">
                     <x-icon.email />
                 </x-form.input>
+
+                <x-form.select wire:model.lazy="editing.country" :error="$errors->first('editing.country')" type="text"
+                    name="country" label="Country">
+                    <option class="text-base" value="" disabled>Select Country</option>
+                    @foreach (entryCountry() as $id => $name)
+                        <option class="text-base" value="{{ $id }}">
+                            {{ $name }}
+                        </option>
+                    @endforeach
+                </x-form.select>
 
                 <x-form.select wire:model.lazy="userRole" :error="$errors->first('userRole')" type="text"
                     name="user-role" label="User Role(s)">

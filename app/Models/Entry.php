@@ -16,9 +16,22 @@ class Entry extends Model
         'entry_type', 'title', 'award_entry', 'country'
     ];
 
+    public function judges()
+    {
+        return $this->belongsToMany(User::class)
+            ->as('grade')
+            ->withPivot('score')
+            ->withTimestamps();
+    }
+
     public function getContestantNameAttribute()
     {
         return "$this->lastname $this->firstname";
+    }
+
+    public function getJudgeScoreAttribute()
+    {
+        return $this->judges->find(auth()->user()->id)->grade->score ?? '';
     }
 
     public function getDateSubmittedAttribute()
@@ -55,7 +68,7 @@ class Entry extends Model
     {
         $this->attributes['title'] = ucwords($value);
     }
-    
+
     public function setSchoolAttribute($value)
     {
         $this->attributes['school'] = ucwords($value);

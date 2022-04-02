@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'country',
     ];
 
     /**
@@ -50,6 +51,14 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function entries()
+    {
+        return $this->belongsToMany(Entry::class)
+            ->as('grade')
+            ->withPivot('score')
+            ->withTimestamps();
     }
 
     public function getAbilitiesAttribute(): array

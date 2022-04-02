@@ -19,6 +19,23 @@
                                 <span>Scored List</span>
                             </button>
                         @endcanany
+                        @can(\App\Utilities\Constant::MANAGE_SITE)
+                            <x-dropdown-btn label="Filter" class="h-8">
+                                {{-- #TODO: Fix Filter --}}
+                                {{-- <a @click.prevent="open = !open; $wire.filterList('\App\Utilities\Constant::ALL')" href=""
+                                    class="block text-white-900 hover:text-yellow-500">
+                                    All
+                                </a> --}}
+                                @foreach (entryCountry() as $key => $country)
+                                    <a @click.prevent="open = !open; $wire.filterList('{{ $key }}')" href=""
+                                        class="block text-white-900 hover:text-yellow-500">
+                                        {{ $country }}
+                                    </a>
+                                @endforeach
+
+
+                            </x-dropdown-btn>
+                        @endcan
                     </div>
                 </div>
 
@@ -83,8 +100,8 @@
 
         <x-slot name="content">
             <div class="mb-4 space-y-1 bg-white rounded-lg dark:bg-gray-800">
-                <x-form.input wire:model="entryScore" :error="$errors->first('entryScore')" type="text"
-                    placeholder="Enter a Score" label="Score">
+                <x-form.input wire:model="entryScore" :error="$errors->first('entryScore')" type="text" placeholder="Enter a Score"
+                    label="Score">
                     <x-icon.check-square class="w-4 h-4 mr-3" />
                 </x-form.input>
             </div>

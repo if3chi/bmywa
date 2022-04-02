@@ -19,6 +19,7 @@ class SubmissionsList extends Component
     public $entryScore;
     public $scoredList;
     public $methodName;
+    public $filterKey;
     public $showScoreModal = false;
     public $showScoredList = false;
 
@@ -27,13 +28,19 @@ class SubmissionsList extends Component
     public function mount()
     {
         $this->scoredList = collect();
+        $this->filterKey = auth()->user()->country;
     }
 
-    public function openEntry(Entry $entry)
+    public function openEntry($entry)
     {
-        $this->activeEntry = $entry->id;
-        $this->readingView = $entry;
+        $this->readingView = Entry::with('judges')->findOrFail($entry);
+        $this->activeEntry = $this->readingView->id;
         $this->showScoredList = false;
+    }
+
+    public function filterList($key)
+    {
+        $this->filterKey = $key;
     }
 
     public function scoreEntry()
@@ -45,7 +52,8 @@ class SubmissionsList extends Component
     public function judgeEntry()
     {
         $this->authorize(Constant::JUDGE_ENTRY);
-        $this->getScoreForm('Judge:', 'setJusdgeScore', $this->readingView->judge_score);
+
+        $this->getScoreForm('Judge:', 'setJudgeScore', $this->readingView->judge_score);
     }
 
     private function getScoreForm(string $title, string $method, $score): void
@@ -58,17 +66,30 @@ class SubmissionsList extends Component
         $this->showScoreModal = true;
     }
 
+    public function setJudgeScore(): void
+    {
+        $this->authorize(Constant::JUDGE_ENTRY);
+
+        $validScore = $this->validate()['entryScore'];
+
+        if ($this->readingView->judge_score) {
+            $this->readingView->judges()->detach(auth()->user()->id);
+            $this->readingView->judges()->attach(auth()->user()->id, ['score' => $validScore]);
+        } else {
+            $this->readingView->judges()->attach(auth()->user()->id, ['score' => $validScore]);
+        }
+
+        $this->notify(['title' => 'Success!']);
+        $this->reset('readingView', 'activeEntry');
+        $this->showScoreModal = false;
+    }
+
     public function setEntryScore(): void
     {
         $this->authorize(Constant::SCORE_ENTRY);
         $this->setScore('scoredList', 'score');
     }
 
-    public function setJusdgeScore(): void
-    {
-        $this->authorize(Constant::JUDGE_ENTRY);
-        $this->setScore('judgedList', 'judge_score');
-    }
 
     private function setScore(string $cacheKey, string $field): void
     {
@@ -117,44 +138,18 @@ class SubmissionsList extends Component
 
             $categories = array_keys(entryCategories());
 
-
             // TODO: revisit this time bomb
-
-            $creative_ng = Entry::orderBy('score', 'desc')
-                ->where('score', '!=', null)
-                ->where('country', 'ng')
-                ->where('entry_type', $categories[0])
-                ->take(3)->get();
-            $essay_ng = Entry::orderBy('score', 'desc')
-                ->where('score', '!=', null)
-                ->where('country', 'ng')
-                ->where('entry_type', $categories[1])
-                ->take(3)->get();
-            $peotry_ng = Entry::orderBy('score', 'desc')
-                ->where('score', '!=', null)
-                ->where('country', 'ng')
-                ->where('entry_type', $categories[2])
-                ->take(3)->get();
-
-            $creative_gh = Entry::orderBy('score', 'desc')
-                ->where('score', '!=', null)
-                ->where('country', 'gh')
-                ->where('entry_type', $categories[0])
-                ->take(3)->get();
-            $essay_gh = Entry::orderBy('score', 'desc')
-                ->where('score', '!=', null)
-                ->where('country', 'gh')
-                ->where('entry_type', $categories[1])
-                ->take(3)->get();
-            $peotry_gh = Entry::orderBy('score', 'desc')
-                ->where('score', '!=', null)
-                ->where('country', 'gh')
-                ->where('entry_type', $categories[2])
-                ->take(3)->get();
-
-
-            $data = $data->merge($peotry_ng)->merge($creative_ng)->merge($essay_ng);
-            $data = $data->merge($peotry_gh)->merge($creative_gh)->merge($essay_gh)->sortByDesc('score');
+            foreach ($categories as $category) {
+                $data = $data->merge(Entry::with('judges')
+                    ->where('score', '!=', null)
+                    ->when($this->filterKey, function ($query) {
+                        return $query->where('country', $this->filterKey);
+                    })
+                    ->where('entry_type', $category)
+                    ->get()
+                    ->sortByDesc('score')
+                    ->take(3));
+            }
         }
 
         return $data;
