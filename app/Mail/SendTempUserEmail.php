@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Role;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\URL;
@@ -12,7 +13,7 @@ class SendTempUserEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public $tempUrl;
+    public array $msgData;
     /**
      * Create a new message instance.
      *
@@ -20,7 +21,17 @@ class SendTempUserEmail extends Mailable implements ShouldQueue
      */
     public function __construct($user)
     {
-        $this->tempUrl = $this->getUrl($user);
+        $this->msgData['url'] = $this->getUrl($user->id);
+        $this->msgData['email'] = $this->isJudge($user->role_id)
+            ? 'thelmaofosuasamoah@bmywa.com' : 'jaspar@bmywa.com';
+        $this->msgData['sign'] = $this->isJudge($user->role_id)
+            ? ['Thelma Ofosu-Asamoah', 'Managing director']
+            : ['IT Support', ''];
+    }
+
+    public function isJudge(int $role): bool
+    {
+        return $role == Role::JUDGE;
     }
 
     public function getUrl($id)
@@ -38,11 +49,11 @@ class SendTempUserEmail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->from('jaspar@bmywa.com', 'BMYWA IT Support')
+        return $this->from($this->msgData['email'], $this->msgData['sign'][0])
             ->subject('Complete Your Account')
             ->markdown('mail.send-temp-user-email')
             ->with([
-                'url' => $this->tempUrl
+                'msgData' => $this->msgData
             ]);
     }
 }
