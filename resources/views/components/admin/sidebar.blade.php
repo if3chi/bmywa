@@ -46,6 +46,12 @@
                         <span class="ml-4">{{ __('Users') }}</span>
                     </x-sidebar-link>
                 </li>
+                <li class="relative px-6 py-3">
+                    <x-sidebar-link href="{{ route('mail.compose') }}" url='admin/send-mail'>
+                        <x-icon.inbox class="w-6 h-6" />
+                        <span class="ml-4">{{ __('Mails') }}</span>
+                    </x-sidebar-link>
+                </li>
             @endcan
         </ul>
     </div>
@@ -109,6 +115,12 @@
                     <x-sidebar-link href="{{ route('users.index') }}" url='admin/users'>
                         <x-icon.users />
                         <span class="ml-4">{{ __('Users') }}</span>
+                    </x-sidebar-link>
+                </li>
+                <li class="relative px-6 py-3">
+                    <x-sidebar-link href="{{ route('mail.compose') }}" url='admin/send-mail'>
+                        <x-icon.inbox class="w-6 h-6" />
+                        <span class="ml-4">{{ __('Mails') }}</span>
                     </x-sidebar-link>
                 </li>
             @endcan

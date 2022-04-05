@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\Dashboard;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\FrontController;
+use App\Http\Livewire\Admin\EmailComponent;
 use App\Http\Livewire\Admin\GalleryManager;
 use App\Http\Livewire\Admin\UsersComponent;
 use App\Http\Livewire\Admin\JudgesComponent;
@@ -59,6 +60,7 @@ Route::group(
         Route::get('/sponsors', SponsorsComponent::class)->name('sponsors.index');
         Route::get('/submissions', SubmissionsList::class)->name('submissions.index');
         Route::get('/users', UsersComponent::class)->name('users.index');
+        Route::get('/send-mail', EmailComponent::class)->name('mail.compose');
     }
 );
 
