@@ -67,7 +67,7 @@ class UsersComponent extends Component
         if (str_contains($this->formTitle, Constant::ADD)) {
             $tempUserEmail = (new CreateTempUser)($validatedData);
             Mail::to($tempUserEmail->email)
-                ->queue(new SendTempUserEmail($tempUserEmail->id));
+                ->queue(new SendTempUserEmail($tempUserEmail));
         } else {
             $user = $this->editing;
             $user->update(

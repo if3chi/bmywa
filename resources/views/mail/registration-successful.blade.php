@@ -14,6 +14,9 @@ or
 
 visit [{{ getFormattedUrl('login') }}]({{ getFormattedUrl('login') }}) to login any other time.
 
+Also attached is a copy of the grading criteria for judging/curating the entries.
+
+
 Thanks,<br>
 {{ config('app.name') }}
 @endcomponent

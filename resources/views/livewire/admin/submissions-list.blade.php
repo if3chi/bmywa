@@ -52,7 +52,7 @@
                         @endif
                     </div>
                     <div class="flex flex-row items-center space-x-1">
-                        <a href="#">
+                        {{-- <a href="#">
                             <x-icon.printer class="w-5 h-5" />
                         </a>
                         <a href="#">
@@ -60,7 +60,8 @@
                         </a>
                         <a href="#">
                             <x-icon.share class="w-5 h-5" />
-                        </a>
+                        </a> --}}
+                        <x-grading.info-modal />
                     </div>
                 </div>
 
