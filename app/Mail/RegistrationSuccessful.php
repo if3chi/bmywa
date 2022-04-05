@@ -32,6 +32,10 @@ class RegistrationSuccessful extends Mailable implements ShouldQueue
     {
         return $this->from('no-reply@bmywa.com', 'BMYWA Admins')
             ->markdown('mail.registration-successful')
+            ->attach(asset("docs/grading_criteria.pdf"), [
+                'as' => 'Grading Criteria.pdf',
+                'mime' => 'application/pdf',
+            ])
             ->with([
                 'name' => $this->name
             ]);
