@@ -3,21 +3,21 @@
         {{ __('Judges') }}
     </x-slot>
 
-    <div class="container px-6 mx-auto grid">
+    <div class="container grid px-6 mx-auto">
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             {{ __('Judges') }}
         </h2>
 
         <div class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             <button wire:click.prevent="getForm('Add')" type="button"
-                class="flex items-center cursor-pointer justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-yellow-400 border border-transparent rounded-lg active:bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:shadow-outline-yellow">
+                class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-yellow-400 border border-transparent rounded-lg cursor-pointer active:bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:shadow-outline-yellow">
                 <x-icon.user-add />
                 <span>Add Judge</span>
             </button>
         </div>
 
         <!-- New Table -->
-        <div class="w-full overflow-hidden rounded-lg shadow-xs mb-8">
+        <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
                 <table class="w-full whitespace-no-wrap">
                     <thead>
@@ -33,8 +33,8 @@
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                         @forelse ($judges as $judge)
                             <tr class="text-gray-700 dark:text-gray-400">
-                                <td class="px-4 py-3 w-8">
-                                    <div class=" items-center text-sm">
+                                <td class="w-8 px-4 py-3">
+                                    <div class="items-center text-sm">
                                         <!-- Avatar with inset shadow -->
                                         <div class="w-12 h-12 mr-4 rounded-full md:block">
                                             <img class="object-cover w-full h-full rounded-full"
@@ -42,7 +42,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-2 py-3 w-56">
+                                <td class="w-56 px-2 py-3">
                                     <div class="items-center text-sm">
                                         <p class="font-semibold">{{ $judge->name }}</p>
                                     </div>
@@ -57,10 +57,10 @@
                                         <p class="font-semibold">{{ $judge->description }}</p>
                                     </div>
                                 </td>
-                                <td class="px-4 py-3 text-sm w-12">
+                                <td class="w-12 px-4 py-3 text-sm">
                                     <div class="inline-flex">
                                         <button wire:click="getForm('edit', {{ $judge->id }})"
-                                            class="flex items-center justify-between mr-4 px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-yellow-400 border border-transparent rounded-full active:bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:shadow-outline-yellow"
+                                            class="flex items-center justify-between px-2 py-2 mr-4 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-yellow-400 border border-transparent rounded-full active:bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:shadow-outline-yellow"
                                             aria-label="Edit">
                                             <x-icon.pen />
                                         </button>
@@ -93,7 +93,7 @@
     <x-modal.form wire:model="showEditModal">
         <x-slot name="title">{{ $formTitle }}</x-slot>
         <x-slot name="content">
-            <div class="mb-4 bg-white rounded-lg dark:bg-gray-800 space-y-1">
+            <div class="mb-4 space-y-1 bg-white rounded-lg dark:bg-gray-800">
                 <x-form.input wire:model="editing.name" :error="$errors->first('editing.name')" type="text"
                     label="Name">
                     <x-icon.user />
@@ -138,7 +138,7 @@
                             <img class="object-cover w-full h-full rounded-md" src="{{ $this->editJudgePhoto }}"
                                 alt="" />
                         @else
-                            <div class="bg-gray-100 dark:bg-gray-700 rounded-md">
+                            <div class="bg-gray-100 rounded-md dark:bg-gray-700">
                                 <div>
                                     <x-icon.avatar />
                                 </div>
@@ -151,7 +151,7 @@
 
         <x-slot name="footer">
             <button wire:click="$set('showEditModal', false)"
-                class="w-full px-5 py-3 text-sm font-medium leading-5 dark:text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 sm:px-4 sm:py-2 sm:w-auto active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray">
+                class="w-full px-5 py-3 text-sm font-medium leading-5 text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-white dark:text-gray-400 sm:px-4 sm:py-2 sm:w-auto active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray">
                 Cancel
             </button>
             <button wire:click="save"

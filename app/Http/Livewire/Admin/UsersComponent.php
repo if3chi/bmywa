@@ -2,22 +2,19 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\Role;
-use App\Models\User;
-use Livewire\Component;
-use App\Models\TempUser;
 use App\Utilities\Constant;
-use Livewire\WithPagination;
 use App\Mail\SendTempUserEmail;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\DB;
 use App\Actions\User\CreateTempUser;
-use Illuminate\Support\Facades\Mail;
+use App\Models\{Role, User, TempUser};
+use Livewire\{Component, WithPagination};
+use Illuminate\Support\Facades\{DB, Mail};
 use App\Http\Livewire\Traits\WithUtilities;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class UsersComponent extends Component
 {
-    use WithPagination, WithUtilities;
+    use AuthorizesRequests, WithPagination, WithUtilities;
 
     public $selectedRecord;
     public $editing;
@@ -35,6 +32,7 @@ class UsersComponent extends Component
 
     public function mount()
     {
+        $this->authorize(Constant::MANAGE_SITE);
         $this->selectedRecord = User::make();
     }
 
@@ -57,6 +55,7 @@ class UsersComponent extends Component
 
     public function save()
     {
+        $this->authorize(Constant::MANAGE_SITE);
         $data = $this->validate();
 
         $validatedData = array_merge(
@@ -92,11 +91,13 @@ class UsersComponent extends Component
 
     public function confirmDelete(User $user)
     {
+        $this->authorize(Constant::MANAGE_SITE);
         $this->getDelModal("Delete User's Account", $user);
     }
 
     public function destroy()
     {
+        $this->authorize(Constant::MANAGE_SITE);
         if (User::count() > 1 && $this->selectedRecord->id !== 1) {
             DB::transaction(function () {
                 $this->selectedRecord->roles()->detach($this->selectedRecord->abilities);
@@ -118,6 +119,7 @@ class UsersComponent extends Component
 
     public function render()
     {
+        $this->authorize(Constant::MANAGE_SITE);
         return view('livewire.admin.users-component', [
             'users' => User::with('roles')->paginate(5),
             'roles' => Role::pluck('name', 'id')

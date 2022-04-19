@@ -2,28 +2,22 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\Album;
-use App\Models\Photo;
-use Livewire\Component;
 use App\Utilities\Constant;
-use Livewire\WithPagination;
-use Livewire\WithFileUploads;
+use App\Models\{Album, Photo};
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Livewire\Traits\WithUtilities;
+use Illuminate\Support\Facades\{DB, Storage};
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\{Component, WithFileUploads, WithPagination};
 
 class GalleryManager extends Component
 {
-    use WithPagination, WithFileUploads, WithUtilities;
-    public $mode;
-    public $country;
-    public $diskName = 'gallery';
-    public $images = [];
-    public $editAlbumYear;
+    use AuthorizesRequests, WithPagination, WithFileUploads, WithUtilities;
+
     public Album $editingAlbum;
     public Photo $editingPhoto;
-    public $selectedRecord;
+    public $diskName = 'gallery', $images = [];
+    public $mode, $country, $editAlbumYear, $selectedRecord;
 
     protected function rules(): array
     {
@@ -206,6 +200,8 @@ class GalleryManager extends Component
 
     public function render()
     {
+        $this->authorize(Constant::MANAGE_SITE);
+
         return view('livewire.admin.gallery-manager', [
             'albums' => Album::withCount('Photos')->orderBy('year', 'desc')->paginate(3),
             'photos' => Photo::with('Album')->latest()->paginate(5),

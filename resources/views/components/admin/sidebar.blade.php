@@ -23,6 +23,14 @@
             @endcanany
             @can(\App\Utilities\Constant::MANAGE_SITE)
                 <li class="relative px-6 py-3">
+                    <x-sidebar-link href="{{ route('shortlist.index') }}" url='admin/shortlists'>
+                        <x-icon.list class="w-6 h-7" />
+                        <span class="ml-4">{{ __('Shortlist') }}</span>
+                    </x-sidebar-link>
+                </li>
+            @endcan
+            @can(\App\Utilities\Constant::MANAGE_SITE)
+                <li class="relative px-6 py-3">
                     <x-sidebar-link href="{{ route('gallery.index') }}" url='admin/manage-gallery'>
                         <x-icon.camera />
                         <span class="ml-4">{{ __('Gallery') }}</span>
@@ -92,6 +100,14 @@
                     </x-sidebar-link>
                 </li>
             @endcanany
+            @can(\App\Utilities\Constant::MANAGE_SITE)
+                <li class="relative px-6 py-3">
+                    <x-sidebar-link href="{{ route('shortlist.index') }}" url='admin/shortlists'>
+                        <x-icon.list class="w-6 h-7" />
+                        <span class="ml-4">{{ __('Shortlist') }}</span>
+                    </x-sidebar-link>
+                </li>
+            @endcan
             @can(\App\Utilities\Constant::MANAGE_SITE)
                 <li class="relative px-6 py-3">
                     <x-sidebar-link href="{{ route('gallery.index') }}" url='admin/manage-gallery'>

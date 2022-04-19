@@ -15,8 +15,8 @@
                         </svg>
                     </span>
                     <p class="ml-3 font-medium text-white truncate">
-                        <span class="md:hidden"> Blooming Minds Young Writers Award 2022 </span>
-                        <span class="hidden md:inline"> Hurray! Blooming Minds Young Writers Award, April 24th,
+                        <span class="md:hidden">Blooming Minds Young Writers Award 2022 </span>
+                        <span class="hidden md:inline">Blooming Minds Young Writers Award, April 24th,
                             Lagos, Nigeria
                             and April 30th, Accra, Ghana. </span>
                     </p>

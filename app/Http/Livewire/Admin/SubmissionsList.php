@@ -5,23 +5,15 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Entry;
 use Livewire\Component;
 use App\Utilities\Constant;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\{Cache, Gate};
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class SubmissionsList extends Component
 {
     use AuthorizesRequests;
 
-    public $readingView;
-    public $activeEntry;
-    public $formTitle;
-    public $entryScore;
-    public $scoredList;
-    public $methodName;
-    public $filterKey;
-    public $showScoreModal = false;
-    public $showScoredList = false;
+    public $readingView, $activeEntry, $formTitle, $entryScore, $scoredList;
+    public $methodName, $filterKey, $showScoreModal = false, $showScoredList = false;
 
     protected $rules = ['entryScore' => 'required|numeric|max:50'];
 

@@ -2,9 +2,8 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\Entry;
-use App\Models\Visitor;
 use Livewire\Component;
+use App\Models\{Entry, Visitor};
 use Illuminate\Support\Facades\DB;
 
 class Dashboard extends Component

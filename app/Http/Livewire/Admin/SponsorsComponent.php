@@ -3,21 +3,19 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Sponsor;
-use Livewire\Component;
-use Livewire\WithPagination;
-use Livewire\WithFileUploads;
+use App\Utilities\Constant;
 use App\Rules\RequiredIfAdding;
 use App\Http\Livewire\Traits\WithUtilities;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\{Component, WithFileUploads, WithPagination};
 
 class SponsorsComponent extends Component
 {
-    use WithPagination, WithFileUploads, WithUtilities;
+    use AuthorizesRequests, WithPagination, WithFileUploads, WithUtilities;
 
-    public $sponsorLogo;
-    public $editSponsorLogo;
-    public $selectedRecord;
     public Sponsor $editSponsor;
     private $diskName = 'sponsor';
+    public $sponsorLogo, $editSponsorLogo, $selectedRecord;
 
     public function mount()
     {
@@ -116,8 +114,9 @@ class SponsorsComponent extends Component
 
     public function render()
     {
-        return view(
-            'livewire.admin.sponsors-component',
+        $this->authorize(Constant::MANAGE_SITE);
+
+        return view('livewire.admin.sponsors-component',
             ['sponsors' => Sponsor::orderBy('status', 'desc')
                 ->latest()
                 ->paginate(8)]
