@@ -3,23 +3,21 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Judge;
-use Livewire\Component;
-use Livewire\WithPagination;
-use Livewire\WithFileUploads;
+use App\Utilities\Constant;
 use App\Rules\RequiredIfAdding;
 use App\Http\Livewire\Traits\WithUtilities;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\{Component, WithFileUploads, WithPagination};
 
 class JudgesComponent extends Component
 {
 
-    use WithPagination, WithFileUploads, WithUtilities;
+    use AuthorizesRequests, WithPagination, WithFileUploads, WithUtilities;
 
     public Judge $editing;
     public Judge $selectedRecord;
-    public $judgePhoto;
-    public $editJudgePhoto;
-    public $perPage = 5;
     private String $diskName = 'judge';
+    public $judgePhoto, $editJudgePhoto, $perPage = 5;
 
     protected $messages = [
         'editing.name.required' => 'Kindly enter the Judges names.',
@@ -124,6 +122,8 @@ class JudgesComponent extends Component
 
     public function render()
     {
+        $this->authorize(Constant::MANAGE_SITE);
+
         return view('livewire.admin.judges-component', [
             'judges' => Judge::latest()
                 ->paginate($this->perPage)

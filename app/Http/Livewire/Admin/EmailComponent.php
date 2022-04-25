@@ -4,10 +4,13 @@ namespace App\Http\Livewire\Admin;
 
 use App\Mail\SendMail;
 use Livewire\Component;
+use App\Utilities\Constant;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class EmailComponent extends Component
 {
+    use AuthorizesRequests;
 
     public array $recipient = [];
 
@@ -19,6 +22,8 @@ class EmailComponent extends Component
 
     public function sendMsg()
     {
+        $this->authorize(Constant::MANAGE_SITE);
+
         $validData = $this->validate()['recipient'];
         Mail::to($validData['email'])
             ->queue(new SendMail("{$validData['firstname']} {$validData['lastname']}"));
@@ -28,6 +33,8 @@ class EmailComponent extends Component
     }
     public function render()
     {
+        $this->authorize(Constant::MANAGE_SITE);
+
         return view('livewire.admin.email-component')->layout('layouts.admin');
     }
 }

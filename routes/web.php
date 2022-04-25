@@ -1,16 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Admin\Dashboard;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\FrontController;
-use App\Http\Livewire\Admin\EmailComponent;
-use App\Http\Livewire\Admin\GalleryManager;
-use App\Http\Livewire\Admin\UsersComponent;
-use App\Http\Livewire\Admin\JudgesComponent;
-use App\Http\Livewire\Admin\SubmissionsList;
-use App\Http\Livewire\Admin\SponsorsComponent;
 use App\Http\Livewire\Front\CreateUserAccountComponent;
+use App\Http\Livewire\Admin\{
+    Dashboard,
+    EmailComponent,
+    GalleryManager,
+    UsersComponent,
+    JudgesComponent,
+    SubmissionsList,
+    SponsorsComponent,
+    ShortListComponent
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -54,13 +57,13 @@ Route::group(
     ],
     function () {
         Route::get('/dashboard', Dashboard::class)->name('dashboard');
-
         Route::get('/manage-gallery', GalleryManager::class)->name('gallery.index');
         Route::get('/judges', JudgesComponent::class)->name('judges.index');
         Route::get('/sponsors', SponsorsComponent::class)->name('sponsors.index');
         Route::get('/submissions', SubmissionsList::class)->name('submissions.index');
         Route::get('/users', UsersComponent::class)->name('users.index');
         Route::get('/send-mail', EmailComponent::class)->name('mail.compose');
+        Route::get('/shortlists', ShortListComponent::class)->name('shortlist.index');
     }
 );
 
