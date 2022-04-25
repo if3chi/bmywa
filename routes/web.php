@@ -63,6 +63,7 @@ Route::group(
         Route::get('/submissions', SubmissionsList::class)->name('submissions.index');
         Route::get('/users', UsersComponent::class)->name('users.index');
         Route::get('/send-mail', EmailComponent::class)->name('mail.compose');
+        Route::get('/shortlists', ShortListComponent::class)->name('shortlist.index');
     }
 );
 
