@@ -47,7 +47,7 @@ Route::middleware('visitor')->group(function () {
 
     Route::permanentRedirect('apply', '/#entry-form')->name('apply');
     Route::view('/terms', 'terms')->name('terms');
-    Route::view('/events', 'events')->name('events');
+    // Route::view('/events', 'events')->name('events');
 });
 
 Route::group(

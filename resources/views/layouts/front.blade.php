@@ -44,9 +44,9 @@
 
 <body>
 
-    @if (!Request::is('events'))
+    {{-- @if (!Request::is('events'))
         <livewire:front.info-banner />
-    @endif
+    @endif --}}
 
     <div class="fade-in">
         {{ $hero }}
