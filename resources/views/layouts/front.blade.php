@@ -37,7 +37,7 @@
         integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @vite('resources/js/app.js')
 
     @livewireStyles
 </head>
@@ -59,7 +59,6 @@
 
     @livewireScripts
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
 
     <script>

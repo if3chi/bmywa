@@ -7,20 +7,16 @@
 
         <title>{{ config('app.name', 'BMYWA') }}</title>
         <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-        @livewireStyles
+        @vite('resources/js/app.js')
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
+        <div class="font-sans antialiased text-gray-900">
             {{ $slot }}
         </div>
     </body>
-    @livewireScripts
 </html>

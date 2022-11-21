@@ -11,9 +11,9 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 class AuthServiceProvider extends ServiceProvider
 {
     /**
-     * The policy mappings for the application.
+     * The model to policy mappings for the application.
      *
-     * @var array
+     * @var array<class-string, class-string>
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
@@ -28,15 +28,15 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define(Constant::CURATE_ENTRY, function (User $user) {
-            return 0 < count(array_intersect($user->abilities, [Role::ADMIN, Role::CURATOR]));
-        });
-        Gate::define(Constant::SCORE_ENTRY, function (User $user) {
-            return 0 < count(array_intersect($user->abilities, [Role::ADMIN, Role::CURATOR]));
-        });
-        Gate::define(Constant::JUDGE_ENTRY, function (User $user) {
-            return 0 < count(array_intersect($user->abilities, [Role::ADMIN, Role::JUDGE]));
-        });
+        $this->createPermission(Constant::JUDGE_ENTRY, [Role::ADMIN, Role::JUDGE]);
+        $this->createPermission(Constant::SCORE_ENTRY, [Role::ADMIN, Role::CURATOR]);
+        $this->createPermission(Constant::CURATE_ENTRY, [Role::ADMIN, Role::CURATOR]);
+
         Gate::define(Constant::MANAGE_SITE, fn (User $user) => in_array(Role::ADMIN, $user->abilities));
+    }
+
+    private function createPermission(String $ability, array $roles)
+    {
+        Gate::define($ability, fn (User $user) => 0 < count(array_intersect($user->abilities, $roles)));
     }
 }
