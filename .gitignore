@@ -16,3 +16,5 @@ yarn-error.log
 
 .vercel
 _ide_helper.php
+.phpactor.json
+
